@@ -1,4 +1,4 @@
-package com.seventeam.gsf.models;
+package com.seventeam.gsf.domain;
 
 public class User {
 }
