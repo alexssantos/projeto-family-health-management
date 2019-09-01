@@ -1,4 +1,4 @@
-package com.seventeam.gsf.controllers.util;
+package com.seventeam.gsf.controller.util;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;

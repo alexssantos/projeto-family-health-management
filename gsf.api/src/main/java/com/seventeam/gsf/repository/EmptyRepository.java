@@ -1,4 +1,4 @@
 package com.seventeam.gsf.repository;
 
-public class Emptyrepository {
+public class EmptyRepository {
 }

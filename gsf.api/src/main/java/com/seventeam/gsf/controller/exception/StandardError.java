@@ -1,4 +1,4 @@
-package com.seventeam.gsf.controllers.exception;
+package com.seventeam.gsf.controller.exception;
 
 import java.io.Serializable;
 
