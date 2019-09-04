@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/gsf.api/gsf.api.iml" filepath="$PROJECT_DIR$/gsf.api/gsf.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gsf-api/gsf.iml" filepath="$PROJECT_DIR$/gsf-api/gsf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gsf-api/gsf.api.iml" filepath="$PROJECT_DIR$/gsf-api/gsf.api.iml" />
     </modules>
   </component>
 </project>
