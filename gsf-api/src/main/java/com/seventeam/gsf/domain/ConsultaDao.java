@@ -15,19 +15,27 @@ public class ConsultaDao implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="tipo")
     private String Tipo;
+
+    @Column(name="data_prevista")
     private Date DataPrevista;
+
+    @Column(name="data_feita")
     private Date DataFeita;
-    private Long Consulta_ID;
+
+    @ManyToOne
+    @JoinColumn(name="paciente_id")
+    private PacienteDao Paciente;
 
     public ConsultaDao() {
     }
 
-    public ConsultaDao(String tipo, Date dataPrevista, Date dataFeita, Long consulta_ID) {
+    public ConsultaDao(String tipo, Date dataPrevista, Date dataFeita, PacienteDao paciente_ID) {
         Tipo = tipo;
         DataPrevista = dataPrevista;
         DataFeita = dataFeita;
-        Consulta_ID = consulta_ID;
+        Paciente = paciente_ID;
     }
 
     public Long getId() {
@@ -58,11 +66,11 @@ public class ConsultaDao implements Serializable {
         DataFeita = dataFeita;
     }
 
-    public Long getConsulta_ID() {
-        return Consulta_ID;
+    public PacienteDao getPaciente() {
+        return Paciente;
     }
 
-    public void setConsulta_ID(Long consulta_ID) {
-        Consulta_ID = consulta_ID;
+    public void setPaciente(PacienteDao paciente) {
+        Paciente = paciente;
     }
 }
