@@ -12,7 +12,7 @@ public class Paciente {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id_paciente", updatable = false, nullable = false)
 	private Integer id;
 
 	@Column(name="nome")
@@ -24,7 +24,45 @@ public class Paciente {
 	@Column(name="data_gravidez")
 	private Date dataGravidez;
 
-	@EmbeddedId
-	@Column(name="usuario_id")
-	private Usuario usuario;
+//	@EmbeddedId
+//	@Column(name="usuario_id")
+//	private Usuario usuario;
+
+
+	public Paciente() {
+	}
+
+	public Paciente(String nome, Date dataNascimento, Date dataGravidez) {
+		this.nome = nome;
+		this.dataNascimento = dataNascimento;
+		this.dataGravidez = dataGravidez;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public Date getDataGravidez() {
+		return dataGravidez;
+	}
+
+	public void setDataGravidez(Date dataGravidez) {
+		this.dataGravidez = dataGravidez;
+	}
 }
