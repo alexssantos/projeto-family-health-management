@@ -1,6 +1,6 @@
 package com.seventeam.gsf.controller;
 
-import com.seventeam.gsf.domain.ConsultaDao;
+import com.seventeam.gsf.domain.Consulta;
 import com.seventeam.gsf.models.dto.ConsultaDto;
 import com.seventeam.gsf.services.ConsultaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class ConsultaController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<ConsultaDto>> findAll()
     {
-        List<ConsultaDao> consultas = ConsultaRepo.findAll();
+        List<Consulta> consultas = ConsultaRepo.findAll();
         List<ConsultaDto> dtoList = consultas.stream().map(bean -> new ConsultaDto(bean)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(dtoList);

@@ -1,6 +1,6 @@
 package com.seventeam.gsf.models.dto;
 
-import com.seventeam.gsf.domain.ConsultaDao;
+import com.seventeam.gsf.domain.Consulta;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,7 +13,7 @@ public class ConsultaDto implements Serializable {
     public ConsultaDto() {
     }
 
-    public ConsultaDto(ConsultaDao obj){
+    public ConsultaDto(Consulta obj){
         this.DataFeita = obj.getDataFeita();
         this.Tipo = obj.getTipo();
     }

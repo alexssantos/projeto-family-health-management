@@ -9,7 +9,7 @@ import java.util.Date;
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
 @Entity
 @Table(name = "consulta")
-public class ConsultaDao implements Serializable {
+public class Consulta implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -26,12 +26,12 @@ public class ConsultaDao implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="Paciente_ID")
-    private PacienteDao Paciente;
+    private com.seventeam.gsf.domain.Paciente Paciente;
 
-    public ConsultaDao() {
+    public Consulta() {
     }
 
-    public ConsultaDao(String tipo, Date dataPrevista, Date dataFeita, PacienteDao paciente_ID) {
+    public Consulta(String tipo, Date dataPrevista, Date dataFeita, com.seventeam.gsf.domain.Paciente paciente_ID) {
         Tipo = tipo;
         DataPrevista = dataPrevista;
         DataFeita = dataFeita;
@@ -66,11 +66,11 @@ public class ConsultaDao implements Serializable {
         DataFeita = dataFeita;
     }
 
-    public PacienteDao getPaciente() {
+    public com.seventeam.gsf.domain.Paciente getPaciente() {
         return Paciente;
     }
 
-    public void setPaciente(PacienteDao paciente) {
+    public void setPaciente(com.seventeam.gsf.domain.Paciente paciente) {
         Paciente = paciente;
     }
 }

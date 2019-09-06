@@ -1,7 +1,7 @@
 package com.seventeam.gsf.services;
 
-import com.seventeam.gsf.domain.ConsultaDao;
-import com.seventeam.gsf.repository.ConsultaRepository;
+import com.seventeam.gsf.domain.Consulta;
+import com.seventeam.gsf.repository.ConsultaDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,9 +11,9 @@ import java.util.List;
 public class ConsultaService {
 
     @Autowired
-    private ConsultaRepository ConsultaRepo;
+    private ConsultaDao ConsultaRepo;
 
-    public List<ConsultaDao> findAll(){
+    public List<Consulta> findAll(){
         return ConsultaRepo.findAll();
     }
 }
