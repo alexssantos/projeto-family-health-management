@@ -2,7 +2,7 @@ package com.seventeam.gsf.domain;
 
 import javax.persistence.Entity;
 
-@Entity
+//@Entity
 public class Usuario {
 
 }
