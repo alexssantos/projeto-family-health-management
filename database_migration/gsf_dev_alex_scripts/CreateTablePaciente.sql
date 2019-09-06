@@ -5,7 +5,7 @@ CREATE TABLE paciente (
 	PRIMARY KEY AUTO_INCREMENT, 
   nome varchar(45) NOT NULL,
   data_nascimento datetime DEFAULT NULL,
-  data_gravidez date DEFAULT NULL      
+  data_gravidez datetime DEFAULT NULL
 );
 
 LOCK TABLES paciente WRITE;

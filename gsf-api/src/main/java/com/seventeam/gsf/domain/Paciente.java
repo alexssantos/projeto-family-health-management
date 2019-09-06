@@ -1,6 +1,7 @@
 package com.seventeam.gsf.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,7 +13,7 @@ public class Paciente {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name = "id_paciente", updatable = false, nullable = false)
+	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
 	@Column(name="nome")
@@ -24,18 +25,19 @@ public class Paciente {
 	@Column(name="data_gravidez")
 	private Date dataGravidez;
 
-//	@EmbeddedId
-//	@Column(name="usuario_id")
-//	private Usuario usuario;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuario usuario;
 
 
 	public Paciente() {
 	}
 
-	public Paciente(String nome, Date dataNascimento, Date dataGravidez) {
+	public Paciente(String nome, Date dataNascimento, Date dataGravidez, Usuario usuario) {
 		this.nome = nome;
 		this.dataNascimento = dataNascimento;
 		this.dataGravidez = dataGravidez;
+		this.usuario = usuario;
 	}
 
 	public Integer getId() {
