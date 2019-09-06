@@ -34,16 +34,16 @@ public class Instantiation implements CommandLineRunner {
 
         PacienteDao paciente = new PacienteDao();
 
-//        int ix = 0;
-//        ConsultaDao consulta1 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-//        ConsultaDao consulta2 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-//        ConsultaDao consulta3 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-//        ConsultaDao consulta4 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-//        ConsultaDao consulta5 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-//        ConsultaDao consulta6 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-//        ConsultaDao consulta7 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-//
-//        ConsultaRepo.saveAll(Arrays.asList(
-//                consulta1,consulta2,consulta3,consulta4,consulta5,consulta6,consulta7));
+        int ix = 0;
+        ConsultaDao consulta1 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
+        ConsultaDao consulta2 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
+        ConsultaDao consulta3 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
+        ConsultaDao consulta4 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
+        ConsultaDao consulta5 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
+        ConsultaDao consulta6 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
+        ConsultaDao consulta7 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
+
+        ConsultaRepo.saveAll(Arrays.asList(
+                consulta1,consulta2,consulta3,consulta4,consulta5,consulta6,consulta7));
     }
 }
