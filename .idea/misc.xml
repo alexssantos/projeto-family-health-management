@@ -2,8 +2,8 @@
 <project version="4">
   <component name="MavenProjectsManager">
     <option name="originalFiles">
-      <list>
-        <option value="$PROJECT_DIR$/gsf.api/pom.xml" />
+      <list>        
+        <option value="$PROJECT_DIR$/gsf-api/pom.xml" />
       </list>
     </option>
   </component>
