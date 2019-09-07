@@ -35,7 +35,7 @@ public class Instantiation implements CommandLineRunner {
 
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        pushUsuarioToDb();
+        //pushUsuarioToDb();
         pushPacienteToDb();
     }
 
@@ -57,17 +57,19 @@ public class Instantiation implements CommandLineRunner {
     {
         pacienteDao.deleteAll();
 
+        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.MEDICO);
+        Paciente alex = new Paciente("Alex Santos", sdf.parse("25/10/2019"),sdf.parse("30/10/2019"), alexUser);
 
-        Paciente alex = new Paciente("Alex Santos", sdf.parse("25/10/2019"),sdf.parse("30/10/2019"), usuarioList.get(0));
         //Paciente bruna = new Paciente("Bruna Dolavale", sdf.parse("01/05/2019"),sdf.parse("15/05/2019"));
         //Paciente matheus = new Paciente("Matheus Gomes", sdf.parse("02/06/2019"),sdf.parse("16/06/2019"));
         //Paciente thais = new Paciente("Thais Machado", sdf.parse("03/07/2019"),sdf.parse("17/07/2019"));
 
-        pacienteDao.saveAll(Arrays.asList(
-                alex
-                //bruna,
-                //matheus,
-                //thais
-        ));
+        pacienteDao.save(alex);
+//        pacienteDao.saveAll(Arrays.asList(
+//                alex
+//                //bruna,
+//                //matheus,
+//                //thais
+//        ));
     }
 }
