@@ -9,7 +9,8 @@ import javax.persistence.*;
 public class Usuario {
 
 	@Id
-	@Column(name = "id")
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
 	@Column(name = "login")
@@ -19,16 +20,18 @@ public class Usuario {
 	private String password;
 
 	@Column(name = "perfil")
-	private EnumUsuarioPerfil perfil;
+	private String perfil;
 
 	@OneToOne(mappedBy = "usuario")
 	private Paciente paciente;
 
+	public Usuario() {
+	}
 
 	public Usuario(String login, String password, EnumUsuarioPerfil perfil) {
 		this.login = login;
 		this.password = password;
-		this.perfil = perfil;
+		this.perfil = perfil.toString();
 	}
 
 	public Integer getId() {
@@ -51,11 +54,11 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public EnumUsuarioPerfil getPerfil() {
+	public String getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(EnumUsuarioPerfil perfil) {
+	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
 }

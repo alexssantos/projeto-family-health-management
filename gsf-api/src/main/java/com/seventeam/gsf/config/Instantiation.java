@@ -21,6 +21,8 @@ public class Instantiation implements CommandLineRunner {
 
     @Autowired
     private PacienteDao pacienteDao;
+
+    @Autowired
     private UsuarioDao usuarioDao;
 
     public static List<Usuario> usuarioList = new ArrayList<>();
