@@ -33,8 +33,7 @@ public class PacienteController {
     {
         Paciente newObj = new Paciente();
         newObj.setNome("Alex");
-
-        pacienteService.savePaciente(newObj);
+        pacienteService.save(newObj);
 
         return ResponseEntity.ok().body(newObj);
     }
