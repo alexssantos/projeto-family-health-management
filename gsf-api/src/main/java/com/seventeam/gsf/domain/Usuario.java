@@ -25,12 +25,24 @@ public class Usuario {
 	@OneToOne(mappedBy = "usuario")
 	private Paciente paciente;
 
+	@OneToOne(mappedBy = "usuario")
+	private Medico medico;
+
 	public Usuario() {
+		this(null, null, EnumUsuarioPerfil.DESCONHECIDO);
 	}
 
 	public Usuario(String login, String password, EnumUsuarioPerfil perfil) {
 		this.login = login;
+		if (this.login == null || this.login.isEmpty()){
+			this.login = "admin";
+		}
+
 		this.password = password;
+		if (this.password == null || this.password.isEmpty()){
+			this.password = "admin";
+		}
+
 		this.perfil = perfil.toString();
 	}
 
