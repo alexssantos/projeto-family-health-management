@@ -1,21 +1,32 @@
 package com.seventeam.gsf.config;
 
-import com.seventeam.gsf.domain.ConsultaDao;
-import com.seventeam.gsf.domain.PacienteDao;
-import com.seventeam.gsf.repository.ConsultaRepository;
+import com.seventeam.gsf.domain.Paciente;
+import com.seventeam.gsf.domain.Usuario;
+import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
+import com.seventeam.gsf.repository.PacienteDao;
+import com.seventeam.gsf.repository.UsuarioDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.TimeZone;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
 
     @Autowired
-    private ConsultaRepository ConsultaRepo;
+    private PacienteDao pacienteDao;
+
+    @Autowired
+    private UsuarioDao usuarioDao;
+
+    public static List<Usuario> usuarioList = new ArrayList<>();
+    public static List<Paciente> pacienteList = new ArrayList<>();
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -24,26 +35,41 @@ public class Instantiation implements CommandLineRunner {
 
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        pushConsulta();
+        //pushUsuarioToDb();
+        pushPacienteToDb();
     }
 
 
-    private void pushConsulta() throws Exception
+    private void pushUsuarioToDb() throws Exception
     {
-        ConsultaRepo.deleteAll();
+        usuarioDao.deleteAll();
+        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.MEDICO);
 
-        PacienteDao paciente = new PacienteDao();
+        usuarioList.addAll(Arrays.asList(
+                alexUser
+        ));
 
-        int ix = 0;
-        ConsultaDao consulta1 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-        ConsultaDao consulta2 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-        ConsultaDao consulta3 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-        ConsultaDao consulta4 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-        ConsultaDao consulta5 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-        ConsultaDao consulta6 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
-        ConsultaDao consulta7 = new ConsultaDao("TIPO"+ix++, sdf.parse("25/10/2019"),sdf.parse("26/10/2019"), paciente);
+        usuarioDao.save(alexUser);
+    }
 
-        ConsultaRepo.saveAll(Arrays.asList(
-                consulta1,consulta2,consulta3,consulta4,consulta5,consulta6,consulta7));
+
+    private void pushPacienteToDb() throws Exception
+    {
+        pacienteDao.deleteAll();
+
+        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.MEDICO);
+        Paciente alex = new Paciente("Alex Santos", sdf.parse("25/10/2019"),sdf.parse("30/10/2019"), alexUser);
+
+        //Paciente bruna = new Paciente("Bruna Dolavale", sdf.parse("01/05/2019"),sdf.parse("15/05/2019"));
+        //Paciente matheus = new Paciente("Matheus Gomes", sdf.parse("02/06/2019"),sdf.parse("16/06/2019"));
+        //Paciente thais = new Paciente("Thais Machado", sdf.parse("03/07/2019"),sdf.parse("17/07/2019"));
+
+        pacienteDao.save(alex);
+//        pacienteDao.saveAll(Arrays.asList(
+//                alex
+//                //bruna,
+//                //matheus,
+//                //thais
+//        ));
     }
 }

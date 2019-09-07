@@ -16,32 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `consulta`
+-- Table structure for table `permissao`
 --
 
-DROP TABLE IF EXISTS `consulta`;
+DROP TABLE IF EXISTS `permissao`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `consulta` (
-  `ID` int(11) NOT NULL,
-  `Tipo` varchar(45) DEFAULT NULL,
-  `DataPrevista` date DEFAULT NULL,
-  `DataFeita` date DEFAULT NULL,
-  `Paciente_ID` int(11) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `Data_UNIQUE` (`DataPrevista`),
-  KEY `fk_Consulta_Paciente1_idx` (`Paciente_ID`),
-  CONSTRAINT `fk_Consulta_Paciente1` FOREIGN KEY (`Paciente_ID`) REFERENCES `paciente` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `permissao` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `acao` varchar(45) DEFAULT NULL,
+  `usuario_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`usuario_id`),
+  KEY `fk_permissao_usuario1_idx` (`usuario_id`),
+  CONSTRAINT `fk_permissao_usuario1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `consulta`
+-- Dumping data for table `permissao`
 --
 
-LOCK TABLES `consulta` WRITE;
-/*!40000 ALTER TABLE `consulta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `consulta` ENABLE KEYS */;
+LOCK TABLES `permissao` WRITE;
+/*!40000 ALTER TABLE `permissao` DISABLE KEYS */;
+/*!40000 ALTER TABLE `permissao` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-05 22:58:56
+-- Dump completed on 2019-09-06  1:01:45

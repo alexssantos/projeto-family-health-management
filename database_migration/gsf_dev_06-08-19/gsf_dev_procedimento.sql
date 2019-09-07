@@ -16,32 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `consulta`
+-- Table structure for table `procedimento`
 --
 
-DROP TABLE IF EXISTS `consulta`;
+DROP TABLE IF EXISTS `procedimento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `consulta` (
-  `ID` int(11) NOT NULL,
-  `Tipo` varchar(45) DEFAULT NULL,
-  `DataPrevista` date DEFAULT NULL,
-  `DataFeita` date DEFAULT NULL,
-  `Paciente_ID` int(11) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `Data_UNIQUE` (`DataPrevista`),
-  KEY `fk_Consulta_Paciente1_idx` (`Paciente_ID`),
-  CONSTRAINT `fk_Consulta_Paciente1` FOREIGN KEY (`Paciente_ID`) REFERENCES `paciente` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `procedimento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descricao` varchar(45) NOT NULL,
+  `semana_inicial` int(11) NOT NULL,
+  `semana_final` int(11) NOT NULL,
+  `data_feito` date DEFAULT NULL,
+  `tipo` enum('EXAME','VACINA') DEFAULT NULL,
+  `medico_crm` int(11) NOT NULL,
+  `paciente_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`medico_crm`,`paciente_id`),
+  KEY `fk_procedimento_medico1_idx` (`medico_crm`),
+  KEY `fk_procedimento_paciente1_idx` (`paciente_id`),
+  CONSTRAINT `fk_procedimento_medico1` FOREIGN KEY (`medico_crm`) REFERENCES `medico` (`crm`),
+  CONSTRAINT `fk_procedimento_paciente1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `consulta`
+-- Dumping data for table `procedimento`
 --
 
-LOCK TABLES `consulta` WRITE;
-/*!40000 ALTER TABLE `consulta` DISABLE KEYS */;
-/*!40000 ALTER TABLE `consulta` ENABLE KEYS */;
+LOCK TABLES `procedimento` WRITE;
+/*!40000 ALTER TABLE `procedimento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `procedimento` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-05 22:58:56
+-- Dump completed on 2019-09-06  1:01:46
