@@ -3,6 +3,8 @@ package com.seventeam.gsf.domain;
 import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -28,8 +30,12 @@ public class Usuario {
 	@OneToOne(mappedBy = "usuario")
 	private Medico medico;
 
+//	@OneToMany(mappedBy="usuario", cascade = CascadeType.ALL)
+//	private List<Permissao> permissaoList = new ArrayList<>();
+
+
 	public Usuario() {
-		this(null, null, EnumUsuarioPerfil.DESCONHECIDO);
+		this(null,null,EnumUsuarioPerfil.DESCONHECIDO);
 	}
 
 	public Usuario(String login, String password, EnumUsuarioPerfil perfil) {
@@ -73,5 +79,29 @@ public class Usuario {
 	public void setPerfil(String perfil) {
 		this.perfil = perfil;
 	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
+
+	public Medico getMedico() {
+		return medico;
+	}
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+//	public List<Permissao> getPermissaoList() {
+//		return permissaoList;
+//	}
+//
+//	public void setPermissaoList(List<Permissao> permissaoList) {
+//		this.permissaoList = permissaoList;
+//	}
 }
 
