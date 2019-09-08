@@ -96,7 +96,7 @@ public class Instantiation implements CommandLineRunner {
         {
             Medico medicoX = new Medico(
                     UtilsString.msgFormat("Medico-{0}",i),
-                    generateCRM(),
+                    Medico.generateCRM(),
                     new Usuario(
                             UtilsString.msgFormat("medico-{0}@gmail.com",i),
                             "123",
@@ -116,21 +116,4 @@ public class Instantiation implements CommandLineRunner {
             e.printStackTrace();
         }
     }
-
-    private String generateCRM(){
-        //Padrão CRM = 52-83199-9 = x-y-z
-
-        int numberX = UtilsNumbers.getRandomIntegerBetweenRange(0,99);
-        String xStr = UtilsString.formatNumberFixedLenght(numberX, 2);
-
-        int numberY = UtilsNumbers.getRandomIntegerBetweenRange(0,99999);
-        String yStr = UtilsString.formatNumberFixedLenght(numberY, 5);
-
-        int numberZ = UtilsNumbers.getRandomIntegerBetweenRange(0,9);
-        String zStr = UtilsString.formatNumberFixedLenght(numberZ, 1);
-
-        String CRM = UtilsString.msgFormat("{0}-{1}-{2}",xStr, yStr, zStr);
-
-        return CRM;
-    };
 }
