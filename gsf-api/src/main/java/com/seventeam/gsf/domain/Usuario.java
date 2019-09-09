@@ -32,17 +32,19 @@ public class Usuario {
 	@OneToOne(mappedBy = "usuario")
 	private Medico medico;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name = "perfil_id", referencedColumnName = "id")
 	private Perfil perfil;
 
-
-	// CONSTRUTOR
-	public Usuario(EnumUsuarioPerfil tipoPerfil) {
-		this(null,null, tipoPerfil);
+	public Usuario() {
 	}
 
-	public Usuario(String login, String password, EnumUsuarioPerfil tipoPerfil) {
+	// CONSTRUTOR
+	public Usuario(Perfil perfil) {
+		this(null,null, perfil);
+	}
+
+	public Usuario(String login, String password, Perfil perfil) {
 		this.login = login;
 		if (this.login == null || this.login.isEmpty()){
 			this.login = "admin";
@@ -54,7 +56,7 @@ public class Usuario {
 		}
 
 		// TODO: preciso que pegue o pefil ja existente e não que crie outro registro.
-		//this.perfil = new Perfil(perfil);
+		this.perfil = perfil;
 	}
 
 

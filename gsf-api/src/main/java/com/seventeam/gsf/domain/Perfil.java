@@ -11,11 +11,12 @@ import java.util.List;
 public class Perfil {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name = "id", updatable = false, nullable = false)
-    private String id;
+    private Integer id;
 
-    @Column(name = "tipo")
+	@Enumerated(EnumType.STRING)
+    @Column(name = "tipo", unique = true)
     private EnumUsuarioPerfil tipoPerfil;
 
 
@@ -24,12 +25,14 @@ public class Perfil {
     private Usuario usuario;
 
 	@OneToMany(mappedBy="perfil", cascade = CascadeType.ALL)
-	private ArrayList<Permissao> permissaoList;
+	private  List<Permissao> permissaoList;
 
 
 
 	// CONSTRUTOR
-    public Perfil(EnumUsuarioPerfil tipoPerfil) {
+	public Perfil() {}
+
+	public Perfil(EnumUsuarioPerfil tipoPerfil) {
         this.tipoPerfil = tipoPerfil;
     }
 

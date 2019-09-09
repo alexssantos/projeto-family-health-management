@@ -41,7 +41,7 @@ public class Medico {
 
         if (this.usuario == null)
         {
-            this.usuario = new Usuario(EnumUsuarioPerfil.MEDICO);
+            this.usuario = new Usuario(new Perfil(EnumUsuarioPerfil.MEDICO));
         }
     }
 

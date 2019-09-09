@@ -1,19 +1,20 @@
 package com.seventeam.gsf.config;
 
-import com.seventeam.gsf.Utils.UtilsNumbers;
 import com.seventeam.gsf.Utils.UtilsString;
 import com.seventeam.gsf.domain.Medico;
 import com.seventeam.gsf.domain.Paciente;
+import com.seventeam.gsf.domain.Perfil;
 import com.seventeam.gsf.domain.Usuario;
 import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 import com.seventeam.gsf.repository.MedicoDao;
 import com.seventeam.gsf.repository.PacienteDao;
+import com.seventeam.gsf.repository.PerfilDao;
 import com.seventeam.gsf.repository.UsuarioDao;
+import com.seventeam.gsf.services.PerfilService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,9 +30,15 @@ public class Instantiation implements CommandLineRunner {
     private UsuarioDao usuarioDao;
     @Autowired
     private MedicoDao medicoDao;
+    @Autowired
+    private PerfilDao perfilDao;
+    @Autowired
+    private PerfilService perfilService;
 
     public static List<Usuario> usuarioList = new ArrayList<>();
     public static List<Paciente> pacienteList = new ArrayList<>();
+    public Perfil perfilMedico;
+    public Perfil perfilPaciente;
 
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -42,19 +49,29 @@ public class Instantiation implements CommandLineRunner {
 
         pushUsuarioToDb();
         pushPacienteToDb();
-        pusuMedicoToDb();
+        pushMedicoToDb();
     }
 
+    private void perfilInstantiation(){
+        perfilDao.deleteAll();
+        List<Perfil> perfil = perfilDao.findAll();
+        //perfilDao.saveAll(Arrays.asList(perfil, perfil2));
+    }
 
     private void pushUsuarioToDb() throws Exception
     {
-        usuarioDao.deleteAll();
-        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.MEDICO);
+        usuarioDao.deleteAll(); // Usuario usa perfil
+        //permissaoDao.deleteAll() // Permissao usa perfil
 
-        usuarioList.addAll(Arrays.asList(
-                alexUser
-        ));
+        perfilDao.deleteAll();
+        //List<Perfil> perfil = perfilDao.findAll();
 
+        this.perfilMedico = new Perfil(EnumUsuarioPerfil.MEDICO);
+        this.perfilPaciente = new Perfil(EnumUsuarioPerfil.PACIENTE);
+        perfilDao.saveAll(Arrays.asList(perfilMedico, perfilPaciente));
+
+        // USUARIO
+        Usuario alexUser = new Usuario("alex@gmail.com", "123", perfilMedico );
         usuarioDao.save(alexUser);
     }
 
@@ -62,16 +79,16 @@ public class Instantiation implements CommandLineRunner {
     private void pushPacienteToDb() throws Exception
     {
 
-        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
+        Usuario alexUser = new Usuario("alex@gmail.com", "123", perfilPaciente);
         Paciente alex = new Paciente("Alex Santos", sdf.parse("25/10/2019"),sdf.parse("30/10/2019"), alexUser);
 
-        Usuario brunaUser = new Usuario("bruna@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
+        Usuario brunaUser = new Usuario("bruna@gmail.com", "123", perfilPaciente);
         Paciente bruna = new Paciente("Bruna Dolavale", sdf.parse("01/05/2019"),sdf.parse("15/05/2019"), brunaUser);
 
-        Usuario matheusUser = new Usuario("matheus@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
+        Usuario matheusUser = new Usuario("matheus@gmail.com", "123", perfilPaciente);
         Paciente matheus = new Paciente("Matheus Gomes", sdf.parse("02/06/2019"),sdf.parse("16/06/2019"), matheusUser);
 
-        Usuario thaisUser = new Usuario("thais@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
+        Usuario thaisUser = new Usuario("thais@gmail.com", "123", perfilPaciente);
         Paciente thais = new Paciente("Thais Machado", sdf.parse("03/07/2019"),sdf.parse("17/07/2019"), thaisUser);
 
         try
@@ -87,7 +104,7 @@ public class Instantiation implements CommandLineRunner {
         }
     }
 
-    private void pusuMedicoToDb()
+    private void pushMedicoToDb()
     {
         List<Medico> medicoList = new ArrayList<>();
         int qtdMedicos = 10;
@@ -100,7 +117,7 @@ public class Instantiation implements CommandLineRunner {
                     new Usuario(
                             UtilsString.msgFormat("medico-{0}@gmail.com",i),
                             "123",
-                            EnumUsuarioPerfil.MEDICO)
+                            perfilMedico)
             );
 
             medicoList.add(medicoX);
