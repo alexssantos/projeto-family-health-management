@@ -21,24 +21,28 @@ public class Usuario {
 	@Column(name = "senha")
 	private String password;
 
-	@Column(name = "perfil")
-	private String perfil;
 
+	/*RELATIONSHIPS
+	 * We also need to place the @OneToOne annotation here, too. That's because this is a bidirectional relationship.
+	 * The 'usuario' side of the relationship is called the non-owning side.
+	 */
 	@OneToOne(mappedBy = "usuario")
 	private Paciente paciente;
 
 	@OneToOne(mappedBy = "usuario")
 	private Medico medico;
 
-//	@OneToMany(mappedBy="usuario", cascade = CascadeType.ALL)
-//	private List<Permissao> permissaoList = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "perfil_id", referencedColumnName = "id")
+	private Perfil perfil;
 
 
-	public Usuario() {
-		this(null,null,EnumUsuarioPerfil.DESCONHECIDO);
+	// CONSTRUTOR
+	public Usuario(EnumUsuarioPerfil tipoPerfil) {
+		this(null,null, tipoPerfil);
 	}
 
-	public Usuario(String login, String password, EnumUsuarioPerfil perfil) {
+	public Usuario(String login, String password, EnumUsuarioPerfil tipoPerfil) {
 		this.login = login;
 		if (this.login == null || this.login.isEmpty()){
 			this.login = "admin";
@@ -49,9 +53,12 @@ public class Usuario {
 			this.password = "admin";
 		}
 
-		this.perfil = perfil.toString();
+		// TODO: preciso que pegue o pefil ja existente e não que crie outro registro.
+		//this.perfil = new Perfil(perfil);
 	}
 
+
+	// GET SET
 	public Integer getId() {
 		return id;
 	}
@@ -72,12 +79,8 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public String getPerfil() {
+	public Perfil getPerfil() {
 		return perfil;
-	}
-
-	public void setPerfil(String perfil) {
-		this.perfil = perfil;
 	}
 
 	public Paciente getPaciente() {
@@ -96,12 +99,5 @@ public class Usuario {
 		this.medico = medico;
 	}
 
-//	public List<Permissao> getPermissaoList() {
-//		return permissaoList;
-//	}
-//
-//	public void setPermissaoList(List<Permissao> permissaoList) {
-//		this.permissaoList = permissaoList;
-//	}
 }
 
