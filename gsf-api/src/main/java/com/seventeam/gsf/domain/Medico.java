@@ -2,12 +2,13 @@ package com.seventeam.gsf.domain;
 
 
 import com.seventeam.gsf.Utils.*;
+import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "medico")
-public class Medico extends Usuario {
+public class Medico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,16 +21,13 @@ public class Medico extends Usuario {
     @Column(name = "nome")
     private String nome;
 
-    //relação 1
+    // RELATIONSHIPS
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
 
-    //relação 2
-    //(ManyToMany) OneToMany -> keys medico <-> paciente (table)
 
-
-    //Relaçao 3
     //(OneToMany) Medico -> Procedimento
 
 
@@ -43,7 +41,7 @@ public class Medico extends Usuario {
 
         if (this.usuario == null)
         {
-            this.usuario = new Usuario();
+            this.usuario = new Usuario(EnumUsuarioPerfil.MEDICO);
         }
     }
 
