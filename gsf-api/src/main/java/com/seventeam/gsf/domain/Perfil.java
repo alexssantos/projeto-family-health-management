@@ -1,6 +1,8 @@
 package com.seventeam.gsf.domain;
 
 import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class Perfil {
     private Integer id;
 
 	@Enumerated(EnumType.STRING)
-    @Column(name = "tipo", unique = true, insertable = false)
+    @Column(name = "tipo", unique = true)
     private EnumUsuarioPerfil tipoPerfil;
 
 
@@ -27,8 +29,9 @@ public class Perfil {
      * The 'PERFIL' side of the relationship is called the non-owning side.
      */
 
-    @OneToOne(mappedBy = "perfil")
-    private Usuario usuario;
+    @OneToMany(mappedBy = "perfil", fetch = FetchType.LAZY)
+    @Cascade(CascadeType.DELETE)
+    private List<Usuario> usuarioList = new ArrayList<>();
 
 
     // =======================
@@ -46,6 +49,10 @@ public class Perfil {
     // GET SET
     // =======================
 
+    public Integer getId() {
+        return id;
+    }
+
     public EnumUsuarioPerfil getTipoPerfil() {
         return tipoPerfil;
     }
@@ -54,4 +61,11 @@ public class Perfil {
         this.tipoPerfil = tipoPerfil;
     }
 
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public void setUsuarioList(ArrayList<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
+    }
 }

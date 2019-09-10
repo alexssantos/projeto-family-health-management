@@ -37,6 +37,7 @@ public class Instantiation implements CommandLineRunner {
 
     public static List<Usuario> usuarioList = new ArrayList<>();
     public static List<Paciente> pacienteList = new ArrayList<>();
+
     public Perfil perfilMedico;
     public Perfil perfilPaciente;
 
@@ -47,14 +48,15 @@ public class Instantiation implements CommandLineRunner {
 
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
+        perfilInstantiation();
         pushUsuarioToDb();
-        pushPacienteToDb();
-        pushMedicoToDb();
+        //pushPacienteToDb();
+        //pushMedicoToDb();
     }
 
     private void perfilInstantiation(){
-        perfilDao.deleteAll();
-        List<Perfil> perfil = perfilDao.findAll();
+        List<Perfil> perfilList = perfilDao.findAll();
+        perfilDao.deleteAll(perfilList);
         //perfilDao.saveAll(Arrays.asList(perfil, perfil2));
     }
 
@@ -71,7 +73,13 @@ public class Instantiation implements CommandLineRunner {
         perfilDao.saveAll(Arrays.asList(perfilMedico, perfilPaciente));
 
         // USUARIO
-        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.MEDICO );
+        Usuario alexUser = new Usuario("alex@gmail.com", "123");
+
+        List<Perfil> perfilList = perfilDao.findAll();
+        Perfil perfil1 = perfilList.get(0);
+
+        alexUser.setPerfil(perfil1);
+
         usuarioDao.save(alexUser);
     }
 
@@ -79,16 +87,16 @@ public class Instantiation implements CommandLineRunner {
     private void pushPacienteToDb() throws Exception
     {
 
-        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
+        Usuario alexUser = new Usuario("alex@gmail.com", "123");
         Paciente alex = new Paciente("Alex Santos", sdf.parse("25/10/2019"),sdf.parse("30/10/2019"), alexUser);
 
-        Usuario brunaUser = new Usuario("bruna@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
+        Usuario brunaUser = new Usuario("bruna@gmail.com", "123");
         Paciente bruna = new Paciente("Bruna Dolavale", sdf.parse("01/05/2019"),sdf.parse("15/05/2019"), brunaUser);
 
-        Usuario matheusUser = new Usuario("matheus@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
+        Usuario matheusUser = new Usuario("matheus@gmail.com", "123");
         Paciente matheus = new Paciente("Matheus Gomes", sdf.parse("02/06/2019"),sdf.parse("16/06/2019"), matheusUser);
 
-        Usuario thaisUser = new Usuario("thais@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
+        Usuario thaisUser = new Usuario("thais@gmail.com", "123");
         Paciente thais = new Paciente("Thais Machado", sdf.parse("03/07/2019"),sdf.parse("17/07/2019"), thaisUser);
 
         try
@@ -116,8 +124,7 @@ public class Instantiation implements CommandLineRunner {
                     Medico.generateCRM(),
                     new Usuario(
                             UtilsString.msgFormat("medico-{0}@gmail.com",i),
-                            "123",
-                            EnumUsuarioPerfil.MEDICO)
+                            "123")
             );
 
             medicoList.add(medicoX);

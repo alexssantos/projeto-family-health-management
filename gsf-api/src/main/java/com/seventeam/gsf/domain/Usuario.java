@@ -35,23 +35,20 @@ public class Usuario {
 	@OneToOne(mappedBy = "usuario")
 	private Paciente paciente;
 
-	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name = "perfil_id", referencedColumnName = "id")
+
+	@Embedded
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "perfil_id", referencedColumnName = "id", insertable=false, updatable=false)
 	private Perfil perfil;
 
 
 	// =======================
 	// CONSTRUCTOR
 	// =======================
-
-	public Usuario(EnumUsuarioPerfil tipoPerfil) {
-		this(null,null, tipoPerfil);
-	}
-
 	public Usuario() {
 	}
 
-	public Usuario(String login, String password, EnumUsuarioPerfil tipoPerfil) {
+	public Usuario(String login, String password) {
 		this.login = login;
 		if (this.login == null || this.login.isEmpty()){
 			this.login = "admin";
@@ -63,7 +60,7 @@ public class Usuario {
 		}
 
 		// TODO: preciso que pegue o pefil ja existente e não que crie outro registro.
-		this.perfil = new Perfil(tipoPerfil);
+		//this.perfil = new Perfil(tipoPerfil);
 	}
 
 
@@ -90,6 +87,10 @@ public class Usuario {
 
 	public Perfil getPerfil() {
 		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 	public Paciente getPaciente() {
