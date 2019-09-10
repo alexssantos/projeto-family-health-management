@@ -35,10 +35,8 @@ public class Usuario {
 	@OneToOne(mappedBy = "usuario")
 	private Paciente paciente;
 
-
-	@Embedded
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "perfil_id", referencedColumnName = "id", insertable=false, updatable=false)
+	@ManyToOne()
+	@JoinColumn(name = "perfil_id", referencedColumnName = "id", unique = true)
 	private Perfil perfil;
 
 
