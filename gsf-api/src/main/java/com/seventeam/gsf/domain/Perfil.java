@@ -11,25 +11,30 @@ import java.util.List;
 public class Perfil {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
 
 	@Enumerated(EnumType.STRING)
-    @Column(name = "tipo", unique = true)
+    @Column(name = "tipo", unique = true, insertable = false)
     private EnumUsuarioPerfil tipoPerfil;
 
 
-    // RELATIONSHIOPS
+    // =======================
+    // RELATIONSHIPS
+    // =======================
+    /* We also need to place the @OneToOne annotation here, too. That's because this is a bidirectional relationship.
+     * The 'PERFIL' side of the relationship is called the non-owning side.
+     */
+
     @OneToOne(mappedBy = "perfil")
     private Usuario usuario;
 
-	@OneToMany(mappedBy="perfil", cascade = CascadeType.ALL)
-	private  List<Permissao> permissaoList;
 
+    // =======================
+    // CONSTRUCTOR
+    // =======================
 
-
-	// CONSTRUTOR
 	public Perfil() {}
 
 	public Perfil(EnumUsuarioPerfil tipoPerfil) {
@@ -37,7 +42,10 @@ public class Perfil {
     }
 
 
+    // =======================
     // GET SET
+    // =======================
+
     public EnumUsuarioPerfil getTipoPerfil() {
         return tipoPerfil;
     }
@@ -45,13 +53,5 @@ public class Perfil {
     public void setTipoPerfil(EnumUsuarioPerfil tipoPerfil) {
         this.tipoPerfil = tipoPerfil;
     }
-
-    public List<Permissao> getPermissaoList() {
-		return permissaoList;
-	}
-
-	public void setPermissaoList(ArrayList<Permissao> permissaoList) {
-		this.permissaoList = permissaoList;
-	}
 
 }

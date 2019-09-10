@@ -71,7 +71,7 @@ public class Instantiation implements CommandLineRunner {
         perfilDao.saveAll(Arrays.asList(perfilMedico, perfilPaciente));
 
         // USUARIO
-        Usuario alexUser = new Usuario("alex@gmail.com", "123", perfilMedico );
+        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.MEDICO );
         usuarioDao.save(alexUser);
     }
 
@@ -79,16 +79,16 @@ public class Instantiation implements CommandLineRunner {
     private void pushPacienteToDb() throws Exception
     {
 
-        Usuario alexUser = new Usuario("alex@gmail.com", "123", perfilPaciente);
+        Usuario alexUser = new Usuario("alex@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
         Paciente alex = new Paciente("Alex Santos", sdf.parse("25/10/2019"),sdf.parse("30/10/2019"), alexUser);
 
-        Usuario brunaUser = new Usuario("bruna@gmail.com", "123", perfilPaciente);
+        Usuario brunaUser = new Usuario("bruna@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
         Paciente bruna = new Paciente("Bruna Dolavale", sdf.parse("01/05/2019"),sdf.parse("15/05/2019"), brunaUser);
 
-        Usuario matheusUser = new Usuario("matheus@gmail.com", "123", perfilPaciente);
+        Usuario matheusUser = new Usuario("matheus@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
         Paciente matheus = new Paciente("Matheus Gomes", sdf.parse("02/06/2019"),sdf.parse("16/06/2019"), matheusUser);
 
-        Usuario thaisUser = new Usuario("thais@gmail.com", "123", perfilPaciente);
+        Usuario thaisUser = new Usuario("thais@gmail.com", "123", EnumUsuarioPerfil.PACIENTE);
         Paciente thais = new Paciente("Thais Machado", sdf.parse("03/07/2019"),sdf.parse("17/07/2019"), thaisUser);
 
         try
@@ -117,7 +117,7 @@ public class Instantiation implements CommandLineRunner {
                     new Usuario(
                             UtilsString.msgFormat("medico-{0}@gmail.com",i),
                             "123",
-                            perfilMedico)
+                            EnumUsuarioPerfil.MEDICO)
             );
 
             medicoList.add(medicoX);

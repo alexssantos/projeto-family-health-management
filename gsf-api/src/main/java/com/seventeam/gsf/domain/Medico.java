@@ -21,15 +21,19 @@ public class Medico {
     @Column(name = "nome")
     private String nome;
 
+
+    // =======================
     // RELATIONSHIPS
+    // =======================
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
 
 
-    //(OneToMany) Medico -> Procedimento
-
+    // =======================
+    // CONSTRUCTOR
+    // =======================
 
     public Medico() {
     }
@@ -41,9 +45,14 @@ public class Medico {
 
         if (this.usuario == null)
         {
-            this.usuario = new Usuario(new Perfil(EnumUsuarioPerfil.MEDICO));
+            this.usuario = new Usuario(EnumUsuarioPerfil.MEDICO);
         }
     }
+
+
+    // =======================
+    // = GET/SET
+    // =======================
 
     public Integer getId() {
         return id;

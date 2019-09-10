@@ -22,29 +22,36 @@ public class Usuario {
 	private String password;
 
 
-	/*RELATIONSHIPS
-	 * We also need to place the @OneToOne annotation here, too. That's because this is a bidirectional relationship.
-	 * The 'usuario' side of the relationship is called the non-owning side.
-	 */
-	@OneToOne(mappedBy = "usuario")
-	private Paciente paciente;
+	// =======================
+	// RELATIONSHIPS
+	// =======================
+	/* We also need to place the @OneToOne annotation here, too. That's because this is a bidirectional relationship.
+	 * The 'USAURIO' side of the relationship is called the non-owning side.
+	 * */
 
 	@OneToOne(mappedBy = "usuario")
 	private Medico medico;
 
-	@ManyToOne()
+	@OneToOne(mappedBy = "usuario")
+	private Paciente paciente;
+
+	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "perfil_id", referencedColumnName = "id")
 	private Perfil perfil;
+
+
+	// =======================
+	// CONSTRUCTOR
+	// =======================
+
+	public Usuario(EnumUsuarioPerfil tipoPerfil) {
+		this(null,null, tipoPerfil);
+	}
 
 	public Usuario() {
 	}
 
-	// CONSTRUTOR
-	public Usuario(Perfil perfil) {
-		this(null,null, perfil);
-	}
-
-	public Usuario(String login, String password, Perfil perfil) {
+	public Usuario(String login, String password, EnumUsuarioPerfil tipoPerfil) {
 		this.login = login;
 		if (this.login == null || this.login.isEmpty()){
 			this.login = "admin";
@@ -56,7 +63,7 @@ public class Usuario {
 		}
 
 		// TODO: preciso que pegue o pefil ja existente e não que crie outro registro.
-		this.perfil = perfil;
+		this.perfil = new Perfil(tipoPerfil);
 	}
 
 
