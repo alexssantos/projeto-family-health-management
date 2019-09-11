@@ -11,10 +11,14 @@ import com.seventeam.gsf.repository.PacienteDao;
 import com.seventeam.gsf.repository.PerfilDao;
 import com.seventeam.gsf.repository.UsuarioDao;
 import com.seventeam.gsf.services.PerfilService;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.JpaContext;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import javax.swing.text.html.parser.Entity;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,31 +52,56 @@ public class Instantiation implements CommandLineRunner {
 
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
+        deleteAllFromdatabase();
+
         perfilInstantiation();
         pushUsuarioToDb();
-        //pushPacienteToDb();
-        //pushMedicoToDb();
+        pushPacienteToDb();
+        pushMedicoToDb();
     }
 
-    private void perfilInstantiation(){
+    private void deleteAllFromdatabase()
+    {
+        // DELETE: ORDENADO POR FK NA BASE
+
+        medicoDao.deleteAll();
+        medicoDao.flush();
+
+        pacienteDao.deleteAll();
+        pacienteDao.flush();
+
+        usuarioDao.deleteAll();
+        usuarioDao.flush();
+
+        //permissaoDao.deleteAll();
+        //permissaoDao.flush();
+
+        perfilDao.deleteAll();
+        perfilDao.flush();
+    }
+
+    private void perfilInstantiation()
+    {
         List<Perfil> perfilList = perfilDao.findAll();
-        perfilDao.deleteAll(perfilList);
-        //perfilDao.saveAll(Arrays.asList(perfil, perfil2));
+        if (perfilList.size() > 0){
+            return;
+        }
+
+        this.perfilMedico = new Perfil(EnumUsuarioPerfil.MEDICO);
+        this.perfilPaciente = new Perfil(EnumUsuarioPerfil.PACIENTE);
+
+        perfilDao.saveAll(Arrays.asList(perfilMedico, perfilPaciente));
+        perfilDao.flush();
     }
 
     private void pushUsuarioToDb() throws Exception
     {
-        usuarioDao.deleteAll(); // Usuario usa perfil
-        //permissaoDao.deleteAll() // Permissao usa perfil
+        List<Usuario> usuarioList = usuarioDao.findAll();
+        if (usuarioList.size() > 0){
+            return;
+        }
 
-        perfilDao.deleteAll();
-        //List<Perfil> perfil = perfilDao.findAll();
 
-        this.perfilMedico = new Perfil(EnumUsuarioPerfil.MEDICO);
-        this.perfilPaciente = new Perfil(EnumUsuarioPerfil.PACIENTE);
-        perfilDao.saveAll(Arrays.asList(perfilMedico, perfilPaciente));
-
-        // USUARIO
         Usuario alexUser = new Usuario("alex@gmail.com", "123");
 
         List<Perfil> perfilList = perfilDao.findAll();
@@ -80,13 +109,13 @@ public class Instantiation implements CommandLineRunner {
 
         alexUser.setPerfil(perfil1);
 
-        usuarioDao.save(alexUser);
+        usuarioDao.saveAndFlush(alexUser);
     }
 
 
     private void pushPacienteToDb() throws Exception
     {
-
+        PacienteDao dao = pacienteDao;
         Usuario alexUser = new Usuario("alex@gmail.com", "123");
         Paciente alex = new Paciente("Alex Santos", sdf.parse("25/10/2019"),sdf.parse("30/10/2019"), alexUser);
 
@@ -99,45 +128,65 @@ public class Instantiation implements CommandLineRunner {
         Usuario thaisUser = new Usuario("thais@gmail.com", "123");
         Paciente thais = new Paciente("Thais Machado", sdf.parse("03/07/2019"),sdf.parse("17/07/2019"), thaisUser);
 
-        try
-        {
-            pacienteDao.deleteAll();
+        List<Paciente> list = new ArrayList<>(
+                Arrays.asList(
+                        alex, bruna, matheus, thais
+                )
+        );
 
-            pacienteDao.saveAll(Arrays.asList(
-                    alex, bruna, matheus, thais
-            ));
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        boolean isOk = trySave(dao, list);
+        if (isOk){
+            System.out.println(dao.findAll());
         }
     }
 
     private void pushMedicoToDb()
     {
+        MedicoDao dao = medicoDao;
         List<Medico> medicoList = new ArrayList<>();
         int qtdMedicos = 10;
 
-        for (int i=0; i<qtdMedicos; i++)
+        for (int i=1; i <= qtdMedicos; i++)
         {
             Medico medicoX = new Medico(
                     UtilsString.msgFormat("Medico-{0}",i),
                     Medico.generateCRM(),
                     new Usuario(
                             UtilsString.msgFormat("medico-{0}@gmail.com",i),
-                            "123")
+                            "123"
+                    )
             );
 
             medicoList.add(medicoX);
         }
 
-        try
-        {
-            medicoDao.deleteAll();
-
-            medicoDao.saveAll(medicoList);
+        boolean isOk = trySave(medicoDao, medicoList);
+        if (isOk){
+            System.out.println(dao.findAll());
         }
-        catch (Exception e) {
+    }
+
+    public static <E extends Entity, D extends JpaRepository> boolean trySave(D dao, E entity)
+    {
+        List<E> list = new ArrayList<>();
+        list.add(entity);
+
+        return trySave(dao, list);
+    }
+
+    public static <D extends JpaRepository> boolean trySave(D dao, List<?> entityList)
+    {
+        boolean isOk = true;
+        try {
+            dao.save(entityList);
+            dao.flush();
+        }
+        catch (Exception e)
+        {
+            isOk = false;
             e.printStackTrace();
         }
+
+        return isOk;
     }
 }
