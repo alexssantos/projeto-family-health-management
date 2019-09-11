@@ -2,7 +2,6 @@ package com.seventeam.gsf.domain;
 
 import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,10 +27,9 @@ public class Perfil {
     /* We also need to place the @OneToOne annotation here, too. That's because this is a bidirectional relationship.
      * The 'PERFIL' side of the relationship is called the non-owning side.
      */
-
-    @OneToMany(mappedBy = "perfil", fetch = FetchType.LAZY)
-    @Cascade(CascadeType.DELETE)
-    private List<Usuario> usuarioList = new ArrayList<>();
+//
+//    @OneToMany(mappedBy = "perfil", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private List<Usuario> usuarioList = new ArrayList<>();
 
 
     // =======================
@@ -61,11 +59,19 @@ public class Perfil {
         this.tipoPerfil = tipoPerfil;
     }
 
-    public List<Usuario> getUsuarioList() {
-        return usuarioList;
-    }
+//    public List<Usuario> getUsuarioList() {
+//        return usuarioList;
+//    }
+//
+//    public void setUsuarioList(ArrayList<Usuario> usuarioList) {
+//        this.usuarioList = usuarioList;
+//    }
 
-    public void setUsuarioList(ArrayList<Usuario> usuarioList) {
-        this.usuarioList = usuarioList;
+    @Override
+    public String toString() {
+        return "\nPerfil{" +
+                "id=" + id +
+                ", tipoPerfil=" + tipoPerfil +
+                '}';
     }
 }

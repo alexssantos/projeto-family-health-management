@@ -27,7 +27,7 @@ public class Paciente {
 	private Date dataGravidez;
 
 	// RELATIONSHIPS
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
 
@@ -82,5 +82,16 @@ public class Paciente {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	@Override
+	public String toString() {
+		return "\nPaciente{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", dataNascimento=" + dataNascimento +
+				", dataGravidez=" + dataGravidez +
+				", usuario=" + usuario +
+				'}';
 	}
 }

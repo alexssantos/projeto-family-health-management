@@ -52,12 +52,13 @@ public class Instantiation implements CommandLineRunner {
 
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        deleteAllFromdatabase();
+        listAllFromDatabase();
+//        deleteAllFromdatabase();
 
-        perfilInstantiation();
-        pushUsuarioToDb();
-        pushPacienteToDb();
-        pushMedicoToDb();
+//        perfilInstantiation();
+//        pushUsuarioToDb();
+//        pushPacienteToDb();
+//        pushMedicoToDb();
     }
 
     private void deleteAllFromdatabase()
@@ -78,6 +79,28 @@ public class Instantiation implements CommandLineRunner {
 
         perfilDao.deleteAll();
         perfilDao.flush();
+    }
+
+    private void listAllFromDatabase()
+    {
+        List<Perfil> perfils = perfilDao.findAll();
+        List<Usuario> usuarios = usuarioDao.findAll();
+        List<Paciente> pacientes = pacienteDao.findAll();
+        List<Medico> medicos = medicoDao.findAll();
+
+
+        perfils.forEach(item -> System.out.println(item));
+        System.out.println("------------------------------\n\n");
+
+        usuarios.forEach(item -> System.out.println(item));
+
+        System.out.println("------------------------------\n\n");
+
+        pacientes.forEach(item -> System.out.println(item));
+        System.out.println("------------------------------\n\n");
+
+        medicos.forEach(item -> System.out.println(item));
+        System.out.println("------------------------------\n\n");
     }
 
     private void perfilInstantiation()
@@ -199,5 +222,17 @@ public class Instantiation implements CommandLineRunner {
         }
 
         return isOk;
+    }
+
+    public static <E> void printAll(List<?> entityList)
+    {
+        if (entityList.size() < 1) return;
+
+        for (Object item : entityList)
+        {
+            System.out.println("-----------------------------------");
+            System.out.println(item);
+            System.out.println("-----------------------------------");
+        }
     }
 }

@@ -29,13 +29,13 @@ public class Usuario {
 	 * The 'USAURIO' side of the relationship is called the non-owning side.
 	 * */
 
-	@OneToOne(mappedBy = "usuario")
-	private Medico medico;
+//	@OneToOne(mappedBy = "usuario")
+//	private Medico medico;
+//
+//	@OneToOne(mappedBy = "usuario")
+//	private Paciente paciente;
 
-	@OneToOne(mappedBy = "usuario")
-	private Paciente paciente;
-
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "perfil_id", referencedColumnName = "id", unique = true)
 	private Perfil perfil;
 
@@ -90,22 +90,34 @@ public class Usuario {
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
+//
+//	public Paciente getPaciente() {
+//		return paciente;
+//	}
+//
+//	public void setPaciente(Paciente paciente) {
+//		this.paciente = paciente;
+//	}
+//
+//	public Medico getMedico() {
+//		return medico;
+//	}
+//
+//	public void setMedico(Medico medico) {
+//		this.medico = medico;
+//	}
 
-	public Paciente getPaciente() {
-		return paciente;
+
+	@Override
+	public String toString() {
+		return "\nUsuario{" +
+				"id=" + id +
+				", login='" + login + '\'' +
+				", password='" + password + '\'' +
+//				", medico=" + medico +
+//				", paciente=" + paciente +
+				", perfil=" + perfil +
+				'}';
 	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-
-	public Medico getMedico() {
-		return medico;
-	}
-
-	public void setMedico(Medico medico) {
-		this.medico = medico;
-	}
-
 }
 

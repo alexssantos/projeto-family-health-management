@@ -26,7 +26,7 @@ public class Medico {
     // RELATIONSHIPS
     // =======================
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
 
@@ -98,4 +98,14 @@ public class Medico {
 
         return CRM;
     };
+
+    @Override
+    public String toString() {
+        return "\nMedico{" +
+                "id=" + id +
+                ", crm='" + crm + '\'' +
+                ", nome='" + nome + '\'' +
+                ", usuario=" + usuario +
+                '}';
+    }
 }
