@@ -25,6 +25,8 @@ hs_err_pid*
 .idea/libraries/
 
 
+out/
+
 
 HELP.md
 target/
