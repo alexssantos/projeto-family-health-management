@@ -13,7 +13,7 @@ public class PacienteService {
     @Autowired
     private PacienteDao pacienteDao;
 
-    public void savePaciente(Paciente obj)
+    public void save(Paciente obj)
     {
         if (obj != null){
             pacienteDao.save(obj);

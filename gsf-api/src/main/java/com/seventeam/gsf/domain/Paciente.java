@@ -3,6 +3,7 @@ package com.seventeam.gsf.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -25,9 +26,12 @@ public class Paciente {
 	@Column(name="data_gravidez")
 	private Date dataGravidez;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	// RELATIONSHIPS
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
+
+	//(OneToMany) Paceinte -> Procedimento
 
 
 	public Paciente() {
@@ -38,6 +42,10 @@ public class Paciente {
 		this.dataNascimento = dataNascimento;
 		this.dataGravidez = dataGravidez;
 		this.usuario = usuario;
+
+		if (this.usuario == null){
+			this.usuario = new Usuario();
+		}
 	}
 
 	public Integer getId() {
@@ -74,5 +82,16 @@ public class Paciente {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	@Override
+	public String toString() {
+		return "\nPaciente{" +
+				"id=" + id +
+				", nome='" + nome + '\'' +
+				", dataNascimento=" + dataNascimento +
+				", dataGravidez=" + dataGravidez +
+				", usuario=" + usuario +
+				'}';
 	}
 }

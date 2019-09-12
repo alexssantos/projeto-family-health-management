@@ -3,6 +3,8 @@ package com.seventeam.gsf.domain;
 import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "usuario")
@@ -19,21 +21,48 @@ public class Usuario {
 	@Column(name = "senha")
 	private String password;
 
-	@Column(name = "perfil")
-	private String perfil;
 
-	@OneToOne(mappedBy = "usuario")
-	private Paciente paciente;
+	// =======================
+	// RELATIONSHIPS
+	// =======================
+	/* We also need to place the @OneToOne annotation here, too. That's because this is a bidirectional relationship.
+	 * The 'USAURIO' side of the relationship is called the non-owning side.
+	 * */
 
+//	@OneToOne(mappedBy = "usuario")
+//	private Medico medico;
+//
+//	@OneToOne(mappedBy = "usuario")
+//	private Paciente paciente;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "perfil_id", referencedColumnName = "id", unique = true)
+	private Perfil perfil;
+
+
+	// =======================
+	// CONSTRUCTOR
+	// =======================
 	public Usuario() {
 	}
 
-	public Usuario(String login, String password, EnumUsuarioPerfil perfil) {
+	public Usuario(String login, String password) {
 		this.login = login;
+		if (this.login == null || this.login.isEmpty()){
+			this.login = "admin";
+		}
+
 		this.password = password;
-		this.perfil = perfil.toString();
+		if (this.password == null || this.password.isEmpty()){
+			this.password = "admin";
+		}
+
+		// TODO: preciso que pegue o pefil ja existente e não que crie outro registro.
+		//this.perfil = new Perfil(tipoPerfil);
 	}
 
+
+	// GET SET
 	public Integer getId() {
 		return id;
 	}
@@ -54,12 +83,41 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public String getPerfil() {
+	public Perfil getPerfil() {
 		return perfil;
 	}
 
-	public void setPerfil(String perfil) {
+	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
+	}
+//
+//	public Paciente getPaciente() {
+//		return paciente;
+//	}
+//
+//	public void setPaciente(Paciente paciente) {
+//		this.paciente = paciente;
+//	}
+//
+//	public Medico getMedico() {
+//		return medico;
+//	}
+//
+//	public void setMedico(Medico medico) {
+//		this.medico = medico;
+//	}
+
+
+	@Override
+	public String toString() {
+		return "\nUsuario{" +
+				"id=" + id +
+				", login='" + login + '\'' +
+				", password='" + password + '\'' +
+//				", medico=" + medico +
+//				", paciente=" + paciente +
+				", perfil=" + perfil +
+				'}';
 	}
 }
 
