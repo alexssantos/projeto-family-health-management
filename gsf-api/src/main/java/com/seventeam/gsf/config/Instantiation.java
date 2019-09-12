@@ -48,9 +48,9 @@ public class Instantiation implements CommandLineRunner {
     public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
-    public void run(String... args) throws Exception {
-
-        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+    public void run(String... args) throws Exception
+    {
+        initConfigs();
 
 //        listAllFromDatabase();
 //        deleteAllFromdatabase();
@@ -59,6 +59,13 @@ public class Instantiation implements CommandLineRunner {
 //        pushUsuarioToDb();
 //        pushPacienteToDb();
 //        pushMedicoToDb();
+    }
+
+    private void initConfigs()
+    {
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        List<Perfil> perfils = perfilDao.findAll();
+        Perfil.allPerfis.addAll(perfils);
     }
 
     private void deleteAllFromdatabase()
