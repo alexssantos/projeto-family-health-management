@@ -52,7 +52,7 @@ public class Instantiation implements CommandLineRunner {
 
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
-        listAllFromDatabase();
+//        listAllFromDatabase();
 //        deleteAllFromdatabase();
 
 //        perfilInstantiation();
