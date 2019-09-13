@@ -20,6 +20,15 @@ public class UtilsString {
         }
         return value;
     }
+    
+    public static boolean isEmptyOrBlanck(String value)
+    {
+        if (value.isBlank() || value.isEmpty())
+        {
+            return true;
+        }
+        return false;
+    }
 }
 
 

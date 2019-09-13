@@ -1,8 +1,8 @@
 package com.seventeam.gsf.domain;
 
 
-import com.seventeam.gsf.Utils.*;
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
+import com.seventeam.gsf.Utils.UtilsNumbers;
+import com.seventeam.gsf.Utils.UtilsString;
 
 import javax.persistence.*;
 
@@ -57,7 +57,11 @@ public class Medico {
     public Integer getId() {
         return id;
     }
-
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public String getCrm() {
         return crm;
     }

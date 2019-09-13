@@ -1,5 +1,6 @@
 package com.seventeam.gsf.services;
 
+import com.seventeam.gsf.Utils.UtilsString;
 import com.seventeam.gsf.domain.Medico;
 import com.seventeam.gsf.domain.Perfil;
 import com.seventeam.gsf.domain.Usuario;
@@ -69,7 +70,40 @@ public class MedicoService {
 		return medico;
 	}
 	
-	// TODO: DELETE
+	public Medico updateMedicoByForm(MedicoForm form, Medico medToUpdate)
+	{
+		if (!UtilsString.isEmptyOrBlanck(form.getCrm())){
+			medToUpdate.setCrm(form.getCrm());
+		}
+		
+		if (!UtilsString.isEmptyOrBlanck(form.getNome())){
+			medToUpdate.setNome(form.getNome());
+		}
+		
+		if (!UtilsString.isEmptyOrBlanck(form.getLogin())){
+			medToUpdate.getUsuario().setLogin(form.getLogin());
+		}
+		
+		if (!UtilsString.isEmptyOrBlanck(form.getPassword())){
+			medToUpdate.getUsuario().setPassword(form.getPassword());
+		}
+		
+		return medToUpdate;
+	}
 	
 	// TODO: update
+	public Medico update(MedicoForm form, Integer id)
+	{
+		// TODO: VALIDATE FORM.
+		Medico medToUpdate = findById(id);
+		Medico newMedico = updateMedicoByForm(form, medToUpdate);
+		save(newMedico);
+		
+		return newMedico;
+	}
+	
+	
+	
+	// TODO: DELETE
+	
 }

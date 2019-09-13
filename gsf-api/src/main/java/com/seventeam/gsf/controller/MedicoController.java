@@ -65,7 +65,7 @@ public class MedicoController
 	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
 	public ResponseEntity<Medico> create(@PathVariable Integer id, @RequestBody MedicoForm form)
 	{
-		medicoService.save(form);
+		medicoService.update(form, id);
 		
 		ResponseEntity reponse = ResponseEntity.ok().body(form);
 		return reponse;
