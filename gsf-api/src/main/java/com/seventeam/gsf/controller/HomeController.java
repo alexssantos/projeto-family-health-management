@@ -1,25 +1,37 @@
 package com.seventeam.gsf.controller;
 
+import com.seventeam.gsf.domain.Paciente;
+import com.seventeam.gsf.services.PacienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import java.util.List;
 
 @RequestMapping("/")
 @Controller
 public class HomeController {
 
-//    @GetMapping
-//    public String home(Model m){
-//        m.addAttribute("nome", "teste");
-//      return "index";
-//    }
+    @Autowired
+    PacienteService service;
 
+//    @RequestMapping("/")
+//    public ModelAndView home() {
+//        ModelAndView mav = new ModelAndView("index");
+//        mav.addObject("message", "RODOOOOU");
+//
+//        return mav;
+//    }
+//
     @RequestMapping("/")
     public ModelAndView home() {
+        List<Paciente> listaPacientes = service.findAll();
+        System.out.println("(***********************)");
+        System.out.println(listaPacientes);
+        System.out.println("(***********************)");
         ModelAndView mav = new ModelAndView("index");
-        mav.addObject("message", "Hello Woooorrrrllddd");
+        mav.addObject("listaPacientes", listaPacientes);
+//        mav.addObject("message", "Rodooooou");
 
         return mav;
     }
