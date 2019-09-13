@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -36,6 +37,14 @@ public class PacienteController {
         pacienteService.save(newObj);
 
         return ResponseEntity.ok().body(newObj);
+    }
+
+    @RequestMapping("/")
+    public String home() {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("nome", "Hello Woooorrrrllddd");
+
+        return "index";
     }
 
 }
