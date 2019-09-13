@@ -5,10 +5,11 @@ import com.seventeam.gsf.Utils.UtilsNumbers;
 import com.seventeam.gsf.Utils.UtilsString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "medico")
-public class Medico {
+public class Medico implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

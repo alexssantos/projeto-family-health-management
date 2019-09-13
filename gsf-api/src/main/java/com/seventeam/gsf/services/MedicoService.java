@@ -7,6 +7,7 @@ import com.seventeam.gsf.domain.Usuario;
 import com.seventeam.gsf.models.Form.MedicoForm;
 import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 import com.seventeam.gsf.repository.MedicoDao;
+import com.seventeam.gsf.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,9 +51,7 @@ public class MedicoService {
 	public Medico findById(Integer id)
 	{
 		Optional<Medico> obj = dao.findById(id);
-		//TODO: obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
-		
-		return obj.orElse(new Medico());
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Object Not Found"));
 	}
 	
 	public Medico getMedicoByForm(MedicoForm form)
