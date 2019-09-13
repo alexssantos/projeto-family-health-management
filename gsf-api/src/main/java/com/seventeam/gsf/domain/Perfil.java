@@ -20,6 +20,8 @@ public class Perfil {
     @Column(name = "tipo", unique = true)
     private EnumUsuarioPerfil tipoPerfil;
 
+	public static List<Perfil> allPerfis = new ArrayList<>();
+
 
     // =======================
     // RELATIONSHIPS
