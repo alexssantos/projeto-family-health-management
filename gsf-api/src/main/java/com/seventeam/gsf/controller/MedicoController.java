@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -51,7 +52,7 @@ public class MedicoController
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Medico> create(@PathVariable MedicoForm form)
+    public ResponseEntity<Medico> create(@RequestBody MedicoForm form)
     {
 	    medicoService.save(form);
 	
@@ -59,4 +60,19 @@ public class MedicoController
 	    return reponse;
     
     }
+	
+	// TODO: UPDATE
+	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
+	public ResponseEntity<Medico> create(@PathVariable Integer id, @RequestBody MedicoForm form)
+	{
+		medicoService.save(form);
+		
+		ResponseEntity reponse = ResponseEntity.ok().body(form);
+		return reponse;
+		
+	}
+	
+	// TODO: DELETE
+	
+	
 }
