@@ -28,12 +28,12 @@ public class PacienteController {
        return getAll();
     }
 
-    @RequestMapping(path = "/getAll", method= RequestMethod.GET)
+    @RequestMapping(path = "/getall", method= RequestMethod.GET)
     public ResponseEntity<List<Paciente>> getAll()
     {
         List<Paciente> list = pacienteService.findAll();
         List<PacienteDto> responseList = list.stream()
-                .map(x -> new PacienteDto(x))
+                .map(item -> new PacienteDto(item))
                 .collect(Collectors.toList());
 
         ResponseEntity reponse = ResponseEntity.ok().body(responseList);

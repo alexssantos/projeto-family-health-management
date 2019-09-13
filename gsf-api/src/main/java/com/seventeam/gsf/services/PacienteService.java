@@ -7,7 +7,6 @@ import com.seventeam.gsf.models.Form.PacienteForm;
 import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
 import com.seventeam.gsf.repository.PacienteDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,9 +20,7 @@ public class PacienteService {
     @Autowired
     private PerfilService perfilService;
 
-    public PacienteDao getDao()
-    {
-        return this.pacienteDao;
+    public PacienteService() {
     }
 
     public void save(Paciente obj)
