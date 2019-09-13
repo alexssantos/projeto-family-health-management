@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,7 +43,7 @@ public class MedicoController
 	    }
     	
     	Medico medico = medicoService.findById(id);
-    	ResponseEntity<Medico> response = ResponseEntity.ok().body(medico);
+    	ResponseEntity<Medico> response = ResponseEntity.status(HttpStatus.FOUND).body(medico);
     	
     	return  response;
     }
@@ -62,17 +59,23 @@ public class MedicoController
     }
 	
 	// TODO: UPDATE
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
-	public ResponseEntity<Medico> create(@PathVariable Integer id, @RequestBody MedicoForm form)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Medico> update(@PathVariable Integer id, @RequestBody MedicoForm form)
 	{
 		medicoService.update(form, id);
 		
-		ResponseEntity reponse = ResponseEntity.ok().body(form);
+		ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).body(form);
 		return reponse;
-		
 	}
 	
 	// TODO: DELETE
-	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity delete(@PathVariable Integer id)
+	{
+		medicoService.delete(id);
+		
+		ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).body(null);
+		return reponse;
+	}
 	
 }

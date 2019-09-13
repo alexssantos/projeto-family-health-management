@@ -102,8 +102,11 @@ public class MedicoService {
 		return newMedico;
 	}
 	
-	
-	
 	// TODO: DELETE
+	public void delete(Integer id)
+	{
+		Medico medToDelete = findById(id);
+		dao.delete(medToDelete);
+	}
 	
 }
