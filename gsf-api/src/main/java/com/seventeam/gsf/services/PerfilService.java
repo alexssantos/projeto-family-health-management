@@ -34,4 +34,22 @@ public class PerfilService {
 	public List<Perfil>  findAll(){
 		return dao.findAll();
 	}
+
+	public Perfil getByTipoPerfil(EnumUsuarioPerfil tipo)
+	{
+		Perfil perfil = Perfil.allPerfis.stream()
+				.filter(x -> x.getTipoPerfil() == tipo)
+				.findFirst()
+				.get();
+
+		if (perfil != null)
+		{
+			return perfil;
+		}
+
+		perfil = new Perfil(tipo);
+		dao.save(perfil);
+
+		return perfil;
+	}
 }
