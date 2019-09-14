@@ -5,6 +5,7 @@ import com.seventeam.gsf.models.Form.PacienteForm;
 import com.seventeam.gsf.models.dto.PacienteDto;
 import com.seventeam.gsf.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -60,13 +61,22 @@ public class PacienteController {
         ResponseEntity reponse = ResponseEntity.ok().body(new PacienteDto(obj));
         return reponse;
     }
+    
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<PacienteDto> delete(@PathVariable Integer id, @RequestBody PacienteForm form)
+    {
+        pacienteService.update(form, id);
+    
+        ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).body(form);
+        return reponse;
+    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<PacienteDto> delete(@PathVariable Integer id)
     {
-        Paciente obj = pacienteService.findById(id);
+        pacienteService.delete(id);
 
-        ResponseEntity reponse = ResponseEntity.noContent().build();
+        ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).build();
         return reponse;
     }
 

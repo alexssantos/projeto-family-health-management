@@ -58,7 +58,6 @@ public class MedicoController
     
     }
 	
-	// TODO: UPDATE
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Medico> update(@PathVariable Integer id, @RequestBody MedicoForm form)
 	{
@@ -68,13 +67,12 @@ public class MedicoController
 		return reponse;
 	}
 	
-	// TODO: DELETE
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity delete(@PathVariable Integer id)
 	{
 		medicoService.delete(id);
 		
-		ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).body(null);
+		ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).build();
 		return reponse;
 	}
 	
