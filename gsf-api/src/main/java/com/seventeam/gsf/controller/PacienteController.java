@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,12 +29,12 @@ public class PacienteController {
        return getAll();
     }
 
-    @RequestMapping(path = "/getAll", method= RequestMethod.GET)
+    @RequestMapping(path = "/getall", method= RequestMethod.GET)
     public ResponseEntity<List<Paciente>> getAll()
     {
         List<Paciente> list = pacienteService.findAll();
         List<PacienteDto> responseList = list.stream()
-                .map(x -> new PacienteDto(x))
+                .map(item -> new PacienteDto(item))
                 .collect(Collectors.toList());
 
         ResponseEntity reponse = ResponseEntity.ok().body(responseList);
@@ -67,6 +68,14 @@ public class PacienteController {
 
         ResponseEntity reponse = ResponseEntity.noContent().build();
         return reponse;
+    }
+
+    @RequestMapping("/")
+    public String home() {
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("nome", "Hello Woooorrrrllddd");
+
+        return "index";
     }
 
 }

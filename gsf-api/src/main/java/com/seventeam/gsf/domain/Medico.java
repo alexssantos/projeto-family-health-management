@@ -1,14 +1,15 @@
 package com.seventeam.gsf.domain;
 
 
-import com.seventeam.gsf.Utils.*;
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
+import com.seventeam.gsf.Utils.UtilsNumbers;
+import com.seventeam.gsf.Utils.UtilsString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "medico")
-public class Medico {
+public class Medico implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,7 +58,11 @@ public class Medico {
     public Integer getId() {
         return id;
     }
-
+    
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
     public String getCrm() {
         return crm;
     }

@@ -1,16 +1,13 @@
 package com.seventeam.gsf.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
-
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 //@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
 @Entity
 @Table(name = "paciente")
-public class Paciente {
+public class Paciente implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
