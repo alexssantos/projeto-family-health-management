@@ -1,0 +1,82 @@
+@charset "UTF-8";
+body
+{
+    background-color: #4797ad;
+}
+
+#nome
+{
+    size: 3;
+    width: 55%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid black;
+}
+
+#crm
+{
+    size: 3;
+    width: 55%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid black;
+}
+
+#email
+{
+    size: 3;
+    width: 55%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid black;
+}
+
+#password
+{
+    size: 3;
+    width: 55%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid black;
+}
+
+#Cpassword
+{
+    size: 3;
+    width: 55%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid black;
+}
+
+#cadastro
+{
+    width: 55%;
+    height: 30px;
+    border-radius: 15px;
+    display: block;
+    background-color: #383838;
+    color: white;
+    margin: 20px auto;
+    border: 1px solid #383838;
+}
