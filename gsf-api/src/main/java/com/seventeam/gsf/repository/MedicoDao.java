@@ -8,9 +8,17 @@ import java.util.List;
 
 @Repository
 public interface MedicoDao extends JpaRepository<Medico, Integer> {
-	//https://www.baeldung.com/spring-data-jpa-query
 	
+	public List<Medico> getMedicoByCrm(String crm);
+	
+}
+
+
+
 /*SAMPLES
+
+//https://www.baeldung.com/spring-data-jpa-query
+
     @Query("SELECT f FROM Foo f WHERE LOWER(f.name) = LOWER(:name)")
 	Foo retrieveByName(@Param("name") String name);
 
@@ -18,7 +26,3 @@ public interface MedicoDao extends JpaRepository<Medico, Integer> {
 	List<User> findAllUsers(Sort sort);
  */
 	
-	
-	//@Query(value = "SELECT med FROM medico med WHERE med.crm = :crmStr")
-	public List<Medico> getMedicoByCrm(String crm);
-}
