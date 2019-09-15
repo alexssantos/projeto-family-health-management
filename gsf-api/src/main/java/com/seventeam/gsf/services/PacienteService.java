@@ -7,6 +7,7 @@ import com.seventeam.gsf.domain.Usuario;
 import com.seventeam.gsf.models.Form.PacienteForm;
 import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 import com.seventeam.gsf.repository.PacienteDao;
+import com.seventeam.gsf.repository.UsuarioDao;
 import com.seventeam.gsf.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ public class PacienteService {
     private PacienteDao pacienteDao;
     @Autowired
     private PerfilService perfilService;
+    @Autowired
+    private UsuarioDao usuarioDao;
 
     public PacienteService() {
     }
@@ -52,6 +55,13 @@ public class PacienteService {
     {
         Optional<Paciente> obj = pacienteDao.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object Not Found. [Paciente]"));
+    }
+    
+    public Paciente getByLogin(String login)
+    {
+        Usuario usuario = usuarioDao.getByLogin(login);
+        Paciente paciente = pacienteDao.getByUsuario(usuario);
+        return paciente;
     }
 
     public Paciente getPacienteByForm(PacienteForm form)

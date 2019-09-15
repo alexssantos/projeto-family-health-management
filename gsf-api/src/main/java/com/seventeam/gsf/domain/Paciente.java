@@ -2,9 +2,7 @@ package com.seventeam.gsf.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 //@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
 @Entity
@@ -36,9 +34,9 @@ public class Paciente implements Serializable {
 	private Usuario usuario;
 
 	//Paciente (puxa) Procedimento
-	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "procedimento_id", referencedColumnName = "id", unique = true)
-	private List<Procedimento> procedimentoList = new ArrayList<>();
+//	@OneToMany(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "procedimento_id", referencedColumnName = "id", unique = true)
+//	private List<Procedimento> procedimentoList = new ArrayList<>();
 	
 	
 	// =======================
