@@ -74,7 +74,7 @@ public class Procedimento implements Serializable {
 	
 	public Procedimento(ProcedimentoForm obj, Medico medico, Paciente paciente) {
 		this.dataFeito = obj.getDataFeito();
-		this.exameTipo = obj.getExameTipo();
+		this.exameTipo = obj.getExameTipoEnum();
 		this.descricao = obj.getDescricao();
 		this.semanaInicial = obj.getSemanaInicial();
 		this.semanaFinal = obj.getSemanaFinal();
@@ -130,5 +130,21 @@ public class Procedimento implements Serializable {
 	
 	public void setSemanaFinal(Integer semanaFinal) {
 		this.semanaFinal = semanaFinal;
+	}
+	
+	public Medico getMedico() {
+		return medico;
+	}
+	
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+	
+	public Paciente getPaciente() {
+		return paciente;
+	}
+	
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 }
