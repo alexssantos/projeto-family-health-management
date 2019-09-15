@@ -10,13 +10,18 @@ public class ProcedimentoForm implements Serializable {
 	private Date dataFeito;
 	private ProcedimentoTipoEnum exameTipo;
 	private String descricao;
+	private String medicoCrm;
+	private String pacienteUsuario;
 	private Integer semanaInicial;
 	private Integer semanaFinal;
 	
-	public ProcedimentoForm(Date dataFeito, ProcedimentoTipoEnum exameTipo, String descricao, Integer semanaInicial, Integer semanaFinal) {
+	
+	public ProcedimentoForm(Date dataFeito, ProcedimentoTipoEnum exameTipo, String descricao, String medicoCrm, String pacienteUsuario, Integer semanaInicial, Integer semanaFinal) {
 		this.dataFeito = dataFeito;
 		this.exameTipo = exameTipo;
 		this.descricao = descricao;
+		this.medicoCrm = medicoCrm;
+		this.pacienteUsuario = pacienteUsuario;
 		this.semanaInicial = semanaInicial;
 		this.semanaFinal = semanaFinal;
 	}
@@ -59,5 +64,21 @@ public class ProcedimentoForm implements Serializable {
 	
 	public void setSemanaFinal(Integer semanaFinal) {
 		this.semanaFinal = semanaFinal;
+	}
+	
+	public String getMedicoCrm() {
+		return medicoCrm;
+	}
+	
+	public void setMedicoCrm(String medicoCrm) {
+		this.medicoCrm = medicoCrm;
+	}
+	
+	public String getPacienteUsuario() {
+		return pacienteUsuario;
+	}
+	
+	public void setPacienteUsuario(String pacienteUsuario) {
+		this.pacienteUsuario = pacienteUsuario;
 	}
 }

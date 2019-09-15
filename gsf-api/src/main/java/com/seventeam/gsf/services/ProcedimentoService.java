@@ -1,5 +1,7 @@
 package com.seventeam.gsf.services;
 
+import com.seventeam.gsf.domain.Medico;
+import com.seventeam.gsf.domain.Paciente;
 import com.seventeam.gsf.domain.Procedimento;
 import com.seventeam.gsf.models.Form.ProcedimentoForm;
 import com.seventeam.gsf.models.enums.ProcedimentoTipoEnum;
@@ -20,11 +22,19 @@ public class ProcedimentoService {
 	@Autowired
 	ProcedimentoDao dao;
 	
+	@Autowired
+	MedicoService medicoService;
+	@Autowired
+	PacienteService pacienteService;
+	
 	public void save(Procedimento obj)
 	{
-		if (obj != null){
-			dao.save(obj);
+		if (obj == null){
+			throw new ObjectNotFoundException("Not Found");
 		}
+		
+		
+		dao.save(obj);
 	}
 	
 	public List<Procedimento> findAll()
@@ -45,7 +55,10 @@ public class ProcedimentoService {
 			return null;
 		}
 		
-		Procedimento obj = new Procedimento(form);
+		Medico medico = medicoService.getByCrm(form.getMedicoCrm());
+		Paciente paciente = pacienteService.getByLogin(form.getPacienteUsuario());
+		
+		Procedimento obj = new Procedimento(form, medico, paciente);
 		save(obj);
 		return obj;
 	}

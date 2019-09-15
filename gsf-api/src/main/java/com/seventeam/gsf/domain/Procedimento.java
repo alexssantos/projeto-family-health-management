@@ -33,6 +33,14 @@ public class Procedimento implements Serializable {
 	private Integer semanaFinal;
 	
 	
+//	//TODO: implementar relacionamento
+//	@Column(name = "medico_id")
+//	private Integer medicoId;
+//
+//	//TODO: implementar relacionamento
+//	@Column(name = "paciente_id")
+//	private Integer pacienteId;
+//
 	// =======================
 	// RELATIONSHIPS
 	// =======================
@@ -41,6 +49,13 @@ public class Procedimento implements Serializable {
 //	@Column(name = "")
 //	private
 //
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "medico_id", referencedColumnName = "id")
+	private Medico medico;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "paciente_id", referencedColumnName = "id")
+	private Paciente paciente;
 	
 	// =======================
 	// CONSTRUCTOR
@@ -57,12 +72,15 @@ public class Procedimento implements Serializable {
 		this.semanaFinal = semanaFinal;
 	}
 	
-	public Procedimento(ProcedimentoForm obj) {
+	public Procedimento(ProcedimentoForm obj, Medico medico, Paciente paciente) {
 		this.dataFeito = obj.getDataFeito();
 		this.exameTipo = obj.getExameTipo();
 		this.descricao = obj.getDescricao();
 		this.semanaInicial = obj.getSemanaInicial();
 		this.semanaFinal = obj.getSemanaFinal();
+		
+		this.medico = medico;
+		this.paciente = paciente;
 	}
 	
 	
