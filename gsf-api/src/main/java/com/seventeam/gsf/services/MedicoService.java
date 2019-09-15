@@ -108,4 +108,10 @@ public class MedicoService {
 		dao.delete(medToDelete);
 	}
 	
+	public Medico getByCrm(String crm){
+    	List<Medico> objList = dao.getMedicoByCrm(crm);
+    	
+    	return objList.stream().findFirst().get();
+	}
+	
 }

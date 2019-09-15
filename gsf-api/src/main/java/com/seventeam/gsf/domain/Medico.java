@@ -6,8 +6,6 @@ import com.seventeam.gsf.Utils.UtilsString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "medico")
@@ -33,10 +31,10 @@ public class Medico implements Serializable {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
     
-    //Paciente (puxa) Procedimento
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "procedimento_id", referencedColumnName = "id", unique = true)
-    private List<Procedimento> procedimentoList = new ArrayList<>();
+//    //Medico(puxa) Procedimento
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "procedimento_id", referencedColumnName = "id", unique = true)
+//    private List<Procedimento> procedimentoList = new ArrayList<>();
     
     
     // =======================
