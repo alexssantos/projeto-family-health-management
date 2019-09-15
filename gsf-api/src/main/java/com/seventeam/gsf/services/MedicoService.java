@@ -5,7 +5,7 @@ import com.seventeam.gsf.domain.Medico;
 import com.seventeam.gsf.domain.Perfil;
 import com.seventeam.gsf.domain.Usuario;
 import com.seventeam.gsf.models.Form.MedicoForm;
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
+import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 import com.seventeam.gsf.repository.MedicoDao;
 import com.seventeam.gsf.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +56,7 @@ public class MedicoService {
 	
 	public Medico getMedicoByForm(MedicoForm form)
 	{
-		Perfil perfilMedico = perfilService.getByTipoPerfil(EnumUsuarioPerfil.MEDICO);
+		Perfil perfilMedico = perfilService.getByTipoPerfil(PerfilTipoEnum.MEDICO);
 		
 		Usuario usuario = new Usuario(form.getLogin(),form.getPassword());
 		usuario.setPerfil(perfilMedico);

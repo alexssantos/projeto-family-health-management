@@ -5,20 +5,17 @@ import com.seventeam.gsf.domain.Medico;
 import com.seventeam.gsf.domain.Paciente;
 import com.seventeam.gsf.domain.Perfil;
 import com.seventeam.gsf.domain.Usuario;
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
+import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 import com.seventeam.gsf.repository.MedicoDao;
 import com.seventeam.gsf.repository.PacienteDao;
 import com.seventeam.gsf.repository.PerfilDao;
 import com.seventeam.gsf.repository.UsuarioDao;
 import com.seventeam.gsf.services.PerfilService;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.jpa.repository.JpaContext;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import javax.swing.text.html.parser.Entity;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -118,8 +115,8 @@ public class Instantiation implements CommandLineRunner {
             return;
         }
 
-        this.perfilMedico = new Perfil(EnumUsuarioPerfil.MEDICO);
-        this.perfilPaciente = new Perfil(EnumUsuarioPerfil.PACIENTE);
+        this.perfilMedico = new Perfil(PerfilTipoEnum.MEDICO);
+        this.perfilPaciente = new Perfil(PerfilTipoEnum.PACIENTE);
 
         trySave(dao, Arrays.asList(perfilMedico, perfilPaciente));
     }

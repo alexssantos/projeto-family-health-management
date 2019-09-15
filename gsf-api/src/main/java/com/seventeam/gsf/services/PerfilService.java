@@ -1,15 +1,9 @@
 package com.seventeam.gsf.services;
 
 import com.seventeam.gsf.domain.Perfil;
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
+import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 import com.seventeam.gsf.repository.PerfilDao;
-import org.apache.tomcat.PeriodicEventListener;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.internal.SessionImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +29,7 @@ public class PerfilService {
 		return dao.findAll();
 	}
 
-	public Perfil getByTipoPerfil(EnumUsuarioPerfil tipo)
+	public Perfil getByTipoPerfil(PerfilTipoEnum tipo)
 	{
 		Perfil perfil = Perfil.allPerfis.stream()
 				.filter(x -> x.getTipoPerfil() == tipo)

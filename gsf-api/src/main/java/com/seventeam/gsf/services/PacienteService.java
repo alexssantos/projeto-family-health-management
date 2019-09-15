@@ -5,7 +5,7 @@ import com.seventeam.gsf.domain.Paciente;
 import com.seventeam.gsf.domain.Perfil;
 import com.seventeam.gsf.domain.Usuario;
 import com.seventeam.gsf.models.Form.PacienteForm;
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
+import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 import com.seventeam.gsf.repository.PacienteDao;
 import com.seventeam.gsf.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +56,7 @@ public class PacienteService {
 
     public Paciente getPacienteByForm(PacienteForm form)
     {
-        Perfil perfilPaciente = perfilService.getByTipoPerfil(EnumUsuarioPerfil.PACIENTE);
+        Perfil perfilPaciente = perfilService.getByTipoPerfil(PerfilTipoEnum.PACIENTE);
 
         Usuario usuario = new Usuario(form.getLogin(),form.getPassword());
         usuario.setPerfil(perfilPaciente);

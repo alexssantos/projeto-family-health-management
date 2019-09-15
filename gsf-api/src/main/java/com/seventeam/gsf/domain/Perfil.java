@@ -1,7 +1,6 @@
 package com.seventeam.gsf.domain;
 
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
-import org.hibernate.annotations.Cascade;
+import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class Perfil {
 
 	@Enumerated(EnumType.STRING)
     @Column(name = "tipo", unique = true)
-    private EnumUsuarioPerfil tipoPerfil;
+    private PerfilTipoEnum tipoPerfil;
 
 	public static List<Perfil> allPerfis = new ArrayList<>();
 
@@ -40,7 +39,7 @@ public class Perfil {
 
 	public Perfil() {}
 
-	public Perfil(EnumUsuarioPerfil tipoPerfil) {
+	public Perfil(PerfilTipoEnum tipoPerfil) {
         this.tipoPerfil = tipoPerfil;
     }
 
@@ -53,11 +52,11 @@ public class Perfil {
         return id;
     }
 
-    public EnumUsuarioPerfil getTipoPerfil() {
+    public PerfilTipoEnum getTipoPerfil() {
         return tipoPerfil;
     }
 
-    public void setTipoPerfil(EnumUsuarioPerfil tipoPerfil) {
+    public void setTipoPerfil(PerfilTipoEnum tipoPerfil) {
         this.tipoPerfil = tipoPerfil;
     }
 
