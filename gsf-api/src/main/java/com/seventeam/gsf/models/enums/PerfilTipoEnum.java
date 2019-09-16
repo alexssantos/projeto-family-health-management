@@ -1,6 +1,6 @@
 package com.seventeam.gsf.models.enums;
 
-public enum EnumUsuarioPerfil {
+public enum PerfilTipoEnum {
 	MEDICO,
 	PACIENTE,
 	DESCONHECIDO,

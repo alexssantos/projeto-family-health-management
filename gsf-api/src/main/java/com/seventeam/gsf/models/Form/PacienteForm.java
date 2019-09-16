@@ -1,43 +1,24 @@
 package com.seventeam.gsf.models.Form;
 
+import com.seventeam.gsf.models.AbstractUsuario;
+
 import java.io.Serializable;
 import java.util.Date;
 
-public class PacienteForm implements Serializable {
+public class PacienteForm extends AbstractUsuario implements Serializable {
 
-    public String login;
-    public String password;
     public String nome;
     public Date dataNascimento;
     public Date dataGravidez;
 
-    public PacienteForm() {
-    }
-
-    public PacienteForm(String login, String password, String nome, Date dataNascimento, Date dataGravidez) {
-        this.login = login;
-        this.password = password;
+    
+    public PacienteForm(String password, String login, String nome, Date dataNascimento, Date dataGravidez) {
+        super(password, login);
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.dataGravidez = dataGravidez;
     }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
+    
     public String getNome() {
         return nome;
     }

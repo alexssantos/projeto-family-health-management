@@ -22,15 +22,27 @@ public class Paciente implements Serializable {
 
 	@Column(name="data_gravidez")
 	private Date dataGravidez;
-
+	
+	
+	// =======================
 	// RELATIONSHIPS
+	// =======================
+	
+	//Paciente (puxa) usuario
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
 	private Usuario usuario;
 
-	//(OneToMany) Paceinte -> Procedimento
-
-
+	//Paciente (puxa) Procedimento
+//	@OneToMany(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "procedimento_id", referencedColumnName = "id", unique = true)
+//	private List<Procedimento> procedimentoList = new ArrayList<>();
+	
+	
+	// =======================
+	// CONSTRUCTOR
+	// =======================
+	
 	public Paciente() {
 	}
 

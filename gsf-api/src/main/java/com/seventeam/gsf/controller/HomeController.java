@@ -26,12 +26,9 @@ public class HomeController {
     @RequestMapping("/")
     public ModelAndView home() {
         List<Paciente> listaPacientes = service.findAll();
-        System.out.println("(***********************)");
         System.out.println(listaPacientes);
-        System.out.println("(***********************)");
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("listaPacientes", listaPacientes);
-//        mav.addObject("message", "Rodooooou");
 
         return mav;
     }

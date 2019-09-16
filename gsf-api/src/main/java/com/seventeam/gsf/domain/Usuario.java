@@ -1,10 +1,6 @@
 package com.seventeam.gsf.domain;
 
-import com.seventeam.gsf.models.enums.EnumUsuarioPerfil;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "usuario")

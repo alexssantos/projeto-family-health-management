@@ -30,8 +30,13 @@ public class Medico implements Serializable {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private Usuario usuario;
-
-
+    
+//    //Medico(puxa) Procedimento
+//    @OneToMany(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "procedimento_id", referencedColumnName = "id", unique = true)
+//    private List<Procedimento> procedimentoList = new ArrayList<>();
+    
+    
     // =======================
     // CONSTRUCTOR
     // =======================
