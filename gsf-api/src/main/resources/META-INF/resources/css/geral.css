@@ -9,12 +9,12 @@
     padding: 20px 20px 20px 20px;
 }
 
-img 
+img
 {
-	width: 35%;
-	display: block;
-	margin: 0 auto;
-	padding-bottom: 4%;
+    width: 35%;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 4%;
 }
 
 footer p
@@ -26,32 +26,32 @@ footer p
 
 
 /* css das páginas de Cadastro */
-#linha 
+#linha
 {
-	margin: 0 auto;
-	display: block;
-	width: 75%;
-  	border-bottom: 1px solid;
+    margin: 0 auto;
+    display: block;
+    width: 75%;
+    border-bottom: 1px solid;
 }
 
-#redirecionamento_login 
+#redirecionamento_login
 {
-	padding-left: 380px;
-	margin: 0 auto;
-	display: block;
-	padding-top: 19px;
+    padding-left: 380px;
+    margin: 0 auto;
+    display: block;
+    padding-top: 19px;
 }
 
 #botao_cadastro
 {
-	width: 55%;
-	height: 30px;
-	border-radius: 15px;
-	display: block;
-	background-color: #383838;
-	color: white;
-	margin: 20px auto;
-  	border: 1px solid #383838;	
+    width: 55%;
+    height: 30px;
+    border-radius: 15px;
+    display: block;
+    background-color: #383838;
+    color: white;
+    margin: 20px auto;
+    border: 1px solid #383838;
 }
 /* ------------------------- */
 

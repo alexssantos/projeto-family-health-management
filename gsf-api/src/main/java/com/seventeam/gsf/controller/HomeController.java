@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
-@RequestMapping("/")
+@RequestMapping( value = "/" )
 @Controller
 public class HomeController {
 
@@ -23,11 +23,26 @@ public class HomeController {
 //        return mav;
 //    }
 //
-    @RequestMapping("/")
+//    @RequestMapping("/")
+//    public ModelAndView home() {
+//        List<Paciente> listaPacientes = service.findAll();
+//        System.out.println(listaPacientes);
+//        ModelAndView mav = new ModelAndView("index");
+//        mav.addObject("listaPacientes", listaPacientes);
+//
+//        return mav;
+//    }
+//
+//    @RequestMapping( path = "/" )
+//    public String home() {
+//
+//        return "index";
+//    }
+    @RequestMapping("/login_gestante")
     public ModelAndView home() {
         List<Paciente> listaPacientes = service.findAll();
         System.out.println(listaPacientes);
-        ModelAndView mav = new ModelAndView("index");
+        ModelAndView mav = new ModelAndView("login_gestante");
         mav.addObject("listaPacientes", listaPacientes);
 
         return mav;

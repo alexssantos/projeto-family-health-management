@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body
 {
-    background-color: #4797ad;
+    background-color: #e1c7dc;
 }
 
 .dentro
@@ -11,9 +11,17 @@ body
     width: 50%;
 }
 
-#crm
+#cadastro
 {
-    size: 3;
+    padding-left: 135px;
+    margin: 0 auto;
+    display: block;
+    padding-top: 19px;
+}
+
+#cpf
+{
+    /*size: 3;*/
     width: 55%;
     text-align: center;
     height: 25px;
@@ -26,7 +34,7 @@ body
 
 #password
 {
-    size: 3;
+    /*size: 3;*/
     width: 55%;
     text-align: center;
     height: 25px;
