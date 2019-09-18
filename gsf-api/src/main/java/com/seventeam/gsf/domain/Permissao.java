@@ -11,7 +11,7 @@ public class Permissao {
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
 
-    @Column(name = "acao")
+    @Column(name = "acao", unique = true)
     private String acao;
 
 
