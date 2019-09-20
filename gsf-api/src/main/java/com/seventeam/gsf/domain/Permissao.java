@@ -22,10 +22,9 @@ public class Permissao {
     // RELATIONSHIPS
     // =======================
 
-//    @ManyToOne
-//    @JoinColumn(name="perfil_id", nullable=false)
-//    private Perfil perfil;
-
+    @ManyToOne
+    @JoinColumn(name="perfil_id", nullable=false, updatable = false)
+    private Perfil perfil;
 
     // =======================
     // CONSTRUTOR
@@ -46,5 +45,13 @@ public class Permissao {
 
     public void setAcao(PermissaoEnum acao) {
         this.acao = acao;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 }
