@@ -1,5 +1,6 @@
 package com.seventeam.gsf.services;
 
+import com.seventeam.gsf.Utils.UtilsString;
 import com.seventeam.gsf.domain.Medico;
 import com.seventeam.gsf.domain.Paciente;
 import com.seventeam.gsf.domain.Procedimento;
@@ -51,6 +52,7 @@ public class ProcedimentoService {
 	public Procedimento save(ProcedimentoForm form)
 	{
 		// TODO: VALIDATE FORM.
+		
 		if (form == null){
 			return null;
 		}
@@ -82,14 +84,16 @@ public class ProcedimentoService {
 	
 	public static ProcedimentoTipoEnum getProcedimentoTipoEnum(String procTipo)
 	{
-		
-		Boolean hasTipo = procedimentoTipoEnumMap.containsKey(procTipo.toUpperCase());
-		ProcedimentoTipoEnum procTipoEnum;
+		String procTipoUpper = procTipo.toUpperCase();
+		Boolean hasTipo = procedimentoTipoEnumMap.containsKey(procTipoUpper);
+		ProcedimentoTipoEnum procTipoEnum = null;
+	
 		if (hasTipo) {
-			procTipoEnum = procedimentoTipoEnumMap.get(procTipo.toUpperCase());
+			procTipoEnum = procedimentoTipoEnumMap.get(procTipoUpper);
 		}
 		else {
-			procTipoEnum = null;
+			String erroStr = UtilsString.msgFormat("Procedimento Tipo '{0}' não encontrado.", procTipoUpper);
+			throw new ObjectNotFoundException(erroStr);
 		}
 		return procTipoEnum;
 	}

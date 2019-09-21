@@ -1,6 +1,7 @@
 package com.seventeam.gsf.models.Form;
 
 import com.seventeam.gsf.models.enums.ProcedimentoTipoEnum;
+import com.seventeam.gsf.services.ProcedimentoService;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -8,7 +9,8 @@ import java.util.Date;
 public class ProcedimentoForm implements Serializable {
 	
 	private Date dataFeito;
-	private ProcedimentoTipoEnum exameTipo;
+	private ProcedimentoTipoEnum exameTipoEnum;
+	private String exameTipo;
 	private String descricao;
 	private String medicoCrm;
 	private String pacienteUsuario;
@@ -16,7 +18,7 @@ public class ProcedimentoForm implements Serializable {
 	private Integer semanaFinal;
 	
 	
-	public ProcedimentoForm(Date dataFeito, ProcedimentoTipoEnum exameTipo, String descricao, String medicoCrm, String pacienteUsuario, Integer semanaInicial, Integer semanaFinal) {
+	public ProcedimentoForm(Date dataFeito, String exameTipo, String descricao, String medicoCrm, String pacienteUsuario, Integer semanaInicial, Integer semanaFinal) {
 		this.dataFeito = dataFeito;
 		this.exameTipo = exameTipo;
 		this.descricao = descricao;
@@ -24,6 +26,7 @@ public class ProcedimentoForm implements Serializable {
 		this.pacienteUsuario = pacienteUsuario;
 		this.semanaInicial = semanaInicial;
 		this.semanaFinal = semanaFinal;
+		this.exameTipoEnum = ProcedimentoService.getProcedimentoTipoEnum(exameTipo);
 	}
 	
 	public Date getDataFeito() {
@@ -34,11 +37,19 @@ public class ProcedimentoForm implements Serializable {
 		this.dataFeito = dataFeito;
 	}
 	
-	public ProcedimentoTipoEnum getExameTipo() {
+	public ProcedimentoTipoEnum getExameTipoEnum() {
+		return exameTipoEnum;
+	}
+	
+	public void setExameTipoEnum(ProcedimentoTipoEnum exameTipoEnum) {
+		this.exameTipoEnum = exameTipoEnum;
+	}
+	
+	public String getExameTipo() {
 		return exameTipo;
 	}
 	
-	public void setExameTipo(ProcedimentoTipoEnum exameTipo) {
+	public void setExameTipo(String exameTipo) {
 		this.exameTipo = exameTipo;
 	}
 	

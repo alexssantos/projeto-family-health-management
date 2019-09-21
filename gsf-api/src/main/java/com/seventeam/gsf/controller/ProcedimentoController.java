@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(value = "/api/procedimento")
+@RequestMapping(value = "/procedimentos")
 public class ProcedimentoController {
 	
 	@Autowired
@@ -50,5 +50,6 @@ public class ProcedimentoController {
 		ResponseEntity reponse = ResponseEntity.ok().body(form);
 		return reponse;
 	}
+
 
 }
