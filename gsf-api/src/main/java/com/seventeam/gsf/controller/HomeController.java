@@ -4,11 +4,12 @@ import com.seventeam.gsf.domain.Paciente;
 import com.seventeam.gsf.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
-@RequestMapping("/")
+@RequestMapping("/home")
 @Controller
 public class HomeController {
 
@@ -23,13 +24,13 @@ public class HomeController {
 //        return mav;
 //    }
 //
-    @RequestMapping("/")
-    public ModelAndView home() {
-        List<Paciente> listaPacientes = service.findAll();
-        System.out.println(listaPacientes);
-        ModelAndView mav = new ModelAndView("index");
-        mav.addObject("listaPacientes", listaPacientes);
+    @GetMapping({"/"})
+    public String Home(Model model) {
+        String pageName = "index";
 
-        return mav;
+        List<Paciente> listaPacientes = service.findAll();
+        model.addAttribute("listaPacientes", listaPacientes);
+
+        return pageName;
     }
 }
