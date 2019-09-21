@@ -64,10 +64,7 @@ public class ProcedimentoService {
 		save(obj);
 		return obj;
 	}
-
-
-	/*
-	// REMOVER MEDOTO E USAR ProcedimentoTipoEnum.ToString()
+	
 	public static String getProcedimentoTipoString(ProcedimentoTipoEnum procTipo)
 	{
 		Boolean contains = procedimentoTipoEnumMap.containsValue(procTipo);
@@ -84,7 +81,6 @@ public class ProcedimentoService {
 		
 		return returnEnum.toString();
 	}
-	 */
 	
 	public static ProcedimentoTipoEnum getProcedimentoTipoEnum(String procTipo)
 	{
@@ -102,14 +98,9 @@ public class ProcedimentoService {
 		return procTipoEnum;
 	}
 	
-	public static Map<String, ProcedimentoTipoEnum> procedimentoTipoEnumMap = Stream.of(
-			new Object[][] {
+	public static Map<String, ProcedimentoTipoEnum> procedimentoTipoEnumMap = Stream.of(new Object[][] {
 				{ "VACINA", ProcedimentoTipoEnum.VACINA },
 				{ "EXAME", ProcedimentoTipoEnum.EXAME },
-			})
-			.collect(Collectors.toMap(
-					key -> (String) key[0],
-					value -> (ProcedimentoTipoEnum) value[1]
-			));
+			}).collect(Collectors.toMap(data -> (String) data[0], data -> (ProcedimentoTipoEnum) data[1]));
 	
 }

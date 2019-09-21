@@ -25,13 +25,12 @@ public class Perfil {
     // =======================
     // RELATIONSHIPS
     // =======================
-    
-//      FIXME: Erro Stackoverflow: 1 perfil -> M permissoes (cada) -> 1 Perfil -> N permissoes...
-//    @OneToMany(
-//            mappedBy = "perfil",
-//            fetch = FetchType.EAGER,
-//            cascade = CascadeType.ALL)
-//    private List<Permissao> permissaoList = new ArrayList<>();
+    /* We also need to place the @OneToOne annotation here, too. That's because this is a bidirectional relationship.
+     * The 'PERFIL' side of the relationship is called the non-owning side.
+     */
+//
+//    @OneToMany(mappedBy = "perfil", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private List<Usuario> usuarioList = new ArrayList<>();
 
 
     // =======================
@@ -60,7 +59,15 @@ public class Perfil {
     public void setTipoPerfil(PerfilTipoEnum tipoPerfil) {
         this.tipoPerfil = tipoPerfil;
     }
-    
+
+//    public List<Usuario> getUsuarioList() {
+//        return usuarioList;
+//    }
+//
+//    public void setUsuarioList(ArrayList<Usuario> usuarioList) {
+//        this.usuarioList = usuarioList;
+//    }
+
     @Override
     public String toString() {
         return "\nPerfil{" +

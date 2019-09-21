@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(value = "/api/procedimento")
+@RequestMapping(value = "/procedimento")
 public class ProcedimentoController {
 	
 	@Autowired
