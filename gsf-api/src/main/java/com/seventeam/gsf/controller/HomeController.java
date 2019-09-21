@@ -38,13 +38,27 @@ public class HomeController {
 //
 //        return "index";
 //    }
-    @RequestMapping("/login_gestante")
-    public ModelAndView home() {
-        List<Paciente> listaPacientes = service.findAll();
-        System.out.println(listaPacientes);
-        ModelAndView mav = new ModelAndView("login_gestante");
-        mav.addObject("listaPacientes", listaPacientes);
 
-        return mav;
+    @RequestMapping(value = "/login_medico")
+    public String login_medico() {
+        return "login_medico";
     }
+
+
+
+
+    @RequestMapping(value = "/procedimentos")
+    public String procedimentos() {
+        return "procedimentos";
+    }
+
+//    @RequestMapping("/login_gestante")
+//    public ModelAndView home() {
+//        List<Paciente> listaPacientes = service.findAll();
+//        System.out.println(listaPacientes);
+//        ModelAndView mav = new ModelAndView("login_gestante");
+//        mav.addObject("listaPacientes", listaPacientes);
+//
+//        return mav;
+//    }
 }
