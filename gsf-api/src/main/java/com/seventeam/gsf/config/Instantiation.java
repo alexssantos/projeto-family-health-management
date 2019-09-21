@@ -1,16 +1,15 @@
 package com.seventeam.gsf.config;
 
 import com.seventeam.gsf.Utils.UtilsString;
-import com.seventeam.gsf.domain.Medico;
-import com.seventeam.gsf.domain.Paciente;
-import com.seventeam.gsf.domain.Perfil;
-import com.seventeam.gsf.domain.Usuario;
+import com.seventeam.gsf.domain.*;
 import com.seventeam.gsf.models.enums.PerfilTipoEnum;
+import com.seventeam.gsf.models.enums.PermissaoEnum;
 import com.seventeam.gsf.repository.MedicoDao;
 import com.seventeam.gsf.repository.PacienteDao;
 import com.seventeam.gsf.repository.PerfilDao;
 import com.seventeam.gsf.repository.UsuarioDao;
 import com.seventeam.gsf.services.PerfilService;
+import com.seventeam.gsf.services.PermissaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.stream.Collectors;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
@@ -35,6 +35,8 @@ public class Instantiation implements CommandLineRunner {
     private PerfilDao perfilDao;
     @Autowired
     private PerfilService perfilService;
+    @Autowired
+    private PermissaoService permissaoService;
 
     public static List<Usuario> usuarioList = new ArrayList<>();
     public static List<Paciente> pacienteList = new ArrayList<>();
@@ -48,11 +50,12 @@ public class Instantiation implements CommandLineRunner {
     public void run(String... args) throws Exception
     {
         initConfigs();
-
+    
 //        listAllFromDatabase();
 //        deleteAllFromdatabase();
-
-//        perfilInstantiation();
+    
+        perfilInstantiation();
+        permissaoIntantiation();
 //        pushUsuarioToDb();
 //        pushPacienteToDb();
 //        pushMedicoToDb();
@@ -112,6 +115,8 @@ public class Instantiation implements CommandLineRunner {
         PerfilDao dao = perfilDao;
         List<Perfil> perfilList = dao.findAll();
         if (perfilList.size() > 0){
+            this.perfilMedico = perfilList.get(0);
+            this.perfilPaciente = perfilList.get(1);
             return;
         }
 
@@ -119,6 +124,35 @@ public class Instantiation implements CommandLineRunner {
         this.perfilPaciente = new Perfil(PerfilTipoEnum.PACIENTE);
 
         trySave(dao, Arrays.asList(perfilMedico, perfilPaciente));
+    }
+    
+    private void permissaoIntantiation()
+    {
+        List<PermissaoEnum> enumRawList = Arrays.asList(PermissaoEnum.values());
+        List<PermissaoEnum> onDBEnum = permissaoService.findAll()
+                .stream()
+                .map(x -> x.getAcao())
+                .distinct()
+                .collect(Collectors.toList());
+              
+        if (onDBEnum.size() == enumRawList.size()){
+            return;
+        }
+        
+        
+        List<Permissao> toSave = enumRawList.stream()
+                .filter(x -> !onDBEnum.contains(x))
+                .map(x -> new Permissao(x))
+                .collect(Collectors.toList());
+    
+    
+        Perfil perfilObj = this.perfilMedico;
+        toSave.forEach(permissao -> {
+            permissao.setPerfil(perfilObj);
+        });
+        
+        
+        permissaoService.SaveMany(toSave);
     }
 
     private void pushUsuarioToDb() throws Exception

@@ -2,7 +2,6 @@ package com.seventeam.gsf.services;
 
 
 import com.seventeam.gsf.Utils.UtilsString;
-import com.seventeam.gsf.domain.Medico;
 import com.seventeam.gsf.domain.Perfil;
 import com.seventeam.gsf.domain.Permissao;
 import com.seventeam.gsf.models.enums.PerfilTipoEnum;
@@ -24,11 +23,28 @@ public class PermissaoService {
 	@Autowired
 	PerfilService perfilService;
 
-	public void save(Permissao obj)
-	{
-		if (obj != null){
-			dao.save(obj);
-		}
+//	public void save(PermissaoForm form)
+//	{
+//		if (UtilsString.isEmptyOrBlanck(form.getTipoPerfil()) || UtilsString.isEmptyOrBlanck(form.getAcao())){
+//			return;
+//		}
+//
+//		PerfilTipoEnum tipoPerfil = PerfilService.perfilTipoEnumMap.get(form.getTipoPerfil().toUpperCase());
+//		PermissaoEnum permissaoEnum =
+//
+//
+//		if (tipoPerfil == null)
+//		{
+//			throw new ObjectNotFoundException(
+//					UtilsString.msgFormat("Object Not Found. Perfil ou Permissao")
+//			);
+//		}
+//
+//		dao.save(obj);
+//	}
+	
+	public void SaveMany(List<Permissao> permissaoList){
+		dao.saveAll(permissaoList);
 	}
 
 	public List<Permissao> findAll()
@@ -59,13 +75,13 @@ public class PermissaoService {
 			);
 		}
 
-		Perfil perfilPaciente = perfilService.getByTipoPerfil(tipoPerfil);
-		if (perfilPaciente == null)
+		Perfil perfil = perfilService.getByTipoPerfil(tipoPerfil);
+		if (perfil == null)
 		{
 			return new ArrayList<Permissao>();
 		}
 
-		List<Permissao> objList = dao.getByPerfil(perfilPaciente);
+		List<Permissao> objList = dao.getByPerfil(perfil);  // FIXME: erro -> perfil.getPermissaoList();
 		return objList;
 	}
 }

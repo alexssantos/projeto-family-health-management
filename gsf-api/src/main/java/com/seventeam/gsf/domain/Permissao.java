@@ -16,20 +16,24 @@ public class Permissao {
     @Enumerated(EnumType.STRING)
     @Column(name = "acao", unique = true)
     private PermissaoEnum acao;
-
-
+    
+    
     // =======================
     // RELATIONSHIPS
     // =======================
-
-    @ManyToOne
-    @JoinColumn(name="perfil_id", nullable=false, updatable = false)
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "perfil_id", referencedColumnName = "id", unique = false, nullable = false)
     private Perfil perfil;
 
+    
     // =======================
     // CONSTRUTOR
     // =======================
-
+    
+    public Permissao() {
+    }
+    
     public Permissao(PermissaoEnum acao) {
         this.acao = acao;
     }

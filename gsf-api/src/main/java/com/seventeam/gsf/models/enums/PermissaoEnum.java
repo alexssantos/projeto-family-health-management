@@ -1,15 +1,16 @@
 package com.seventeam.gsf.models.enums;
 
 public enum PermissaoEnum {
-    Acao1,
-    Acao2,
-    Acao3,
-    Acao4,
-    Acao5,
-    Acao6,
-    Acao7,
-    Acao8,
-    Acao9,
-    EditarPage1,
-    EditarPage2,
+    ACAO_1,
+    ACAO_2,
+    ACAO_3,
+    ACAO_4,
+    ACAO_5,
+    ACAO_6,
+    ACAO_7,
+    ACAO_8,
+    ACAO_9,
+    ACAO_10,
+    EDITAR_PAGINA_1,
+    EDITAR_PAGINA_2,
 }

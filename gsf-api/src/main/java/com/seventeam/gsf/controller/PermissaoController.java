@@ -3,15 +3,13 @@ package com.seventeam.gsf.controller;
 import com.seventeam.gsf.Utils.UtilsString;
 import com.seventeam.gsf.domain.Medico;
 import com.seventeam.gsf.domain.Permissao;
+import com.seventeam.gsf.models.Form.PermissaoForm;
 import com.seventeam.gsf.services.PermissaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -59,17 +57,19 @@ public class PermissaoController {
 		return  response;
 	}
 
-/*
+
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Medico> create(@RequestBody MedicoForm form)
+    public ResponseEntity<Medico> create(@RequestBody PermissaoForm form)
     {
-        permissaoService.save(form);
+        //permissaoService.save(form);
 
         ResponseEntity reponse = ResponseEntity.ok().body(form);
         return reponse;
 
     }
 
+    
+    /*
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Medico> update(@PathVariable Integer id, @RequestBody MedicoForm form)
     {
