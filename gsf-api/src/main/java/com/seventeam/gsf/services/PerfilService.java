@@ -2,6 +2,7 @@ package com.seventeam.gsf.services;
 
 import com.seventeam.gsf.domain.Perfil;
 import com.seventeam.gsf.models.enums.PerfilTipoEnum;
+import com.seventeam.gsf.models.enums.ProcedimentoTipoEnum;
 import com.seventeam.gsf.repository.PerfilDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class PerfilService {
@@ -46,4 +50,15 @@ public class PerfilService {
 
 		return perfil;
 	}
+
+	public static Map<String, PerfilTipoEnum> perfilTipoEnumMap = Stream.of(new Object[][] {
+			{"MEDICO", PerfilTipoEnum.MEDICO},
+			{"PACIENTE",PerfilTipoEnum.PACIENTE },
+			{"DESCONHECIDO",PerfilTipoEnum.DESCONHECIDO },
+	})
+	.collect(Collectors.toMap(
+			key -> (String) key[0],
+			value -> (PerfilTipoEnum) value[1]
+	));
+
 }
