@@ -4,10 +4,7 @@ import com.seventeam.gsf.Utils.UtilsString;
 import com.seventeam.gsf.domain.*;
 import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 import com.seventeam.gsf.models.enums.PermissaoEnum;
-import com.seventeam.gsf.repository.MedicoDao;
-import com.seventeam.gsf.repository.PacienteDao;
-import com.seventeam.gsf.repository.PerfilDao;
-import com.seventeam.gsf.repository.UsuarioDao;
+import com.seventeam.gsf.repository.*;
 import com.seventeam.gsf.services.PerfilService;
 import com.seventeam.gsf.services.PermissaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.TimeZone;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Configuration
@@ -53,9 +47,6 @@ public class Instantiation implements CommandLineRunner {
     
 //        listAllFromDatabase();
 //        deleteAllFromdatabase();
-    
-        perfilInstantiation();
-        permissaoIntantiation();
 //        pushUsuarioToDb();
 //        pushPacienteToDb();
 //        pushMedicoToDb();
@@ -64,8 +55,84 @@ public class Instantiation implements CommandLineRunner {
     private void initConfigs()
     {
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-        List<Perfil> perfils = perfilDao.findAll();
+        createProfiles();
+        createPermissionsByProfiles();
+    }
+    
+    private void createProfiles()
+    {
+        List<PerfilTipoEnum> enumTipoPerfilList = Arrays.asList(PerfilTipoEnum.values());
+        List<Perfil> perfilOnDbList = perfilService.findAll();
+        List<PerfilTipoEnum> enumOnDbList = perfilOnDbList
+                .stream()
+                .map(x -> x.getTipoPerfil())
+                .distinct()
+                .collect(Collectors.toList());
+    
+        List<Perfil> toSave = null;
+        if (!(enumOnDbList.size() == enumTipoPerfilList.size()))
+        {
+            toSave = enumTipoPerfilList.stream()
+                    .filter(x -> !enumOnDbList.contains(x))
+                    .map(x -> new Perfil(x))
+                    .collect(Collectors.toList());
+        }
+    
+        PerfilDao dao = perfilDao;
+        boolean hasToSave = (toSave != null) && (toSave.size() > 0);
+        if (hasToSave)
+        {
+            trySave(dao, toSave);
+        }
+    
+        List<Perfil> perfils = (hasToSave) ? dao.findAll() : perfilOnDbList;
         Perfil.allPerfis.addAll(perfils);
+        
+        this.perfilMedico = perfils.stream().filter(x -> x.getTipoPerfil() == PerfilTipoEnum.MEDICO).findFirst().get();
+        this.perfilPaciente = perfils.stream().filter(x -> x.getTipoPerfil() == PerfilTipoEnum.PACIENTE).findFirst().get();
+    }
+    
+    private void createPermissionsByProfiles()
+    {
+        //get all profiles
+        List<Perfil> perfils = Perfil.allPerfis;
+        
+        List<Permissao> permissaoOnDbList = permissaoService.findAll();
+    
+        List<Permissao> toSave = new ArrayList<>();
+        for (Perfil perfil: perfils)
+        {
+            PerfilTipoEnum perfilEnum = perfil.getTipoPerfil();
+            boolean hasPerfilKey = PerfilService.perfilPermissaoMap.containsKey(perfilEnum);
+            if (!hasPerfilKey)
+            {
+                continue;
+            }
+            
+            List<PermissaoEnum> enumPermissionListOfPerfil = PerfilService.perfilPermissaoMap.get(perfilEnum);
+            
+            List<Permissao> permissaoByPerfilOnDb = permissaoOnDbList.stream().filter(x -> x.getPerfil().getTipoPerfil() == perfilEnum).collect(Collectors.toList());
+            List<PermissaoEnum> permissaoEnumsByPerfilOnDb = permissaoByPerfilOnDb.stream().map(x -> x.getAcao()).distinct().collect(Collectors.toList());
+            
+            List<Permissao> notOnDb = enumPermissionListOfPerfil.stream()
+                    .filter(x -> !permissaoEnumsByPerfilOnDb.contains(x))
+                    .map(obj -> new Permissao(obj))
+                    .collect(Collectors.toList()
+            );
+            
+            notOnDb.forEach(obj -> {
+                obj.setPerfil(perfil);
+            });
+            
+            toSave.addAll(notOnDb);
+        }
+        
+        if (toSave.size() < 1){
+            return;
+        }
+    
+        PermissaoDao dao = permissaoService.getDao();
+        trySave(dao, toSave);
     }
 
     private void deleteAllFromdatabase()
@@ -109,52 +176,7 @@ public class Instantiation implements CommandLineRunner {
         medicos.forEach(item -> System.out.println(item));
         System.out.println("------------------------------\n\n");
     }
-
-    private void perfilInstantiation()
-    {
-        PerfilDao dao = perfilDao;
-        List<Perfil> perfilList = dao.findAll();
-        if (perfilList.size() > 0){
-            this.perfilMedico = perfilList.get(0);
-            this.perfilPaciente = perfilList.get(1);
-            return;
-        }
-
-        this.perfilMedico = new Perfil(PerfilTipoEnum.MEDICO);
-        this.perfilPaciente = new Perfil(PerfilTipoEnum.PACIENTE);
-
-        trySave(dao, Arrays.asList(perfilMedico, perfilPaciente));
-    }
     
-    private void permissaoIntantiation()
-    {
-        List<PermissaoEnum> enumRawList = Arrays.asList(PermissaoEnum.values());
-        List<PermissaoEnum> onDBEnum = permissaoService.findAll()
-                .stream()
-                .map(x -> x.getAcao())
-                .distinct()
-                .collect(Collectors.toList());
-              
-        if (onDBEnum.size() == enumRawList.size()){
-            return;
-        }
-        
-        
-        List<Permissao> toSave = enumRawList.stream()
-                .filter(x -> !onDBEnum.contains(x))
-                .map(x -> new Permissao(x))
-                .collect(Collectors.toList());
-    
-    
-        Perfil perfilObj = this.perfilMedico;
-        toSave.forEach(permissao -> {
-            permissao.setPerfil(perfilObj);
-        });
-        
-        
-        permissaoService.SaveMany(toSave);
-    }
-
     private void pushUsuarioToDb() throws Exception
     {
         UsuarioDao dao = usuarioDao;
