@@ -43,6 +43,11 @@ public class PermissaoService {
 //		dao.save(obj);
 //	}
 	
+	public PermissaoDao getDao()
+	{
+		return dao;
+	}
+	
 	public void SaveMany(List<Permissao> permissaoList){
 		dao.saveAll(permissaoList);
 	}

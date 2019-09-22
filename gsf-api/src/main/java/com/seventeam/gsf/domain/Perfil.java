@@ -61,6 +61,8 @@ public class Perfil {
         this.tipoPerfil = tipoPerfil;
     }
     
+    
+    
     @Override
     public String toString() {
         return "\nPerfil{" +
@@ -68,4 +70,6 @@ public class Perfil {
                 ", tipoPerfil=" + tipoPerfil +
                 '}';
     }
+    
+    
 }
