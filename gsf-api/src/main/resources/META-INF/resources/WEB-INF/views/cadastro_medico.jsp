@@ -16,7 +16,7 @@
 <body>
 <div class="container">
     <div class="square">
-        <img alt="Logo Mamãe" src="imgs/stethoscope.png">
+        <img alt="Logo Mamãe" src="../../imgs/stethoscope.png">
         <form method="post"  action="form">
             <input type="text" value="" placeholder="Nome" name="nome" id="campo_nome" />
             <input type="text" value="" placeholder="CRM" name="cpf" id="campo_crm" />
