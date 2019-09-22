@@ -12,12 +12,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="css/procedimentos.css" />
+    <link rel="stylesheet" href="css/procedimentos.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-          integrity="sha256-yMjaV542P+q1RnH6XByCPDfUFhmOafWbeLPmqKh11zo=" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" integrity="sha256-yMjaV542P+q1RnH6XByCPDfUFhmOafWbeLPmqKh11zo=" crossorigin="anonymous" />
 </head>
 <body>
     <nav class="navbar navbar-brand" id="navbar">
@@ -30,7 +28,7 @@
             <!-- Inicio -->
             <div class="cd-timeline__block">
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="../../imgs/fetus1.jpg" alt="Picture">
+                    <img src="imgs/fetus1.jpg" alt="Picture">
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Ciclo 1</h2>
@@ -52,7 +50,7 @@
                                         <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -73,7 +71,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -94,7 +92,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -115,7 +113,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -127,7 +125,7 @@
             <!-- Inicio -->
             <div class="cd-timeline__block">
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="../../imgs/fetus2.jpg" alt="Picture">
+                    <img src="imgs/fetus2.jpg" alt="Picture">
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Ciclo 2</h2>
@@ -149,7 +147,7 @@
                                         <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -170,7 +168,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -191,7 +189,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -212,7 +210,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -223,7 +221,7 @@
             <!-- Fim -->
             <div class="cd-timeline__block">
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="../../imgs/fetus3.jpg" alt="Picture">
+                    <img src="imgs/fetus3.jpg" alt="Picture">
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Ciclo 3</h2>
@@ -245,7 +243,7 @@
                                         <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -266,7 +264,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -287,7 +285,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -308,7 +306,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -319,7 +317,7 @@
             <!-- Inicio -->
             <div class="cd-timeline__block">
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="../../imgs/fetus4.jpg" alt="Picture">
+                    <img src="imgs/fetus4.jpg" alt="Picture">
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Ciclo 4</h2>
@@ -341,7 +339,7 @@
                                         <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -362,7 +360,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -383,7 +381,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -404,7 +402,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -416,7 +414,7 @@
             <!-- Inicio -->
             <div class="cd-timeline__block">
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="../../imgs/fetus5.jpg" alt="Picture">
+                    <img src="imgs/fetus5.jpg" alt="Picture">
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Ciclo 5</h2>
@@ -438,7 +436,7 @@
                                         <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -459,7 +457,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -480,7 +478,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -501,7 +499,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -513,7 +511,7 @@
             <!-- Inicio -->
             <div class="cd-timeline__block">
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="../../imgs/fetus6.jpg" alt="Picture">
+                    <img src="imgs/fetus6.jpg" alt="Picture">
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Ciclo 6</h2>
@@ -535,7 +533,7 @@
                                         <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -556,7 +554,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -577,7 +575,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -598,7 +596,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -610,7 +608,7 @@
             <!-- Inicio -->
             <div class="cd-timeline__block">
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="../../imgs/fetus7.jpg" alt="Picture">
+                    <img src="imgs/fetus7.jpg" alt="Picture">
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Ciclo 8</h2>
@@ -632,7 +630,7 @@
                                         <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -653,7 +651,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -674,7 +672,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -695,7 +693,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -707,7 +705,7 @@
             <!-- Inicio -->
             <div class="cd-timeline__block">
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="../../imgs/fetus8.jpg" alt="Picture">
+                    <img src="imgs/fetus8.jpg" alt="Picture">
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Ciclo 8</h2>
@@ -729,7 +727,7 @@
                                         <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -750,7 +748,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -771,7 +769,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -792,7 +790,7 @@
                                         <span class="badge tempo" style="margin-top:10px;">0 -- 39</span>
                                     </div>
                                     <div class="col-md-2 text-center">
-                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
+                                        <img class="status center" style="width:50%" src="imgs/posterior.jpg" alt="Picture" data-toggle="tooltip" data-placement="top" title="" data-original-title="Concluído">
                                     </div>
                                 </div>
                             </form>
@@ -804,13 +802,13 @@
         </div>
     </section>
 </body>
-<footer>
-    <p>&copy; by 7Team</p>
-</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/pt-br.js" integrity="sha256-aIToY7VLU5x+toAJcyINV0WEogFBCIVeeWhyUbCaYiQ=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js" integrity="sha256-5YmaxAwMjIpMrVlK84Y/+NjCpKnFYa8bWWBbUHSBGfU=" crossorigin="anonymous"></script>
 <script src="js/procedimentos.js"></script>
+<footer>
+    <p>&copy; by 7Team</p>
+</footer>
 </html>
