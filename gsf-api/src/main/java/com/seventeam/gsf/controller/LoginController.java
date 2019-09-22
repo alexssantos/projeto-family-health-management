@@ -1,20 +1,32 @@
 package com.seventeam.gsf.controller;
 
-import org.apache.coyote.Request;
+import com.seventeam.gsf.controller.validate.ValidateForms;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
-@RequestMapping(value = "/api/login")
+@RequestMapping(value = "/login")
 public class LoginController
 {
-
+    
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody String Login(@RequestParam Map<String, String> allRequestParams){
-        String user = allRequestParams.get("user");
-        String pass = allRequestParams.get("password");
-        String erro = allRequestParams.get("erro");     //DONT THROW exception. null value.
+    public @ResponseBody String Login(){
+        
+        return "Olá, Usuário!";
+    }
+    
+
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody String Login(@RequestParam Map<String, String> Params){
+        
+        //validate Login Parans ->
+        if (ValidateForms.validateLogin(Params)){
+            return "VACILO";
+        }
+        String user = Params.get("user");
+        String pass = Params.get("password");
+        String tipoPerfil = Params.get("perfil");
 
         return "Olá, Usuário!";
     }
