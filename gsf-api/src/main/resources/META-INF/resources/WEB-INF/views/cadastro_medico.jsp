@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="pt-br">
 <head>
     <title>Criar conta - Médico</title>
     <meta charset="UTF-8">
@@ -24,7 +24,7 @@
             <input type="password" value="" placeholder="Senha" name="senha" id="campo_senha" />
             <input type="password" value="" placeholder="Confirmar Senha" name="confirma senha" id="campo_confirma_senha" />
             <input type="submit" value="Cadastrar" id="botao_cadastro" />
-            <div>
+            <div class="rodape_campos">
                 <div id="linha"></div>
                 <p id="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
             </div>

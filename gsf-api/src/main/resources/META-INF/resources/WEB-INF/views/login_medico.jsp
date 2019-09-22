@@ -21,7 +21,7 @@
             <input type="text" value="" placeholder="CRM" name="crm" id="campo_crm" />
             <input type="password" value="" placeholder="Senha" name="senha" id="campo_senha" />
             <input type="submit" value="Login" id="botao_login" />
-            <div>
+            <div class="rodape_campos">
                 <div id="linha_login"></div>
                 <p id="redirecionamento_login">Ainda não tem conta? <a href="#">Cadastre-se</a></p>
             </div>
