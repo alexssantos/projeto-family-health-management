@@ -1,21 +1,20 @@
 package com.seventeam.gsf.controller;
 
 import com.seventeam.gsf.domain.Paciente;
-import com.seventeam.gsf.domain.Procedimento;
 import com.seventeam.gsf.services.PacienteService;
-import com.seventeam.gsf.services.ProcedimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
-@RequestMapping( value = "/" )
+@RequestMapping("/home")
 @Controller
 public class HomeController {
 
     @Autowired
-    ProcedimentoService service;
+    PacienteService service;
 
 //    @RequestMapping("/")
 //    public ModelAndView home() {
@@ -25,48 +24,13 @@ public class HomeController {
 //        return mav;
 //    }
 //
-//    @RequestMapping("/")
-//    public ModelAndView home() {
-//        List<Paciente> listaPacientes = service.findAll();
-//        System.out.println(listaPacientes);
-//        ModelAndView mav = new ModelAndView("index");
-//        mav.addObject("listaPacientes", listaPacientes);
-//
-//        return mav;
-//    }
-//
-//    @RequestMapping( path = "/" )
-//    public String home() {
-//
-//        return "index";
-//    }
+    @GetMapping({"/"})
+    public String Home(Model model) {
+        String pageName = "index";
 
-//    @RequestMapping("/")
-//    public ModelAndView procedimentos() {
-//        List<Procedimento> listaProcedimentos = service.findAll();
-//        ModelAndView mav = new ModelAndView("index");
-//        mav.addObject("listaProcedimentos", listaProcedimentos);
-//
-//        return mav;
-//    }
+        List<Paciente> listaPacientes = service.findAll();
+        model.addAttribute("listaPacientes", listaPacientes);
 
-    @RequestMapping(value = "/login_medico")
-    public String login_medico() {
-        return "login_medico";
+        return pageName;
     }
-
-//    @RequestMapping(value = "/procedimentos")
-//    public String procedimentos() {
-//        return "procedimentos";
-//    }
-
-//    @RequestMapping("/login_gestante")
-//    public ModelAndView home() {
-//        List<Paciente> listaPacientes = service.findAll();
-//        System.out.println(listaPacientes);
-//        ModelAndView mav = new ModelAndView("login_gestante");
-//        mav.addObject("listaPacientes", listaPacientes);
-//
-//        return mav;
-//    }
 }

@@ -20,15 +20,15 @@
 <div class="container">
     <div class="square">
         <img alt="Logo Mamãe" src="../../imgs/mom.png">
-        <form method="post" name="usuario"  action="/login/gestante">
+        <form method="post"  action="form">
             <div>
-                <input type="text" value="" placeholder="CPF" name="login" id="cpf" />
+                <input type="text" value="" placeholder="CPF" name="cpf" id="cpf" />
             </div>
             <div>
-                <input type="password" value="" placeholder="Senha" name="password" id="password" />
+                <input type="password" value="" placeholder="Senha" name="senha" id="password" />
             </div>
             <div>
-                <button type="submit" id="botao_login">Login</button>
+                <input type="submit" value="Login" id="botao_login" />
             </div>
             <div class="dentro">
                 <div id="linha_login"></div>

@@ -70,4 +70,6 @@ public class Perfil {
                 ", tipoPerfil=" + tipoPerfil +
                 '}';
     }
+    
+    
 }

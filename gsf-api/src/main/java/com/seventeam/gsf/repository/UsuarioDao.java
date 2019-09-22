@@ -9,6 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioDao extends JpaRepository<Usuario, Integer> {
 	
 	public Usuario getByLogin(String login);
-
-	public Usuario getByLoginAndPassword(String login, String password);
 }

@@ -1,5 +1,7 @@
 package com.seventeam.gsf.domain;
 
+import com.seventeam.gsf.models.enums.PermissaoEnum;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,18 +13,28 @@ public class Permissao {
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
 
-    @Column(name = "acao")
-    private String acao;
-
-
-    // RELATOINSHIPS
-    @ManyToOne
-    @JoinColumn(name="perfil_id", nullable=false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "acao", unique = true)
+    private PermissaoEnum acao;
+    
+    
+    // =======================
+    // RELATIONSHIPS
+    // =======================
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "perfil_id", referencedColumnName = "id", unique = false, nullable = false)
     private Perfil perfil;
 
-
+    
+    // =======================
     // CONSTRUTOR
-    public Permissao(String acao) {
+    // =======================
+    
+    public Permissao() {
+    }
+    
+    public Permissao(PermissaoEnum acao) {
         this.acao = acao;
     }
 
@@ -31,11 +43,19 @@ public class Permissao {
         return id;
     }
 
-    public String getAcao() {
+    public PermissaoEnum getAcao() {
         return acao;
     }
 
-    public void setAcao(String acao) {
+    public void setAcao(PermissaoEnum acao) {
         this.acao = acao;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 }
