@@ -1,7 +1,9 @@
 package com.seventeam.gsf.controller;
 
 import com.seventeam.gsf.domain.Paciente;
+import com.seventeam.gsf.domain.Procedimento;
 import com.seventeam.gsf.services.PacienteService;
+import com.seventeam.gsf.services.ProcedimentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +15,7 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
-    PacienteService service;
+    ProcedimentoService service;
 
 //    @RequestMapping("/")
 //    public ModelAndView home() {
@@ -39,18 +41,24 @@ public class HomeController {
 //        return "index";
 //    }
 
+//    @RequestMapping("/")
+//    public ModelAndView procedimentos() {
+//        List<Procedimento> listaProcedimentos = service.findAll();
+//        ModelAndView mav = new ModelAndView("index");
+//        mav.addObject("listaProcedimentos", listaProcedimentos);
+//
+//        return mav;
+//    }
+
     @RequestMapping(value = "/login_medico")
     public String login_medico() {
         return "login_medico";
     }
 
-
-
-
-    @RequestMapping(value = "/procedimentos")
-    public String procedimentos() {
-        return "procedimentos";
-    }
+//    @RequestMapping(value = "/procedimentos")
+//    public String procedimentos() {
+//        return "procedimentos";
+//    }
 
 //    @RequestMapping("/login_gestante")
 //    public ModelAndView home() {
