@@ -51,6 +51,11 @@ public class LoginController {
         return "login_gestante";
     }
 
+    @RequestMapping(value = "/medico")
+    public String medico() {
+        return "login_medico";
+    }
+
     //    @RequestMapping("efetuaLogin")
 //    public String efetuaLogin(Usuario usuario, HttpSession session) {
 //        if(new UsuarioDao().existeUsuario(usuario)) {
