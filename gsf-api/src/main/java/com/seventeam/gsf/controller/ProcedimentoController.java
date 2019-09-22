@@ -17,47 +17,39 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(value = "/procedimentos")
+@RequestMapping(value = "/")
 public class ProcedimentoController {
 	
 	@Autowired
-	ProcedimentoService service;
+	ProcedimentoService procedimentoService;
 
-	@RequestMapping("/lista")
-	public ModelAndView procedimentos() {
-		List<Procedimento> listaProcedimentos = service.findAll();
-		ModelAndView mav = new ModelAndView("procedimentos");
-		mav.addObject("listaProcedimentos", listaProcedimentos);
+//	@RequestMapping("/procedimentos")
+//	public ModelAndView procedimentos() {
+//		List<Procedimento> listaProcedimentos = service.findAll();
+//		ModelAndView mav = new ModelAndView("procedimentos");
+//		mav.addObject("listaProcedimentos", listaProcedimentos);
+//
+//		return mav;
+//	}
 
-		return mav;
+	@RequestMapping(path = "/getall", method= RequestMethod.GET)
+	public ResponseEntity<List<Procedimento>> getAll()
+	{
+		List<Procedimento> list = procedimentoService.findAll();
+		List<ProcedimentoDto> responseList = list.stream()
+				.map(item -> new ProcedimentoDto(item))
+				.collect(Collectors.toList());
+
+		ResponseEntity reponse = ResponseEntity.ok().body(responseList);
+		return reponse;
 	}
 
-//	@RequestMapping(method= RequestMethod.GET)
-//	public ResponseEntity<List<Procedimento>> get()
-//	{
-//		return getAll();
-//	}
-	
-//	@RequestMapping(path = "/getall", method= RequestMethod.GET)
-//	public ResponseEntity<List<Procedimento>> getAll()
-//	{
-//		List<Procedimento> list = procedimentoService.findAll();
-//		List<ProcedimentoDto> responseList = list.stream()
-//				.map(item -> new ProcedimentoDto(item))
-//				.collect(Collectors.toList());
-//
-//		ResponseEntity reponse = ResponseEntity.ok().body(responseList);
-//		return reponse;
-//	}
-//
-//
-//	@RequestMapping(method= RequestMethod.POST)
-//	public ResponseEntity create(@RequestBody ProcedimentoForm form)
-//	{
-//		//ValidateForm
-//		procedimentoService.save(form);
-//
-//		ResponseEntity reponse = ResponseEntity.ok().body(form);
-//		return reponse;
-//	}
+	@RequestMapping(method= RequestMethod.POST)
+	public ResponseEntity create(@RequestBody ProcedimentoForm form)
+	{
+		procedimentoService.save(form);
+
+		ResponseEntity reponse = ResponseEntity.ok().body(form);
+		return reponse;
+	}
 }
