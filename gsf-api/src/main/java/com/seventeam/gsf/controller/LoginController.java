@@ -1,21 +1,9 @@
 package com.seventeam.gsf.controller;
 
-import com.seventeam.gsf.domain.Medico;
-import com.seventeam.gsf.domain.Paciente;
-import com.seventeam.gsf.domain.Usuario;
-import com.seventeam.gsf.repository.UsuarioDao;
 import com.seventeam.gsf.services.UsuarioService;
-import org.apache.coyote.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Date;
 import java.util.Map;
 
 @Controller
@@ -67,27 +55,30 @@ public class LoginController {
 //    }
     // public @ResponseBody String Login(@RequestParam("user") String user, @RequestParam("password") String password)
 
-    @RequestMapping(value = "/gestante")
-    public String login_gestante() {
-        return "login_gestante";
-    }
 
-    @RequestMapping(value = "/medico")
-    public String login_medico() {
-        return "login_medico";
-    }
 
-    @PostMapping("/gestante")
-    public String doLogin(@ModelAttribute Usuario u){
-        Usuario db = usuarioService.findOne(u.getLogin(), u.getPassword());
-
-        if (db != null) {
-            return "procedimentos";
-        }
-        else {
-            return "login_gestante";
-        }
-    }
+//    OFICIAL
+//    @RequestMapping(value = "/gestante")
+//    public String login_gestante() {
+//        return "login_gestante";
+//    }
+//
+//    @RequestMapping(value = "/medico")
+//    public String login_medico() {
+//        return "login_medico";
+//    }
+//
+//    @PostMapping("/gestante")
+//    public String doLogin(@ModelAttribute Usuario u){
+//        Usuario db = usuarioService.findOne(u.getLogin(), u.getPassword());
+//
+//        if (db != null) {
+//            return "procedimentos";
+//        }
+//        else {
+//            return "login_gestante";
+//        }
+//    }
 //    @RequestMapping(method = RequestMethod.POST)
 //    public String submit(Model model, @ModelAttribute("usuario") Usuario usuario) {
 //        if (usuario != null && usuario.getLogin() != null & usuario.getPassword() != null) {
