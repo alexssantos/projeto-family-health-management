@@ -1,38 +1,34 @@
 @charset "UTF-8";
+
 body
 {
-    background-color: #4797ad;
+    background-color: rgb(173, 216, 230);
 }
 
-.dentro
-{
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-}
-
-#crm
+/* CSS Campos --- */
+#campo_crm
 {
     size: 3;
-    width: 55%;
+    width: 60%;
     text-align: center;
     height: 25px;
     border-radius: 20px;
     display: block;
     margin: 10px auto;
     opacity: 0.5;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
 }
 
-#password
+#campo_senha
 {
     size: 3;
-    width: 55%;
+    width: 60%;
     text-align: center;
     height: 25px;
     border-radius: 20px;
     display: block;
     margin: 10px auto;
     opacity: 0.5;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
 }
+/* ------------------------- */
