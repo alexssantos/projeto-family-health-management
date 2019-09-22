@@ -36,26 +36,26 @@
                     <li class="list-group-item">
                         <form>
                             <c:forEach items="${listaProcedimentos}" var="procedimento" begin="0" end="3">
-                            <div class="form-row" style="margin-bottom: -15px;">
-                                <div class="col-md-1">
-                                    <input type="checkbox" class="checkbox check">
+                                <div class="form-row" style="margin-bottom: -15px;">
+                                    <div class="col-md-1">
+                                        <input type="checkbox" class="checkbox check">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <strong style="line-height: 2% !important;">${procedimento.descricao}</strong>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input class="date form-control form-control-sm form-group col-lg-12" type="text"
+                                               placeholder="00/00/0000">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <span class="tempo badge" style="margin-top:10px;">${procedimento.semanaInicial} -- ${procedimento.semanaFinal}</span>
+                                    </div>
+                                    <div class="col-md-2 text-center">
+                                        <img class="status center" style="width:50%" src="../../imgs/posterior.jpg"
+                                             alt="Picture" data-toggle="tooltip" data-placement="top" title=""
+                                             data-original-title="Concluído">
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <strong style="line-height: 2% !important;">${procedimento.descricao}</strong>
-                                </div>
-                                <div class="col-md-3">
-                                    <input class="date form-control form-control-sm form-group col-lg-12" type="text"
-                                           placeholder="00/00/0000">
-                                </div>
-                                <div class="col-md-2">
-                                    <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
-                                </div>
-                                <div class="col-md-2 text-center">
-                                    <img class="status center" style="width:50%" src="../../imgs/posterior.jpg"
-                                         alt="Picture" data-toggle="tooltip" data-placement="top" title=""
-                                         data-original-title="Concluído">
-                                </div>
-                            </div>
                             </c:forEach>
                         </form>
                     </li>
@@ -87,7 +87,7 @@
                                                placeholder="00/00/0000">
                                     </div>
                                     <div class="col-md-2">
-                                        <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
+                                        <span class="tempo badge" style="margin-top:10px;">${procedimento.semanaInicial} -- ${procedimento.semanaFinal}</span>
                                     </div>
                                     <div class="col-md-2 text-center">
                                         <img class="status center" style="width:50%" src="../../imgs/posterior.jpg"
@@ -126,7 +126,7 @@
                                                placeholder="00/00/0000">
                                     </div>
                                     <div class="col-md-2">
-                                        <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
+                                        <span class="tempo badge" style="margin-top:10px;">${procedimento.semanaInicial} -- ${procedimento.semanaFinal}</span>
                                     </div>
                                     <div class="col-md-2 text-center">
                                         <img class="status center" style="width:50%" src="../../imgs/posterior.jpg"
@@ -165,7 +165,7 @@
                                                placeholder="00/00/0000">
                                     </div>
                                     <div class="col-md-2">
-                                        <span class="tempo badge" style="margin-top:10px;">0 -- 39</span>
+                                        <span class="tempo badge" style="margin-top:10px;">${procedimento.semanaInicial} -- ${procedimento.semanaFinal}</span>
                                     </div>
                                     <div class="col-md-2 text-center">
                                         <img class="status center" style="width:50%" src="../../imgs/posterior.jpg"
