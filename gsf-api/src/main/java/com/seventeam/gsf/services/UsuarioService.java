@@ -24,5 +24,9 @@ public class UsuarioService {
 	{
 		return usuarioDao.findAll();
 	}
+	
+	public Usuario findOne(String login, String password){
+		return usuarioDao.getByLoginAndPassword(login, password);
+	}
 }
 
