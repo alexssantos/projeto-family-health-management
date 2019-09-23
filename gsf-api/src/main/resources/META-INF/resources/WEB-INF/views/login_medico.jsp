@@ -17,9 +17,9 @@
     <div class="container">
         <div class="square">
             <img alt="Logo Médico" src="../../imgs/medico.png">
-            <form method="post"  action="form">
-                <input type="text" value="" placeholder="CRM" name="crm" id="campo_crm" />
-                <input type="password" value="" placeholder="Senha" name="senha" id="campo_senha" />
+            <form method="post" name="usuario" action="/login/medico">
+                <input type="text" value="" placeholder="CRM" name="login" id="campo_crm" />
+                <input type="password" value="" placeholder="Senha" name="password" id="campo_senha" />
                 <input type="submit" value="Login" id="botao_login" />
                 <div class="rodape_campos">
                     <div id="linha_login"></div>

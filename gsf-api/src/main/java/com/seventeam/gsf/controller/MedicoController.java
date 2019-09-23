@@ -90,5 +90,11 @@ public class MedicoController
 		ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).build();
 		return reponse;
 	}
+
+	@RequestMapping(value = "minhas_pacientes")
+	public String minhasPacientes()
+	{
+		return "lista_gestante";
+	}
 	
 }

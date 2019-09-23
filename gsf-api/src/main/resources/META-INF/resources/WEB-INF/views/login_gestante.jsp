@@ -11,9 +11,9 @@
     <div class="container">
         <div class="square">
             <img alt="Logo Mamãe" src="../../imgs/mom.png">
-            <form method="post" action="form">
-                <input type="text" value="" placeholder="CPF" name="cpf" id="campo_cpf" />
-                <input type="password" value="" placeholder="Senha" name="senha" id="campo_senha" />
+            <form method="post" name="usuario" action="/login/gestante">
+                <input type="text" value="" placeholder="CPF" name="login" id="campo_cpf" />
+                <input type="password" value="" placeholder="Senha" name="password" id="campo_senha" />
                 <input type="submit" value="Login" id="botao_login" />
                 <div class="rodape_campos">
                     <div id="linha_login"></div>

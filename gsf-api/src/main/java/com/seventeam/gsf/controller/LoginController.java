@@ -1,7 +1,9 @@
 package com.seventeam.gsf.controller;
 
+import com.seventeam.gsf.domain.Paciente;
 import com.seventeam.gsf.domain.Procedimento;
 import com.seventeam.gsf.domain.Usuario;
+import com.seventeam.gsf.services.PacienteService;
 import com.seventeam.gsf.services.ProcedimentoService;
 import com.seventeam.gsf.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class LoginController {
     public UsuarioService usuarioService;
     @Autowired
     public ProcedimentoService procedimentoService;
+    @Autowired
+    public PacienteService pacienteService;
 
 //    @RequestMapping(method = RequestMethod.GET)
 //    public @ResponseBody String Login(@RequestParam Map<String, String> allRequestParams){
@@ -86,6 +90,20 @@ public class LoginController {
             List<Procedimento> listaProcedimentos = procedimentoService.findAll();
             ModelAndView mav = new ModelAndView("procedimentos");
             mav.addObject("listaProcedimentos", listaProcedimentos);
+
+            return mav;
+        } else {
+            return null;
+        }
+    }
+
+    @PostMapping("/medico")
+    public ModelAndView doLoginMedico(@ModelAttribute Usuario u) {
+        Usuario db = usuarioService.findOne(u.getLogin(), u.getPassword());
+        if (db != null) {
+            List<Paciente> listaPacientes = pacienteService.findAll();
+            ModelAndView mav = new ModelAndView("lista_gestante");
+            mav.addObject("listaPacientes", listaPacientes);
 
             return mav;
         } else {
