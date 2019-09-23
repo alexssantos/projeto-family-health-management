@@ -16,17 +16,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(value = "/api/procedimento")
+@RequestMapping(value = "/")
 public class ProcedimentoController {
 	
 	@Autowired
 	ProcedimentoService procedimentoService;
 	
-	@RequestMapping(method= RequestMethod.GET)
-	public ResponseEntity<List<Procedimento>> get()
-	{
-		return getAll();
-	}
+//	@RequestMapping(method= RequestMethod.GET)
+//	public ResponseEntity<List<Procedimento>> get()
+//	{
+//		return getAll();
+//	}
 	
 	@RequestMapping(path = "/getall", method= RequestMethod.GET)
 	public ResponseEntity<List<Procedimento>> getAll()
