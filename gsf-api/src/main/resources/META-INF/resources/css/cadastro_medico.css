@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+body
+{
+    background-color: rgb(173, 216, 230);
+}
+
+/* CSS Campos --- */
+#campo_nome
+{
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#campo_crm
+{
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#campo_email
+{
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#campo_senha
+{
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#campo_confirma_senha
+{
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 20px;
+    display: block;
+    margin: 10px auto;
+    opacity: 0.5;
+    border: 1px solid rgb(0, 0, 0);
+}
+/* ------------------------- */
