@@ -14,20 +14,20 @@
     <link rel="stylesheet" type="text/css" href="css/geral.css" />
 </head>
 <body>
-<div class="container">
-    <div class="square">
-        <img alt="Logo Mamãe" src="imgs/stethoscope.png">
-        <form method="post"  action="form">
-            <input type="text" value="" placeholder="CRM" name="crm" id="campo_crm" />
-            <input type="password" value="" placeholder="Senha" name="senha" id="campo_senha" />
-            <input type="submit" value="Login" id="botao_login" />
-            <div class="rodape_campos">
-                <div id="linha_login"></div>
-                <p id="redirecionamento_login">Ainda não tem conta? <a href="#">Cadastre-se</a></p>
-            </div>
-        </form>
+    <div class="container">
+        <div class="square">
+            <img alt="Logo Mamãe" src="imgs/stethoscope.png">
+            <form method="post"  action="form">
+                <input type="text" value="" placeholder="CRM" name="crm" id="campo_crm" />
+                <input type="password" value="" placeholder="Senha" name="senha" id="campo_senha" />
+                <input type="submit" value="Login" id="botao_login" />
+                <div class="rodape_campos">
+                    <div id="linha_login"></div>
+                    <p id="redirecionamento_login">Ainda não tem conta? <a href="#">Cadastre-se</a></p>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 </body>
 <footer>
     <p>&copy; by 7Team</p>
