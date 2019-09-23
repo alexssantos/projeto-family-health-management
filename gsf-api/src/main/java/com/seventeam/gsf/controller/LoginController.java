@@ -106,7 +106,8 @@ public class LoginController {
             mav.addObject("listaPacientes", listaPacientes);
 
             return mav;
-        } else {
+        }
+        else {
             return null;
         }
     }

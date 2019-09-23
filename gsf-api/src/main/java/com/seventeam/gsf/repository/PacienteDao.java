@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface PacienteDao extends JpaRepository<Paciente, Integer> {
 	
 	public Paciente getByUsuario(Usuario user);
-
 }

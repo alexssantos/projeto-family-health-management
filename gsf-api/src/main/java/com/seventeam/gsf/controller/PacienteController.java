@@ -79,13 +79,4 @@ public class PacienteController {
         ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).build();
         return reponse;
     }
-
-    @RequestMapping("/")
-    public String home() {
-        ModelAndView mav = new ModelAndView();
-        mav.addObject("nome", "Hello Woooorrrrllddd");
-
-        return "index";
-    }
-
 }
