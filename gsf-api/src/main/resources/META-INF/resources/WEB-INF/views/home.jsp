@@ -16,7 +16,7 @@
             <p>Ainda não possui uma conta? <a href="/cadastro/gestante">Crie a sua aqui</a></p>
         </div>
         <div class="square_medico">
-            <img src="imgs/stethoscope.png" />
+            <img src="imgs/medico.png" />
             <h2>É um médico e quer acompanhar de perto o cronograma gestacional de suas pacientes?</h2>
             <p>Faça o login, <a href="/login/medico">aqui</a>!</p>
             <p>Ainda não possui uma conta? <a href="/cadastro/medico">Crie a sua aqui</a></p>

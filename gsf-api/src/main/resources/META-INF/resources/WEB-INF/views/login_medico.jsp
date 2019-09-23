@@ -14,28 +14,22 @@
     <link rel="stylesheet" type="text/css" href="../../css/geral.css"/>
 </head>
 <body>
-<div class="container">
-    <div class="square">
-        <img alt="Logo Mamãe" src="../../imgs/stethoscope.png">
-        <form method="post"  action="form">
-            <div>
-                <input type="text" value="" placeholder="CRM" name="crm" id="crm" />
-            </div>
-            <div>
-                <input type="password" value="" placeholder="Senha" name="senha" id="password" />
-            </div>
-            <div>
+    <div class="container">
+        <div class="square">
+            <img alt="Logo Médico" src="../../imgs/medico.png">
+            <form method="post"  action="form">
+                <input type="text" value="" placeholder="CRM" name="crm" id="campo_crm" />
+                <input type="password" value="" placeholder="Senha" name="senha" id="campo_senha" />
                 <input type="submit" value="Login" id="botao_login" />
-            </div>
-            <div class="dentro">
-                <div id="linha_login"></div>
-                <p id="redirecionamento_cadastro">Ainda não tem conta? <a href="#">Cadastre-se</a></p>
-            </div>
-        </form>
+                <div class="rodape_campos">
+                    <div id="linha_login"></div>
+                    <p id="redirecionamento_login">Ainda não tem conta? <a href="#">Cadastre-se</a></p>
+                </div>
+            </form>
+        </div>
     </div>
-    <footer>
-        <p>&copy; by 7Team</p>
-    </footer>
-</div>
 </body>
+<footer>
+    <p>&copy; by 7Team</p>
+</footer>
 </html>

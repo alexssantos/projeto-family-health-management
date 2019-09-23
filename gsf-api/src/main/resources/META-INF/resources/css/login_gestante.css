@@ -1,46 +1,34 @@
 @charset "UTF-8";
+
 body
 {
-    background-color: #e1c7dc;
+    background-color: rgb(225, 199, 220);
 }
 
-.dentro
+/* CSS Campos --- */
+#campo_cpf
 {
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-}
-
-#cadastro
-{
-    padding-left: 135px;
-    margin: 0 auto;
-    display: block;
-    padding-top: 19px;
-}
-
-#cpf
-{
-    /*size: 3;*/
-    width: 55%;
+    size: 3;
+    width: 60%;
     text-align: center;
     height: 25px;
     border-radius: 20px;
     display: block;
     margin: 10px auto;
     opacity: 0.5;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
 }
 
-#password
+#campo_senha
 {
-    /*size: 3;*/
-    width: 55%;
+    size: 3;
+    width: 60%;
     text-align: center;
     height: 25px;
     border-radius: 20px;
     display: block;
     margin: 10px auto;
     opacity: 0.5;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
 }
+/* ------------------------- */

@@ -1,85 +1,107 @@
 @charset "UTF-8";
-/* Dividido pelas 4 páginas */
+
+/* Dividido pelas 4 páginas --- */
+.container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .square
 {
-    width: 40%;
-    position: absolute;
-    left: 29%;
-    top: 7%;
-    padding: 20px 20px 20px 20px;
+    width: 790px;
+    height: 790px;
+    margin-top: 180px;
 }
 
 img
 {
-    width: 35%;
     display: block;
+    width: 32%;
     margin: 0 auto;
     padding-bottom: 4%;
 }
 
+a:link
+{
+    color: rgb(0, 0, 0);
+}
+
+footer
+{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    color: rgb(0, 0, 0);
+}
+
 footer p
 {
-    padding-top: 47%;
     padding-left: 5%;
 }
 /* ------------------------- */
 
 
-/* css das páginas de Cadastro */
+/* css das páginas de Cadastro --- */
 #linha
 {
-    margin: 0 auto;
     display: block;
     width: 75%;
-    border-bottom: 1px solid;
-}
-
-#redirecionamento_login
-{
-    padding-left: 380px;
     margin: 0 auto;
-    display: block;
-    padding-top: 19px;
-}
-
-#botao_cadastro
-{
-    width: 55%;
-    height: 30px;
-    border-radius: 15px;
-    display: block;
-    background-color: #383838;
-    color: white;
-    margin: 20px auto;
-    border: 1px solid #383838;
-}
-/* ------------------------- */
-
-
-/* css das páginas de Login */
-#linha_login
-{
-    width: 100%;
     border-bottom: 1px solid;
 }
 
 #redirecionamento_cadastro
 {
-    padding-left: 135px;
-    margin: 0 auto;
     display: block;
+    margin: 0 auto;
+    padding-left: 380px;
+    padding-top: 19px;
+}
+
+#botao_cadastro
+{
+    display: block;
+    width: 59%;
+    height: 30px;
+    margin: 20px auto;
+    border-radius: 15px;
+    background-color: rgb(56, 56, 56);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(56, 56, 56);
+}
+/* ------------------------- */
+
+
+/* css das páginas de Login --- */
+#linha_login
+{
+    display: block;
+    width: 52%;
+    margin: 0 auto;
+    border-bottom: 1px solid;
+}
+
+#redirecionamento_login
+{
+    display: block;
+    margin: 0 auto;
+    padding-left: 365px;
     padding-top: 19px;
 }
 
 #botao_login
 {
-    width: 55%;
-    height: 30px;
-    border-radius: 15px;
     display: block;
-    background-color: #383838;
-    color: white;
+    width: 59%;
+    height: 25px;
     margin: 20px auto;
-    border: 1px solid #383838;
+    border-radius: 15px;
+    background-color: rgb(56, 56, 56);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(56, 56, 56);
 }
 /* ------------------------- */
