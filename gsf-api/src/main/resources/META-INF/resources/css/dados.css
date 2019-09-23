@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+.container
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.square
+{
+    width: 790px;
+    height: 790px;
+    margin-top: 180px;
+}
+h1
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#campo_cpf
+{
+    background-color: rgb(255, 255, 255);
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 7px;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#campo_inicio
+{
+    background-color: rgb(255, 255, 255);
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 7px;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#campo_nome
+{
+    background-color: rgb(255, 255, 255);
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 7px;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#campo_crm
+{
+    background-color: rgb(255, 255, 255);
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 7px;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#campo_email
+{
+    background-color: rgb(255, 255, 255);
+    size: 3;
+    width: 60%;
+    text-align: center;
+    height: 25px;
+    border-radius: 7px;
+    display: block;
+    margin: 10px auto;
+    border: 1px solid rgb(0, 0, 0);
+}
+
+#botao_editar
+{
+    display: block;
+    width: 59%;
+    height: 25px;
+    margin: 20px auto;
+    border-radius: 15px;
+    background-color: rgb(56, 56, 56);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(56, 56, 56);
+}
+
+footer
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(0, 0, 0);
+}
+
+footer p
+{
+    padding-left: 5%;
+}
