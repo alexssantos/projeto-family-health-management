@@ -70,6 +70,7 @@ public class PermissaoController {
 
     
     /*
+    TODO: terminar medoto
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Medico> update(@PathVariable Integer id, @RequestBody MedicoForm form)
     {
@@ -79,6 +80,7 @@ public class PermissaoController {
         return reponse;
     }
 
+	TODO: terminar medoto.
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable Integer id)
     {
