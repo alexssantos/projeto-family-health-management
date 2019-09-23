@@ -1,18 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: math
-  Date: 16/09/2019
-  Time: 09:08
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Login - Gestante</title>
     <meta charset="UTF-8">
 
-<%--    <mvc:resources mapping="/css/login_gestante.css" location="/css/" />--%>
     <link rel="stylesheet" type="text/css" href="../../css/login_gestante.css" />
     <link rel="stylesheet" type="text/css" href="../../css/geral.css" />
 </head>

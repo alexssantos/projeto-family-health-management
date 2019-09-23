@@ -6,13 +6,16 @@ import com.seventeam.gsf.services.ProcedimentoService;
 import com.seventeam.gsf.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/login")
-public class LoginController {
+@RequestMapping(value = "/cadastro")
+public class CadastroController {
 
     @Autowired
     public UsuarioService usuarioService;
@@ -48,12 +51,12 @@ public class LoginController {
 
     @RequestMapping(value = "/gestante")
     public String gestante() {
-        return "login_gestante";
+        return "cadastro_gestante";
     }
 
     @RequestMapping(value = "/medico")
     public String medico() {
-        return "login_medico";
+        return "cadastro_medico";
     }
 
     //    @RequestMapping("efetuaLogin")
@@ -78,18 +81,4 @@ public class LoginController {
 //        return "login_medico";
 //    }
 //
-
-    @PostMapping("/gestante")
-    public ModelAndView doLogin(@ModelAttribute Usuario u) {
-        Usuario db = usuarioService.findOne(u.getLogin(), u.getPassword());
-        if (db != null) {
-            List<Procedimento> listaProcedimentos = procedimentoService.findAll();
-            ModelAndView mav = new ModelAndView("procedimentos");
-            mav.addObject("listaProcedimentos", listaProcedimentos);
-
-            return mav;
-        } else {
-            return null;
-        }
-    }
 }
