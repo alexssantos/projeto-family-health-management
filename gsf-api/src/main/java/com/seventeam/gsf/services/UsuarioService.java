@@ -1,6 +1,8 @@
 package com.seventeam.gsf.services;
 
+import com.seventeam.gsf.domain.Perfil;
 import com.seventeam.gsf.domain.Usuario;
+import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 import com.seventeam.gsf.repository.UsuarioDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,7 @@ public class UsuarioService {
 	public void saveUsuario(Usuario obj)
 	{
 		if (obj != null){
+			obj.setPerfil(new Perfil(1, PerfilTipoEnum.PACIENTE));
 			usuarioDao.save(obj);
 		}
 	}

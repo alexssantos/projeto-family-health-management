@@ -43,6 +43,11 @@ public class Perfil {
         this.tipoPerfil = tipoPerfil;
     }
 
+    public Perfil(Integer id, PerfilTipoEnum tipoPerfil) {
+        this.id = id;
+	    this.tipoPerfil = tipoPerfil;
+    }
+
 
     // =======================
     // GET SET

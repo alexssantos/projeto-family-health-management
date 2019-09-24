@@ -1,11 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: math
-  Date: 19/09/2019
-  Time: 21:18
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <title>Criar Conta - Gestante</title>
@@ -15,21 +11,35 @@
 </head>
 <body>
     <div class="container">
+        <c:if test="${resposta != null}">
+            <h1>${resposta}</h1>
+        </c:if>
         <div class="square">
             <img alt="Logo Mamãe" src="../../imgs/mom.png">
-            <form method="post"  action="form">
-                <input type="text" value="" placeholder="Nome" name="nome" id="campo_nome" />
-                <input type="text" value="" placeholder="CPF" name="cpf" id="campo_cpf" />
-                <input type="text" value="" placeholder="Início da Gestão" name="inicio" id="campo_inicio" />
-                <input type="text" value="" placeholder="E-mail" name="email" id="campo_email" />
-                <input type="password" value="" placeholder="Senha" name="senha" id="campo_senha" />
-                <input type="password" value="" placeholder="Confirmar Senha" name="confirmar senha" id="campo_confirmar_senha" />
-                <input type="submit" value="Cadastrar" id="botao_cadastro" />
+
+            <form method="post"  action="${actionSalvarAtualizar}" >
+                <input type="hidden" name="id" value="${paciente.id}">
+                <input type="hidden" name="usuario.id" value="${paciente.usuario.id}">
+                <input type="text" value="${paciente.nome}" placeholder="Nome" name="nome" id="nome" />
+                <input type="text" value="${paciente.dataNascimento}" placeholder="nascimento" name="dataNascimento" id="dataNascimento" />
+                <input type="text" value="${paciente.dataGravidez}" placeholder="gravidez" name="dataGravidez" id="dataGravidez" />
+                <input type="text" value="${paciente.usuario.login}" placeholder="Login" name="usuario.login" id="login" />
+                <input type="password" value="${paciente.usuario.password}" placeholder="Password" name="usuario.password" id="password" />
+
+
+           <input type="submit" value="Cadastrar" id="botao_cadastro" />
                 <div class="rodape_campos">
                     <div id="linha"></div>
                     <p id="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
                 </div>
             </form>
+            <c:if test="${paciente != null}">
+                <form method="post" action="/cadastro/exclui/paciente">
+                    <input type="hidden" name="id" value="${paciente.id}">
+                    <button type="submit">Excluir meus dados</button>
+                </form>
+            </c:if>
+
         </div>
     </div>
 </body>

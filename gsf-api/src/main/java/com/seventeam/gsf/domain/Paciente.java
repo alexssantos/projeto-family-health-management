@@ -1,5 +1,7 @@
 package com.seventeam.gsf.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -18,12 +20,15 @@ public class Paciente implements Serializable {
 	private String nome;
 
 	@Column(name="data_nascimento")
+
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataNascimento;
 
 	@Column(name="data_gravidez")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataGravidez;
-	
-	
+
+
 	// =======================
 	// RELATIONSHIPS
 	// =======================
@@ -102,5 +107,9 @@ public class Paciente implements Serializable {
 				", dataGravidez=" + dataGravidez +
 				", usuario=" + usuario +
 				'}';
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

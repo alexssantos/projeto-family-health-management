@@ -57,7 +57,6 @@ public class Usuario {
 		//this.perfil = new Perfil(tipoPerfil);
 	}
 
-
 	// GET SET
 	public Integer getId() {
 		return id;
@@ -103,6 +102,10 @@ public class Usuario {
 //		this.medico = medico;
 //	}
 
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	@Override
 	public String toString() {

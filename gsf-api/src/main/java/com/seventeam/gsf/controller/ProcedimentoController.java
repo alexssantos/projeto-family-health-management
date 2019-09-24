@@ -23,15 +23,6 @@ public class ProcedimentoController {
 	@Autowired
 	ProcedimentoService procedimentoService;
 
-//	@RequestMapping("/procedimentos")
-//	public ModelAndView procedimentos() {
-//		List<Procedimento> listaProcedimentos = service.findAll();
-//		ModelAndView mav = new ModelAndView("procedimentos");
-//		mav.addObject("listaProcedimentos", listaProcedimentos);
-//
-//		return mav;
-//	}
-
 	@RequestMapping(path = "/getall", method= RequestMethod.GET)
 	public ResponseEntity<List<Procedimento>> getAll()
 	{

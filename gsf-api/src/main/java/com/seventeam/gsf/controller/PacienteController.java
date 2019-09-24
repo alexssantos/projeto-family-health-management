@@ -47,7 +47,7 @@ public class PacienteController {
     public ResponseEntity createPaciente(@RequestBody PacienteForm form)
     {
         //ValidateForm
-        pacienteService.save(form);
+       // pacienteService.save(form);
 
         ResponseEntity reponse = ResponseEntity.ok().body(form);
         return reponse;
@@ -71,12 +71,4 @@ public class PacienteController {
         return reponse;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<PacienteDto> delete(@PathVariable Integer id)
-    {
-        pacienteService.delete(id);
-
-        ResponseEntity reponse = ResponseEntity.status(HttpStatus.GONE).build();
-        return reponse;
-    }
 }

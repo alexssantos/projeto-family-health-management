@@ -96,5 +96,4 @@ public class MedicoController
 	{
 		return "lista_gestante";
 	}
-	
 }

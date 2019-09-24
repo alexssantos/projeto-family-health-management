@@ -29,23 +29,21 @@ public class PacienteService {
     public PacienteService() {
     }
 
-    public void save(Paciente obj)
+    public void save(Paciente obj) throws Exception
     {
-        if (obj != null){
-            pacienteDao.save(obj);
+        try {
+            if (obj != null){
+                obj.getUsuario().setPerfil(new Perfil(1, PerfilTipoEnum.PACIENTE));
+
+                pacienteDao.save(obj);
+            }
+        }catch (Exception ex){
+            throw new Exception(ex.getMessage());
         }
+
     }
 
-    public Paciente save(PacienteForm form)
-    {
-        if (form == null){
-            return null;
-        }
 
-        Paciente paciente = getPacienteByForm(form);
-        save(paciente);
-        return paciente;
-    }
 
     public List<Paciente> findAll()
     {
@@ -86,7 +84,7 @@ public class PacienteService {
         // TODO: VALIDATE FORM.
         Paciente pacToUpdate = findById(id);
         Paciente newPaciente = updatePacienteByForm(form, pacToUpdate);
-        save(newPaciente);
+        //save(newPaciente);
         
         return newPaciente;
     }
@@ -116,9 +114,14 @@ public class PacienteService {
         return pacToUpdate;
     }
 
-    public void delete(Integer id)
+    public void delete(Integer id, String login) throws Exception
     {
-        findById(id);
-        pacienteDao.deleteById(id);
+        Paciente p = findById(id);
+        if(p.getUsuario().getLogin().equals(login)){
+            pacienteDao.deleteById(id);
+        }else{
+            throw new Exception("Ação não permitida");
+        }
+
     }
 }

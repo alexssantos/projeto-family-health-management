@@ -67,10 +67,10 @@
         <%--Início--%>
         <div class="cd-timeline__block">
             <div class="cd-timeline__img cd-timeline__img--picture">
-                <img src="../../imgs/fetus1.jpg" alt="Picture">
+                <img src="../../imgs/fetus3.jpg" alt="Picture">
             </div> <!-- cd-timeline__img -->
             <div class="cd-timeline__content text-component">
-                <h2>Ciclo 1</h2>
+                <h2>Ciclo 2</h2>
                 <ul class="list-group" style="padding-left:0;">
                     <li class="list-group-item">
                         <form>
@@ -106,10 +106,10 @@
         <!-- Inicio -->
         <div class="cd-timeline__block">
             <div class="cd-timeline__img cd-timeline__img--picture">
-                <img src="../../imgs/fetus1.jpg" alt="Picture">
+                <img src="../../imgs/fetus6.jpg" alt="Picture">
             </div> <!-- cd-timeline__img -->
             <div class="cd-timeline__content text-component">
-                <h2>Ciclo 1</h2>
+                <h2>Ciclo 3</h2>
                 <ul class="list-group" style="padding-left:0;">
                     <li class="list-group-item">
                         <form>
@@ -145,10 +145,10 @@
         <%--Início--%>
         <div class="cd-timeline__block">
             <div class="cd-timeline__img cd-timeline__img--picture">
-                <img src="../../imgs/fetus1.jpg" alt="Picture">
+                <img src="../../imgs/fetus8.jpg" alt="Picture">
             </div> <!-- cd-timeline__img -->
             <div class="cd-timeline__content text-component">
-                <h2>Ciclo 1</h2>
+                <h2>Ciclo 4</h2>
                 <ul class="list-group" style="padding-left:0;">
                     <li class="list-group-item">
                         <form>
