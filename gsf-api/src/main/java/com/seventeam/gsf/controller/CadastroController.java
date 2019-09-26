@@ -78,7 +78,7 @@ public class CadastroController {
     @RequestMapping(value = "/gestante")
     public ModelAndView gestante() {
         ModelAndView mav = new ModelAndView("cadastro_gestante");
-        mav.addObject("actionSalvarAtuaizar", "/cadastro/gestante");
+        mav.addObject("actionSalvarAtualizar", "/cadastro/savePaciente");
         return mav;
     }
 
