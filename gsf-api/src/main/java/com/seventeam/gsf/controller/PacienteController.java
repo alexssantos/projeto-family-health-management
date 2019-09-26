@@ -78,7 +78,7 @@ public class PacienteController {
     }
 
     @RequestMapping(value = "/login")
-    public String paciente() {
+    public String loginPaciente() {
         return "login_paciente";
     }
 
@@ -94,6 +94,63 @@ public class PacienteController {
             return mav;
         } else {
             return null;
+        }
+    }
+
+    @RequestMapping(value = "/cadastrar")
+    public ModelAndView cadastroPaciente() {
+        ModelAndView mav = new ModelAndView("cadastro_paciente");
+        mav.addObject("actionSalvarAtualizar", "/paciente/cadastrar");
+        return mav;
+    }
+
+    @PostMapping("/cadastrar")
+    public ModelAndView doCadastroPaciente(@ModelAttribute Paciente paciente) {
+        ModelAndView mav = new ModelAndView("cadastro_paciente");
+        try{
+            pacienteService.save(paciente);
+            mav.addObject("resposta", "Paciente cadastrada com sucesso");
+        }catch(Exception ex){
+            mav.addObject("resposta", "Ocorreu um erro ->" + ex.getMessage());
+        }
+        return mav;
+    }
+
+//    -------------------
+
+    @PostMapping("/alterar")
+    public ModelAndView updatePaciente(@ModelAttribute Paciente paciente) {
+        ModelAndView mav = new ModelAndView("cadastro_paciente");
+        try{
+            pacienteService.save(paciente);
+            mav.addObject("resposta", "Paciente atualizada com sucesso");
+        }catch(Exception ex){
+            mav.addObject("resposta", "Ocorreu um erro ->" + ex.getMessage());
+        }
+        return mav;
+    }
+
+    @RequestMapping(value = "/alterar")
+    public ModelAndView atualizarGestante(HttpSession httpSession) {
+        String login = (String) httpSession.getAttribute("login");
+        Paciente p = pacienteService.getByLogin(login);
+        ModelAndView mav = new ModelAndView("cadastro_paciente");
+        mav.addObject("actionSalvarAtualizar", "/paciente/cadastrar");
+        mav.addObject("paciente", p);
+        return mav;
+    }
+
+    @PostMapping("/excluir")
+    public ModelAndView excluirPaciente(HttpSession session, @ModelAttribute Paciente p){
+        try {
+            pacienteService.delete(p.getId(), (String) session.getAttribute("login"));
+            ModelAndView mav = new ModelAndView("redirect:/login/paciente");
+            session.removeAttribute("login");
+            return mav;
+        }catch (Exception ex){
+            ModelAndView mav = new ModelAndView("cadastro_paciente");
+            mav.addObject("resposta", ex.getMessage());
+            return mav;
         }
     }
 }
