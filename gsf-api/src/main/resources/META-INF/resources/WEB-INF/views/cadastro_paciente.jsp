@@ -26,13 +26,26 @@
                 <input type="text" value="${paciente.usuario.login}" placeholder="Login" name="usuario.login" id="login" />
                 <input type="password" value="${paciente.usuario.password}" placeholder="Password" name="usuario.password" id="password" />
 
+            <c:choose>
+                <c:when test="${paciente != null}">
+                    <input type="submit" value="Alterar" id="botao_cadastro" />
+                    <div class="rodape_campos">
+                        <div id="linha"></div>
+                        <p id="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
+                    </div>
+                    </form>
+                </c:when>
+                <c:when test="${paciente == null}">
+                    <input type="submit" value="Criar" id="botao_cadastro" />
+                    <div class="rodape_campos">
+                        <div id="linha"></div>
+                        <p id="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
+                    </div>
+                    </form>
+                </c:when>
+            </c:choose>
 
-           <input type="submit" value="Cadastrar" id="botao_cadastro" />
-                <div class="rodape_campos">
-                    <div id="linha"></div>
-                    <p id="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
-                </div>
-            </form>
+
             <c:if test="${paciente != null}">
                 <form method="post" action="/cadastro/exclui/paciente">
                     <input type="hidden" name="id" value="${paciente.id}">

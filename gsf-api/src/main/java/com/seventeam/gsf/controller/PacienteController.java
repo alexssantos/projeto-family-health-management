@@ -106,7 +106,7 @@ public class PacienteController {
 
     @PostMapping("/cadastrar")
     public ModelAndView doCadastroPaciente(@ModelAttribute Paciente paciente) {
-        ModelAndView mav = new ModelAndView("cadastro_paciente");
+        ModelAndView mav = new ModelAndView("sucesso");
         try{
             pacienteService.save(paciente);
             mav.addObject("resposta", "Paciente cadastrada com sucesso");
@@ -115,7 +115,6 @@ public class PacienteController {
         }
         return mav;
     }
-
 //    -------------------
 
     @PostMapping("/alterar")
@@ -131,7 +130,7 @@ public class PacienteController {
     }
 
     @RequestMapping(value = "/alterar")
-    public ModelAndView atualizarGestante(HttpSession httpSession) {
+    public ModelAndView atualizarPaciente(HttpSession httpSession) {
         String login = (String) httpSession.getAttribute("login");
         Paciente p = pacienteService.getByLogin(login);
         ModelAndView mav = new ModelAndView("cadastro_paciente");
@@ -140,14 +139,15 @@ public class PacienteController {
         return mav;
     }
 
-    @PostMapping("/excluir")
-    public ModelAndView excluirPaciente(HttpSession session, @ModelAttribute Paciente p){
+    @PostMapping(value = "/excluir")
+    public ModelAndView excluir(HttpSession session, @ModelAttribute Paciente p){
         try {
             pacienteService.delete(p.getId(), (String) session.getAttribute("login"));
-            ModelAndView mav = new ModelAndView("redirect:/login/paciente");
+            ModelAndView mav = new ModelAndView("redirect:/paciente/login");
             session.removeAttribute("login");
             return mav;
-        }catch (Exception ex){
+        }
+        catch (Exception ex){
             ModelAndView mav = new ModelAndView("cadastro_paciente");
             mav.addObject("resposta", ex.getMessage());
             return mav;

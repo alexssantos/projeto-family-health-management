@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Você foi cadastrada com Sucesso! :)</h1>
-    <h3><a href="/procedimentos/getall">Ver meus procedimentos</a></h3>
+    <h3><a href="/paciente/login">Logue-se pra ver seus procedimentos</a></h3>
 </body>
 <footer>
     <p>&copy; by 7Team</p>
