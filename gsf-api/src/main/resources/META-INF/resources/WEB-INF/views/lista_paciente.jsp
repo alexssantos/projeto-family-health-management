@@ -5,7 +5,7 @@
 <head>
     <title>Lista de Gestantes</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../css/lista_gestante.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/lista_paciente.css" />
     <link rel="stylesheet" type="text/css" href="../../css/procedimentos.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">

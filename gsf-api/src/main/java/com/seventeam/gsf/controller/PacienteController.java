@@ -1,19 +1,21 @@
 package com.seventeam.gsf.controller;
 
 import com.seventeam.gsf.domain.Paciente;
+import com.seventeam.gsf.domain.Procedimento;
+import com.seventeam.gsf.domain.Usuario;
 import com.seventeam.gsf.models.Form.PacienteForm;
 import com.seventeam.gsf.models.dto.PacienteDto;
 import com.seventeam.gsf.services.PacienteService;
+import com.seventeam.gsf.services.ProcedimentoService;
+import com.seventeam.gsf.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,7 +24,11 @@ import java.util.stream.Collectors;
 public class PacienteController {
 
     @Autowired
-    PacienteService pacienteService;
+    public UsuarioService usuarioService;
+    @Autowired
+    public ProcedimentoService procedimentoService;
+    @Autowired
+    public PacienteService pacienteService;
 
     @RequestMapping(method= RequestMethod.GET)
     public ResponseEntity<List<Paciente>> get()
@@ -71,4 +77,23 @@ public class PacienteController {
         return reponse;
     }
 
+    @RequestMapping(value = "/login")
+    public String paciente() {
+        return "login_paciente";
+    }
+
+    @PostMapping("/login")
+    public ModelAndView doLoginPaciente(@ModelAttribute Usuario u, HttpSession session) {
+        Usuario db = usuarioService.findOne(u.getLogin(), u.getPassword());
+        if (db != null) {
+            session.setAttribute("login", db.getLogin());
+            List<Procedimento> listaProcedimentos = procedimentoService.findAll();
+            ModelAndView mav = new ModelAndView("procedimentos");
+            mav.addObject("listaProcedimentos", listaProcedimentos);
+
+            return mav;
+        } else {
+            return null;
+        }
+    }
 }

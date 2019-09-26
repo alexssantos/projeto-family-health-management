@@ -9,11 +9,11 @@
 <div class="container">
     <h1>Bem vindo(a) ao GSF!</h1>
     <div class="square">
-        <div class="square_gestante">
+        <div class="square_paciente">
             <img src="imgs/mom.png" />
-            <h2>É uma gestante e quer seguir o cronograma gestacional?</h2>
-            <p>Faça o login, <a href="/login/gestante">aqui</a>!</p>
-            <p>Ainda não possui uma conta? <a href="/cadastro/gestante">Crie a sua aqui</a></p>
+            <h2>É uma paciente e quer seguir o cronograma gestacional?</h2>
+            <p>Faça o login, <a href="/login/paciente">aqui</a>!</p>
+            <p>Ainda não possui uma conta? <a href="/cadastro/paciente">Crie a sua aqui</a></p>
         </div>
         <div class="square_medico">
             <img src="imgs/medico.png" />

@@ -94,6 +94,6 @@ public class MedicoController
 	@RequestMapping(value = "minhas_pacientes")
 	public String minhasPacientes()
 	{
-		return "lista_gestante";
+		return "lista_paciente";
 	}
 }

@@ -6,7 +6,7 @@
 <head>
     <title>Criar Conta - Gestante</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../css/cadastro_gestante.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/cadastro_paciente.css"/>
     <link rel="stylesheet" type="text/css" href="../../css/geral.css"/>
 </head>
 <body>

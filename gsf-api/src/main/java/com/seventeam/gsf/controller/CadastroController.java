@@ -27,7 +27,7 @@ public class CadastroController {
 
     @PostMapping("/savePaciente")
     public ModelAndView savePaciente(@ModelAttribute Paciente paciente) {
-        ModelAndView mav = new ModelAndView("cadastro_gestante");
+        ModelAndView mav = new ModelAndView("cadastro_paciente");
         try{
             pacienteService.save(paciente);
             mav.addObject("resposta", "Paciente cadastrada com sucesso");
@@ -39,7 +39,7 @@ public class CadastroController {
 
     @PostMapping("/updatePaciente")
     public ModelAndView updatePaciente(@ModelAttribute Paciente paciente) {
-        ModelAndView mav = new ModelAndView("cadastro_gestante");
+        ModelAndView mav = new ModelAndView("cadastro_paciente");
         try{
             pacienteService.save(paciente);
             mav.addObject("resposta", "Paciente atualizada com sucesso");
@@ -75,18 +75,18 @@ public class CadastroController {
         return "login_medico";
     }
 
-    @RequestMapping(value = "/gestante")
-    public ModelAndView gestante() {
-        ModelAndView mav = new ModelAndView("cadastro_gestante");
+    @RequestMapping(value = "/paciente")
+    public ModelAndView paciente() {
+        ModelAndView mav = new ModelAndView("cadastro_paciente");
         mav.addObject("actionSalvarAtualizar", "/cadastro/savePaciente");
         return mav;
     }
 
-    @RequestMapping(value = "/atualizar/gestante")
+    @RequestMapping(value = "/atualizar/paciente")
     public ModelAndView atualizarGestante(HttpSession httpSession) {
         String login = (String) httpSession.getAttribute("login");
         Paciente p = pacienteService.getByLogin(login);
-        ModelAndView mav = new ModelAndView("cadastro_gestante");
+        ModelAndView mav = new ModelAndView("cadastro_paciente");
         mav.addObject("actionSalvarAtualizar", "/cadastro/updatePaciente");
         mav.addObject("paciente", p);
         return mav;
@@ -102,11 +102,11 @@ public class CadastroController {
 
         try {
             pacienteService.delete(p.getId(), (String) session.getAttribute("login"));
-            ModelAndView mav = new ModelAndView("redirect:/login/gestante");
+            ModelAndView mav = new ModelAndView("redirect:/login/paciente");
             session.removeAttribute("login");
             return mav;
         }catch (Exception ex){
-            ModelAndView mav = new ModelAndView("cadastro_gestante");
+            ModelAndView mav = new ModelAndView("cadastro_paciente");
             mav.addObject("resposta", ex.getMessage());
             return mav;
         }
