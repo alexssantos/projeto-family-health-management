@@ -12,14 +12,14 @@
         <div class="square_paciente">
             <img src="imgs/mom.png" />
             <h2>É uma paciente e quer seguir o cronograma gestacional?</h2>
-            <p>Faça o login, <a href="/login/paciente">aqui</a>!</p>
-            <p>Ainda não possui uma conta? <a href="/cadastro/paciente">Crie a sua aqui</a></p>
+            <p>Faça o login, <a href="/paciente/login">aqui</a>!</p>
+            <p>Ainda não possui uma conta? <a href="/paciente/cadastrar">Crie a sua aqui</a></p>
         </div>
         <div class="square_medico">
             <img src="imgs/medico.png" />
             <h2>É um médico e quer acompanhar de perto o cronograma gestacional de suas pacientes?</h2>
-            <p>Faça o login, <a href="/login/medico">aqui</a>!</p>
-            <p>Ainda não possui uma conta? <a href="/cadastro/medico">Crie a sua aqui</a></p>
+            <p>Faça o login, <a href="/medico/login">aqui</a>!</p>
+            <p>Ainda não possui uma conta? <a href="/medico/cadastrar">Crie a sua aqui</a></p>
         </div>
     </div>
 </div>

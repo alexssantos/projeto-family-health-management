@@ -46,7 +46,7 @@ footer p
 
 
 /* css das páginas de Cadastro --- */
-#linha
+.linha
 {
     display: block;
     width: 75%;
@@ -54,7 +54,7 @@ footer p
     border-bottom: 1px solid;
 }
 
-#redirecionamento_cadastro
+.redirecionamento_cadastro
 {
     display: block;
     margin: 0 auto;

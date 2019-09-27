@@ -20,26 +20,26 @@
             <form method="post"  action="${actionSalvarAtualizar}" >
                 <input type="hidden" name="id" value="${paciente.id}">
                 <input type="hidden" name="usuario.id" value="${paciente.usuario.id}">
-                <input type="text" value="${paciente.nome}" placeholder="Nome" name="nome" id="nome" />
-                <input type="text" value="${paciente.dataNascimento}" placeholder="nascimento" name="dataNascimento" id="dataNascimento" />
-                <input type="text" value="${paciente.dataGravidez}" placeholder="gravidez" name="dataGravidez" id="dataGravidez" />
-                <input type="text" value="${paciente.usuario.login}" placeholder="Login" name="usuario.login" id="login" />
-                <input type="password" value="${paciente.usuario.password}" placeholder="Password" name="usuario.password" id="password" />
+                <input type="text" value="${paciente.nome}" placeholder="Nome" name="nome" class="campo" />
+                <input type="text" value="${paciente.dataNascimento}" placeholder="Data de Nascimento" name="dataNascimento" class="campo" />
+                <input type="text" value="${paciente.dataGravidez}" placeholder="Data da Gravidez" name="dataGravidez" class="campo" />
+                <input type="text" value="${paciente.usuario.login}" placeholder="Email" name="usuario.login" class="campo" />
+                <input type="password" value="${paciente.usuario.password}" placeholder="Senha" name="usuario.password" class="campo" />
 
             <c:choose>
                 <c:when test="${paciente != null}">
                     <input type="submit" value="Alterar" id="botao_cadastro" />
                     <div class="rodape_campos">
-                        <div id="linha"></div>
-                        <p id="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
+                        <div class="linha"></div>
+                        <p class="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
                     </div>
                     </form>
                 </c:when>
                 <c:when test="${paciente == null}">
                     <input type="submit" value="Criar" id="botao_cadastro" />
                     <div class="rodape_campos">
-                        <div id="linha"></div>
-                        <p id="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
+                        <div class="linha"></div>
+                        <p class="redirecionamento_cadastro">Já tem uma conta? <a href="#">Ir para login</a></p>
                     </div>
                     </form>
                 </c:when>

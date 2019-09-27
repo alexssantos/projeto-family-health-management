@@ -18,8 +18,8 @@
 
 <body>
 <nav class="navbar navbar-brand" id="navbar">
-    <a href="#" class="item"><span class="span-mamae"><img id="mamae" src="../../imgs/mom.svg"/></span></a>
-    <a href="#" class="item">Meus Dados</a>
+    <a href="/index" class="item"><span class="span-mamae"><img id="mamae" src="../../imgs/mom.svg"/></span></a>
+    <a href="/paciente/alterar" class="item">Alterar Meus Dados</a>
 </nav>
 
 <section class="cd-timeline js-cd-timeline">

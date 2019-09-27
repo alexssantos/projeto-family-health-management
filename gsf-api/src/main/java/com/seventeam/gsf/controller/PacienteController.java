@@ -117,17 +117,17 @@ public class PacienteController {
     }
 //    -------------------
 
-    @PostMapping("/alterar")
-    public ModelAndView updatePaciente(@ModelAttribute Paciente paciente) {
-        ModelAndView mav = new ModelAndView("cadastro_paciente");
-        try{
-            pacienteService.save(paciente);
-            mav.addObject("resposta", "Paciente atualizada com sucesso");
-        }catch(Exception ex){
-            mav.addObject("resposta", "Ocorreu um erro ->" + ex.getMessage());
-        }
-        return mav;
-    }
+//    @PostMapping("/alterar")
+//    public ModelAndView updatePaciente(@ModelAttribute Paciente paciente) {
+//        ModelAndView mav = new ModelAndView("cadastro_paciente");
+//        try{
+//            pacienteService.save(paciente);
+//            mav.addObject("resposta", "Paciente atualizada com sucesso");
+//        }catch(Exception ex){
+//            mav.addObject("resposta", "Ocorreu um erro ->" + ex.getMessage());
+//        }
+//        return mav;
+//    }
 
     @RequestMapping(value = "/alterar")
     public ModelAndView atualizarPaciente(HttpSession httpSession) {
