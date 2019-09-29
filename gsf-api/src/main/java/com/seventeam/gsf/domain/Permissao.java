@@ -5,7 +5,9 @@ import com.seventeam.gsf.models.enums.PermissaoEnum;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "permissao")
+@Table(
+    name = "permissao",
+    uniqueConstraints=@UniqueConstraint(columnNames={"acao", "perfil_id"})) //Evita duplicação de permissao pro mesmo perfil.
 public class Permissao {
 
     @Id
@@ -14,7 +16,7 @@ public class Permissao {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "acao", unique = true)
+    @Column(name = "acao")
     private PermissaoEnum acao;
     
     
