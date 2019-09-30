@@ -114,6 +114,7 @@ public class PacienteService {
         return pacToUpdate;
     }
 
+//    public void delete(Integer id, String login) throws Exception
     public void delete(Integer id, String login) throws Exception
     {
         Paciente p = findById(id);

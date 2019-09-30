@@ -115,19 +115,6 @@ public class PacienteController {
         }
         return mav;
     }
-//    -------------------
-
-//    @PostMapping("/alterar")
-//    public ModelAndView updatePaciente(@ModelAttribute Paciente paciente) {
-//        ModelAndView mav = new ModelAndView("cadastro_paciente");
-//        try{
-//            pacienteService.save(paciente);
-//            mav.addObject("resposta", "Paciente atualizada com sucesso");
-//        }catch(Exception ex){
-//            mav.addObject("resposta", "Ocorreu um erro ->" + ex.getMessage());
-//        }
-//        return mav;
-//    }
 
     @RequestMapping(value = "/alterar")
     public ModelAndView atualizarPaciente(HttpSession httpSession) {
@@ -143,7 +130,7 @@ public class PacienteController {
     public ModelAndView excluir(HttpSession session, @ModelAttribute Paciente p){
         try {
             pacienteService.delete(p.getId(), (String) session.getAttribute("login"));
-            ModelAndView mav = new ModelAndView("redirect:/paciente/login");
+            ModelAndView mav = new ModelAndView("redirect:/");
             session.removeAttribute("login");
             return mav;
         }

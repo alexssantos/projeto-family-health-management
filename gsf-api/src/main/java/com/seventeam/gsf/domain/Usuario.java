@@ -32,7 +32,7 @@ public class Usuario {
 //	private Paciente paciente;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "perfil_id", referencedColumnName = "id", unique = true)
+	@JoinColumn(name = "perfil_id", referencedColumnName = "id")
 	private Perfil perfil;
 
 

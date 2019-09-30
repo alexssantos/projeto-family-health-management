@@ -52,8 +52,8 @@ public class Procedimento implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "medico_id", referencedColumnName = "id")
 	private Medico medico;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "paciente_id", referencedColumnName = "id")
 	private Paciente paciente;
 	

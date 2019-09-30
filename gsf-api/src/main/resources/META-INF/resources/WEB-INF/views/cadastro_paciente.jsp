@@ -47,7 +47,7 @@
 
 
             <c:if test="${paciente != null}">
-                <form method="post" action="/cadastro/exclui/paciente">
+                <form method="post" action="/paciente/excluir">
                     <input type="hidden" name="id" value="${paciente.id}">
                     <button type="submit">Excluir meus dados</button>
                 </form>

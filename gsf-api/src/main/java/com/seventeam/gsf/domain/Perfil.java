@@ -16,7 +16,7 @@ public class Perfil {
     private Integer id;
 
 	@Enumerated(EnumType.STRING)
-    @Column(name = "tipo", unique = true)
+    @Column(name = "tipo")
     private PerfilTipoEnum tipoPerfil;
 
 	public static List<Perfil> allPerfis = new ArrayList<>();

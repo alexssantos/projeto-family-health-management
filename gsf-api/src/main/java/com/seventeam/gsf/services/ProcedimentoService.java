@@ -81,7 +81,7 @@ public class ProcedimentoService {
 		
 		return returnEnum.toString();
 	}
-	
+
 	public static ProcedimentoTipoEnum getProcedimentoTipoEnum(String procTipo)
 	{
 		String procTipoUpper = procTipo.toUpperCase();
