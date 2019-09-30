@@ -17,7 +17,7 @@
     <div class="container">
         <div class="square">
             <img alt="Logo Médico" src="../../imgs/medico.png">
-            <form method="post" name="usuario" action="/login/medico">
+            <form method="post" name="usuario" action="/medico/login">
                 <input type="text" value="" placeholder="CRM" name="login" id="campo_crm" />
                 <input type="password" value="" placeholder="Senha" name="password" id="campo_senha" />
                 <input type="submit" value="Login" id="botao_login" />

@@ -1,10 +1,13 @@
 package com.seventeam.gsf.controller;
 
 import com.seventeam.gsf.domain.Medico;
+import com.seventeam.gsf.domain.Paciente;
 import com.seventeam.gsf.domain.Procedimento;
 import com.seventeam.gsf.domain.Usuario;
 import com.seventeam.gsf.models.Form.MedicoForm;
+import com.seventeam.gsf.models.dto.MedicoDto;
 import com.seventeam.gsf.services.MedicoService;
+import com.seventeam.gsf.services.PacienteService;
 import com.seventeam.gsf.services.ProcedimentoService;
 import com.seventeam.gsf.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,26 +31,28 @@ public class MedicoController {
 	public ProcedimentoService procedimentoService;
 	@Autowired
 	public MedicoService medicoService;
+	@Autowired
+	public PacienteService pacienteService;
 
-//	@RequestMapping(method= RequestMethod.GET)
-//	public ResponseEntity<List<Medico>> get()
-//	{
-//		return getAll();
-//	}
-//
-//	@RequestMapping(path = "/getall", method= RequestMethod.GET)
-//	public ResponseEntity<List<Medico>> getAll()
-//	{
-//		List<Medico> list = medicoService.findAll();
-//		List<Medico> responseList = list.stream()
-//				.map(item -> new Medico(item))
-//				.collect(Collectors.toList());
-//
-//		ResponseEntity reponse = ResponseEntity.ok().body(responseList);
-//		return reponse;
-//	}
-//
-//
+	@RequestMapping(method= RequestMethod.GET)
+	public ResponseEntity<List<Medico>> get()
+	{
+		return getAll();
+	}
+
+	@RequestMapping(path = "/getall", method= RequestMethod.GET)
+	public ResponseEntity<List<Medico>> getAll()
+	{
+		List<Medico> list = medicoService.findAll();
+		List<MedicoDto> responseList = list.stream()
+				.map(item -> new MedicoDto(item))
+				.collect(Collectors.toList());
+
+		ResponseEntity reponse = ResponseEntity.ok().body(responseList);
+		return reponse;
+	}
+
+
 	@RequestMapping(method= RequestMethod.POST)
 	public ResponseEntity createMedico(@RequestBody MedicoForm form)
 	{
@@ -58,17 +63,17 @@ public class MedicoController {
 		return reponse;
 	}
 
-//	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-//	public ResponseEntity<Medico> findById(@PathVariable Integer id)
-//	{
-//		Medico obj = medicoService.findById(id);
-//
-//		ResponseEntity reponse = ResponseEntity.ok().body(new Medico(obj));
-//		return reponse;
-//	}
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<MedicoDto> findById(@PathVariable Integer id)
+	{
+		Medico obj = medicoService.findById(id);
+
+		ResponseEntity reponse = ResponseEntity.ok().body(new MedicoDto(obj));
+		return reponse;
+	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Medico> delete(@PathVariable Integer id, @RequestBody MedicoForm form)
+	public ResponseEntity<MedicoDto> delete(@PathVariable Integer id, @RequestBody MedicoForm form)
 	{
 		medicoService.update(form, id);
 
@@ -86,12 +91,12 @@ public class MedicoController {
 		Usuario db = usuarioService.findOne(u.getLogin(), u.getPassword());
 		if (db != null) {
 			session.setAttribute("login", db.getLogin());
-			List<Procedimento> listaProcedimentos = procedimentoService.findAll();
-			ModelAndView mav = new ModelAndView("procedimentos");
-			mav.addObject("listaProcedimentos", listaProcedimentos);
-
+			List<Paciente> listaPacientes = pacienteService.findAll();
+			ModelAndView mav = new ModelAndView("lista_paciente");
+			mav.addObject("listaPacientes", listaPacientes);
 			return mav;
 		} else {
+
 			return null;
 		}
 	}
@@ -114,22 +119,22 @@ public class MedicoController {
 		}
 		return mav;
 	}
-//
-//	@RequestMapping(value = "/alterar")
-//	public ModelAndView atualizarMedico(HttpSession httpSession) {
-//		String login = (String) httpSession.getAttribute("login");
-//		Medico p = medicoService.getByLogin(login);
-//		ModelAndView mav = new ModelAndView("cadastro_medico");
-//		mav.addObject("actionSalvarAtualizar", "/medico/cadastrar");
-//		mav.addObject("medico", p);
-//		return mav;
-//	}
+
+	@RequestMapping(value = "/alterar")
+	public ModelAndView atualizarMedico(HttpSession httpSession) {
+		String login = (String) httpSession.getAttribute("login");
+		Medico p = medicoService.getByLogin(login);
+		ModelAndView mav = new ModelAndView("cadastro_medico");
+		mav.addObject("actionSalvarAtualizar", "/medico/cadastrar");
+		mav.addObject("medico", p);
+		return mav;
+	}
 
 //	@PostMapping(value = "/excluir")
 //	public ModelAndView excluir(HttpSession session, @ModelAttribute Medico p){
 //		try {
 //			medicoService.delete(p.getId(), (String) session.getAttribute("login"));
-//			ModelAndView mav = new ModelAndView("redirect:/medico/login");
+//			ModelAndView mav = new ModelAndView("redirect:/");
 //			session.removeAttribute("login");
 //			return mav;
 //		}

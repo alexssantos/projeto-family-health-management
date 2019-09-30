@@ -21,8 +21,8 @@
     <c:forEach items="${listaPacientes}" var="paciente">
         <div class="square">
         <div class="card">
-            <h1>Olá, ${login}</h1>
-            <h4>Gestante: ${paciente.nome}</h4>
+<%--            <h1>Olá, ${login}</h1>--%>
+            <h4><a href="/procedimentos/dados">Gestante: ${paciente.nome}</a></h4>
             <p>Data Gravidez: ${paciente.dataGravidez}</p>
         </div>
     </div>

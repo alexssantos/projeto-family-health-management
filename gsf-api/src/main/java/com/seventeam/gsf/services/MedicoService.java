@@ -7,6 +7,7 @@ import com.seventeam.gsf.domain.Usuario;
 import com.seventeam.gsf.models.Form.MedicoForm;
 import com.seventeam.gsf.models.enums.PerfilTipoEnum;
 import com.seventeam.gsf.repository.MedicoDao;
+import com.seventeam.gsf.repository.UsuarioDao;
 import com.seventeam.gsf.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,18 +18,26 @@ import java.util.Optional;
 @Service
 public class MedicoService {
 
-    @Autowired
-    MedicoDao dao;
-    
-    @Autowired
-    PerfilService perfilService;
+	@Autowired
+	private MedicoDao medicoDao;
+	@Autowired
+	private PerfilService perfilService;
+	@Autowired
+	private UsuarioDao usuarioDao;
 
     public void save(Medico obj)
     {
         if (obj != null){
-            dao.save(obj);
+            medicoDao.save(obj);
         }
     }
+
+	public Medico getByLogin(String login)
+	{
+		Usuario usuario = usuarioDao.getByLogin(login);
+		Medico medico = medicoDao.getOne(usuario.getId());
+		return medico;
+	}
 	
 	
 	public Medico save(MedicoForm form)
@@ -45,12 +54,12 @@ public class MedicoService {
 
     public List<Medico> findAll()
     {
-        return dao.findAll();
+        return medicoDao.findAll();
     }
 	
 	public Medico findById(Integer id)
 	{
-		Optional<Medico> obj = dao.findById(id);
+		Optional<Medico> obj = medicoDao.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Object Not Found"));
 	}
 	
@@ -105,11 +114,11 @@ public class MedicoService {
 	public void delete(Integer id)
 	{
 		Medico medToDelete = findById(id);
-		dao.delete(medToDelete);
+		medicoDao.delete(medToDelete);
 	}
 	
 	public Medico getByCrm(String crm){
-    	List<Medico> objList = dao.getMedicoByCrm(crm);
+    	List<Medico> objList = medicoDao.getMedicoByCrm(crm);
     	
     	return objList.stream().findFirst().get();
 	}

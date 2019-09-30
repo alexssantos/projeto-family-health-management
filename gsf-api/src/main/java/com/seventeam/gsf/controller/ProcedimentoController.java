@@ -17,13 +17,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/procedimentos")
 public class ProcedimentoController {
 	
 	@Autowired
 	ProcedimentoService procedimentoService;
 
-	@RequestMapping("/procedimentos")
+	@RequestMapping("/dados")
 	public ModelAndView procedimentos() {
 		List<Procedimento> listaProcedimentos = procedimentoService.findAll();
 		ModelAndView mav = new ModelAndView("procedimentos");

@@ -16,6 +16,6 @@
           integrity="sha256-yMjaV542P+q1RnH6XByCPDfUFhmOafWbeLPmqKh11zo=" crossorigin="anonymous"/>
 </head>
 <h2>Dados salvos com sucesso :)</h2>
-<h3><a href="/paciente/cadastrar"/>Ver meus procedimentos</h3>
+<h3><a href="/paciente/login"/>Ver meus procedimentos</h3>
 </body>
 </html>
